@@ -1,0 +1,432 @@
+/* Direktori PPID: seluruh aturan dibatasi pada komponen ini. */
+
+body.ppid-public .ppid-directory {
+    padding: 32px 0 56px;
+    color: var(--color-text, #263f33);
+}
+
+.ppid-directory-heading h1 {
+    margin: 0 0 12px;
+    font-size: clamp(26px, 3vw, 36px);
+    line-height: 1.35;
+}
+
+.ppid-directory-heading p {
+    margin: 0;
+    color: var(--front-muted, #607267);
+}
+
+.ppid-directory-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 24px 0;
+}
+
+.ppid-directory-tabs a {
+    padding: 10px 14px;
+    border: 1px solid #dce6df;
+    border-radius: 10px;
+    background: #fff;
+    color: inherit;
+    text-decoration: none;
+}
+
+.ppid-directory-tabs a[aria-current] {
+    background: var(--experience-soft, #eff5f2);
+    color: var(--experience-hover, #1d5b43);
+    border-color: #abc8b7;
+    box-shadow: inset 0 -2px var(--experience-accent, #247052);
+}
+
+.ppid-directory-panel {
+    min-width: 0;
+    padding: 22px;
+    border: 1px solid #dfe7e2;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow:
+        6px 6px 18px rgb(47 74 57 / 7%),
+        -5px -5px 16px rgb(255 255 255 / 85%);
+}
+
+.ppid-directory-filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 12px;
+}
+
+.ppid-directory-filters label {
+    display: grid;
+    gap: 6px;
+    min-width: 0;
+    flex: 1 1 140px;
+    font-size: 13px;
+}
+
+.ppid-directory-filters .ppid-directory-search {
+    flex: 2 1 240px;
+}
+
+.ppid-directory-filters :is(input, select) {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px;
+    border: 1px solid #cbd8cf;
+    border-radius: 8px;
+    background: #fbfdfb;
+    color: inherit;
+    font: inherit;
+    font-size: 16px;
+}
+
+.ppid-directory-filters button,
+.ppid-directory-reset {
+    padding: 10px;
+    color: var(--experience-accent, #247052);
+}
+
+.ppid-directory-hint {
+    margin: 18px 0 10px;
+    font-size: 13px;
+    color: var(--front-muted, #607267);
+}
+
+.ppid-directory-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.ppid-directory-footer p {
+    margin: 0;
+}
+
+.ppid-directory-footer nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.ppid-directory-footer nav :is(a, span) {
+    padding: 10px 12px;
+    border: 1px solid #dce6df;
+    border-radius: 8px;
+}
+
+.ppid-directory-footer a {
+    color: var(--experience-accent, #247052);
+}
+
+.ppid-directory-footer [aria-disabled] {
+    color: #68766e;
+    background: #f5f7f6;
+}
+
+.ppid-directory-caption {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.ppid-directory :is(
+    a, button, input, select, summary, [tabindex]
+):focus-visible {
+    outline: 3px solid var(--experience-accent, #247052);
+    outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    .ppid-directory-panel {
+        padding: 14px;
+    }
+
+    .ppid-directory-filters label {
+        flex-basis: 100%;
+    }
+
+    .ppid-directory-tabs a {
+        flex: 1 1 100%;
+    }
+
+}
+/* PPID TABLE FIX START */
+body.ppid-public .ppid-directory-panel {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+body.ppid-public .ppid-directory-scroll {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    border: 1px solid #dfe7e2;
+    border-radius: 12px;
+    background: #fff;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #b5c6bc #f3f7f4;
+    -webkit-overflow-scrolling: touch;
+}
+
+body.ppid-public .ppid-directory-scroll > table {
+    width: 100%;
+    min-width: 1080px;
+    margin: 0;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+body.ppid-public .ppid-directory-scroll > table :is(th, td) {
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: none;
+    padding: 16px 12px;
+    border: 0;
+    border-bottom: 1px solid #e5ece7;
+    text-align: left;
+    vertical-align: top;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: none;
+}
+
+body.ppid-public .ppid-directory-scroll > table thead th {
+    background: var(--experience-soft, #eff5f2);
+    color: var(--front-title, #293d32);
+    font-size: 13px;
+    font-weight: 650;
+    line-height: 1.65;
+    letter-spacing: normal;
+    text-transform: none;
+    overflow-wrap: normal;
+    word-break: normal;
+}
+
+body.ppid-public .ppid-directory-scroll > table tbody th {
+    color: var(--front-title, #293d32);
+    font-weight: 600;
+}
+
+body.ppid-public .ppid-directory-scroll > table tbody tr {
+    background: #fff;
+}
+
+body.ppid-public .ppid-directory-scroll > table tbody tr:nth-child(even) {
+    background: #f8fbf9;
+}
+
+body.ppid-public .ppid-directory-scroll > table tbody tr:hover {
+    background: #f0f6f2;
+}
+
+body.ppid-public .ppid-directory-scroll > table tbody tr:last-child > * {
+    border-bottom: 0;
+}
+
+body.ppid-public .ppid-directory-scroll > table tr > :nth-child(6),
+body.ppid-public .ppid-directory-scroll > table tr > :nth-child(7),
+body.ppid-public .ppid-directory-scroll > table tr > :nth-child(8),
+body.ppid-public .ppid-directory-scroll > table tr > :nth-child(9) {
+    text-align: center;
+}
+
+body.ppid-public .ppid-directory-scroll > table tr > :last-child {
+    padding-inline: 8px;
+}
+
+/* Tombol dokumen tunggal dan banyak dokumen tampil seragam. */
+body.ppid-public .ppid-directory .ppid-directory-document,
+body.ppid-public .ppid-directory .ppid-directory-documents > summary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: auto;
+    min-width: 60px;
+    max-width: 100%;
+    min-height: 38px;
+    margin: 0;
+    padding: 8px 12px;
+    border: 1px solid var(--experience-accent, #247052);
+    border-radius: 8px;
+    background: var(--experience-accent, #247052);
+    color: #fff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    white-space: nowrap;
+    word-break: normal;
+    overflow-wrap: normal;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 2px 5px rgb(36 112 82 / 10%);
+    cursor: pointer;
+    list-style: none;
+}
+
+body.ppid-public .ppid-directory .ppid-directory-documents > summary::-webkit-details-marker {
+    display: none;
+}
+
+body.ppid-public .ppid-directory .ppid-directory-documents > summary::marker {
+    content: "";
+}
+
+body.ppid-public .ppid-directory .ppid-directory-document:hover,
+body.ppid-public .ppid-directory .ppid-directory-documents > summary:hover {
+    background: var(--experience-hover, #1d5b43);
+    border-color: var(--experience-hover, #1d5b43);
+    color: #fff;
+}
+
+body.ppid-public .ppid-directory-documents {
+    min-width: 0;
+    text-align: center;
+}
+
+body.ppid-public .ppid-directory-documents ul {
+    margin: 12px 0 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+}
+
+body.ppid-public .ppid-directory-documents li + li {
+    margin-top: 10px;
+}
+
+body.ppid-public .ppid-directory-documents li a {
+    color: var(--experience-accent, #247052);
+    font-size: 12px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+    text-decoration: underline;
+}
+
+body.ppid-public .ppid-directory-scroll .ppid-directory-empty {
+    padding: 36px 20px !important;
+    text-align: center !important;
+    color: var(--front-muted, #607267);
+}
+
+@media (max-width: 600px) {
+    body.ppid-public .ppid-directory-panel {
+        padding: 12px;
+    }
+
+    body.ppid-public .ppid-directory .ppid-directory-document,
+    body.ppid-public .ppid-directory .ppid-directory-documents > summary {
+        min-height: 44px;
+    }
+}
+/* PPID TABLE FIX END */
+/* PPID FILTER BUTTONS START */
+body.ppid-public .ppid-directory-filters {
+    align-items: flex-end;
+    gap: 12px;
+}
+
+body.ppid-public .ppid-directory-filters label {
+    gap: 8px;
+}
+
+/* Tinggi kontrol dan tombol seragam. */
+body.ppid-public .ppid-directory-filters :is(input:not([type="hidden"]), select) {
+    box-sizing: border-box;
+    height: 44px;
+    min-height: 44px;
+    padding: 10px 12px;
+    border-radius: 8px;
+}
+
+body.ppid-public .ppid-directory-filters button[type="submit"],
+body.ppid-public .ppid-directory-filters a.ppid-directory-reset {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    height: 44px;
+    min-height: 44px;
+    min-width: 100px;
+    margin: 0;
+    padding: 10px 16px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+body.ppid-public .ppid-directory-filters button[type="submit"] {
+    background: var(--experience-accent, #247052);
+    border-color: var(--experience-accent, #247052);
+    color: #fff;
+    box-shadow: 0 2px 5px rgb(36 112 82 / 8%);
+}
+
+body.ppid-public .ppid-directory-filters button[type="submit"]:hover {
+    background: var(--experience-hover, #1d5b43);
+    border-color: var(--experience-hover, #1d5b43);
+}
+
+body.ppid-public .ppid-directory-filters a.ppid-directory-reset {
+    background: #f7faf8;
+    border-color: #cddbd2;
+    color: var(--experience-accent, #247052);
+    box-shadow: none;
+}
+
+body.ppid-public .ppid-directory-filters a.ppid-directory-reset:hover {
+    background: var(--experience-soft, #eff5f2);
+    border-color: #a9c2b3;
+    color: var(--experience-hover, #1d5b43);
+}
+
+body.ppid-public .ppid-directory-filters :is(button, a):focus-visible {
+    outline: 3px solid var(--experience-accent, #247052);
+    outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    body.ppid-public .ppid-directory-filters button[type="submit"],
+    body.ppid-public .ppid-directory-filters a.ppid-directory-reset {
+        flex: 1 1 calc(50% - 6px);
+        min-width: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.ppid-public .ppid-directory-filters button[type="submit"],
+    body.ppid-public .ppid-directory-filters a.ppid-directory-reset {
+        transition: none;
+    }
+}
+/* PPID FILTER BUTTONS END */
