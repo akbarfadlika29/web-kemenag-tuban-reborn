@@ -1,0 +1,5 @@
+@extends('errors.ppid-layout')
+@section('error_code', '503')
+@section('error_title', 'Layanan sementara tidak tersedia')
+@section('error_description', 'Website sedang dalam pemeliharaan atau mengalami gangguan sementara.')
+@section('error_note', 'Silakan kembali beberapa saat lagi.')

@@ -1,0 +1,131 @@
+/* Navigasi publik: klik membuka, klik kembali menutup. */
+body.ppid-public .ppid-nav-managed
+.site-nav-item:not(.is-submenu-open) > .site-nav-submenu {
+    display: none !important;
+}
+
+body.ppid-public .ppid-nav-managed
+.site-nav-item.is-submenu-open > .site-nav-submenu {
+    display: block !important;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+body.ppid-public .ppid-nav-managed .site-nav-submenu {
+    box-sizing: border-box;
+    width: 300px;
+    min-width: 0;
+    max-width: calc(100vw - 24px);
+    padding: 8px;
+    border: 1px solid #dce6df;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 12px 30px rgb(36 64 46 / 10%);
+    transform: translateX(var(--nav-shift, 0px));
+}
+
+body.ppid-public .ppid-nav-managed .site-nav-link-row {
+    display: flex;
+    align-items: stretch;
+    min-width: 0;
+}
+
+body.ppid-public .ppid-nav-managed .site-nav-submenu .site-nav-link {
+    flex: 1;
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 12px;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+body.ppid-public .ppid-nav-managed .site-nav-submenu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    flex: 0 0 44px;
+    touch-action: manipulation;
+    cursor: pointer;
+}
+
+body.ppid-public .ppid-nav-managed .site-nav-submenu-toggle:focus-visible {
+    outline: 3px solid var(--experience-accent, #247052);
+    outline-offset: -3px;
+    border-radius: 8px;
+}
+
+/* Sub-submenu tetap di dalam panel, tidak terbang ke samping. */
+body.ppid-public .ppid-nav-managed
+.site-nav-submenu .site-nav-submenu {
+    position: static;
+    inset: auto;
+    width: auto;
+    max-width: 100%;
+    margin: 4px 0 8px 12px;
+    padding: 5px;
+    transform: none;
+    background: var(--experience-soft, #eff5f2);
+    border-radius: 9px;
+    box-shadow: none;
+}
+
+body.ppid-public .ppid-nav-managed
+.site-nav-item.is-submenu-open > .site-nav-link-row
+.site-nav-submenu-toggle svg {
+    transform: rotate(180deg);
+}
+
+@media (min-width: 761px) {
+    body.ppid-public .ppid-nav-managed > .container {
+        overflow: visible;
+    }
+
+    body.ppid-public .ppid-nav-managed .site-nav-submenu {
+        max-height: 65dvh;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+
+    body.ppid-public .ppid-nav-managed
+    .site-nav-submenu .site-nav-submenu {
+        max-height: none;
+        overflow: visible;
+    }
+}
+
+@media (max-width: 760px) {
+    body.ppid-public [data-nav-toggle] {
+        min-width: 44px;
+        min-height: 44px;
+        touch-action: manipulation;
+    }
+
+    body.ppid-public .ppid-nav-managed:not(.is-open) {
+        display: none !important;
+    }
+
+    body.ppid-public .ppid-nav-managed.is-open {
+        display: block !important;
+        max-height: 70dvh;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    body.ppid-public .ppid-nav-managed .site-nav-submenu {
+        position: static;
+        inset: auto;
+        width: auto;
+        max-width: 100%;
+        margin: 4px 8px 8px;
+        transform: none;
+        background: var(--experience-soft, #eff5f2);
+        box-shadow: none;
+    }
+}

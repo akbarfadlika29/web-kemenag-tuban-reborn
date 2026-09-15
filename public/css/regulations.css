@@ -1,0 +1,144 @@
+.reg-space {
+    margin-top: 24px;
+}
+
+.reg-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.reg-grid > *,
+.reg-filter > * {
+    min-width: 0;
+}
+
+.reg-grid label,
+label.reg-space {
+    display: block;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.reg-grid .ui-control {
+    margin-top: 6px;
+    padding: 10px 12px;
+    min-height: 44px;
+}
+
+.reg-grid select[multiple] {
+    height: auto;
+    min-height: 140px;
+}
+
+.reg-filter {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.reg-filter input,
+.reg-filter select {
+    flex: 1 1 150px;
+    width: auto;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid #cbdccd;
+    border-radius: 9px;
+    font: inherit;
+}
+
+.reg-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.reg-actions form {
+    margin: 0;
+}
+
+.reg-public-list {
+    display: grid;
+    gap: 18px;
+}
+
+.reg-public-card {
+    padding: 24px;
+    border: 1px solid #dce7dd;
+    border-radius: 14px;
+    background: #fff;
+}
+
+.reg-public-card h2 {
+    font-size: 21px;
+    line-height: 1.5;
+    margin: 12px 0;
+    color: #285038;
+}
+
+.reg-type {
+    display: inline-block;
+    color: #087354;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.reg-metadata {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 24px 0;
+    border: 1px solid #dce7dd;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.reg-metadata > div {
+    padding: 16px;
+    border-bottom: 1px solid #e5ece5;
+}
+
+.reg-metadata dt {
+    font-size: 13px;
+    color: #617365;
+}
+
+.reg-metadata dd {
+    margin: 5px 0 0;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.reg-text {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    line-height: 1.8;
+}
+
+.reg-public-card a:hover,
+.reg-type:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+    .reg-grid,
+    .reg-metadata {
+        grid-template-columns: 1fr;
+    }
+
+    .reg-filter {
+        align-items: stretch;
+    }
+
+    .reg-filter input,
+    .reg-filter select {
+        flex-basis: 100%;
+        font-size: 16px;
+    }
+
+    .reg-public-card {
+        padding: 18px;
+    }
+}

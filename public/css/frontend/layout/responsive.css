@@ -1,0 +1,258 @@
+@media (max-width: 1050px) {
+    .hero-grid {
+        gap: 48px;
+    }
+
+    .news-public-grid,
+    .kemenag-news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .service-public-grid,
+    .ppid-public-grid,
+    .public-card-grid,
+    .gallery-public-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .site-footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .hero-grid,
+    .home-split,
+    .service-detail-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 62px 0;
+    }
+
+    .hero-card {
+        max-width: 620px;
+    }
+
+    .service-info-card {
+        position: static;
+    }
+
+    .public-related-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-detail-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 760px) {
+    .container {
+        width: min(
+            calc(100% - 28px),
+            var(--container)
+        );
+    }
+
+    .site-header-inner {
+        min-height: 76px;
+    }
+
+    .site-header-meta {
+        display: none;
+    }
+
+    .nav-toggle {
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-content: center;
+        gap: 4px;
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        background: #fff;
+    }
+
+    .nav-toggle span {
+        width: 19px;
+        height: 2px;
+        background: var(--color-primary-900);
+    }
+
+    .site-nav {
+        display: none;
+    }
+
+    .site-nav.is-open {
+        display: block;
+    }
+
+    .site-nav-inner {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 7px 0;
+    }
+
+    .site-nav a {
+        min-height: 44px;
+        padding: 0 14px;
+    }
+
+    .site-nav a::after {
+        display: none;
+    }
+
+    .hero {
+        padding: 52px 0;
+    }
+
+    .hero-grid {
+        gap: 34px;
+    }
+
+    .hero h1 {
+        font-size: 37px;
+    }
+
+    .hero-content > p {
+        font-size: 14px;
+    }
+
+    .hero-card {
+        padding: 22px;
+    }
+
+    .section {
+        padding: 54px 0;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 13px;
+    }
+
+    .section-heading h2 {
+        font-size: 25px;
+    }
+
+    .public-page-header {
+        padding: 40px 0;
+    }
+
+    .public-page-header h1 {
+        font-size: 31px;
+    }
+
+    .public-search,
+    .public-filter-bar {
+        flex-direction: column;
+    }
+
+    .service-public-grid,
+    .news-public-grid,
+    .kemenag-news-grid,
+    .ppid-public-grid,
+    .public-card-grid,
+    .gallery-public-grid,
+    .gallery-detail-grid,
+    .public-related-grid,
+    .agenda-detail-info,
+    .ppid-metadata-grid,
+    .site-footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-news-nav-group {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .home-news-nav-label {
+        padding-top: 0;
+    }
+
+    .home-news-nav-items {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 3px;
+    }
+
+    .home-news-nav-items a {
+        flex: 0 0 auto;
+    }
+
+    .public-list-item {
+        grid-template-columns:
+            64px
+            minmax(0, 1fr);
+        gap: 15px;
+    }
+
+    .agenda-row-public {
+        grid-template-columns:
+            72px
+            minmax(0, 1fr);
+        gap: 15px;
+    }
+
+    .ppid-list-card {
+        flex-direction: column;
+    }
+
+    .public-download-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .site-footer-bottom {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-brand-mark {
+        width: 42px;
+        height: 42px;
+        flex-basis: 42px;
+        font-size: 17px;
+    }
+
+    .site-brand-copy strong {
+        font-size: 14px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-stat-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-stat-grid > div {
+        border-right: 0;
+        border-bottom:
+            1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .hero-stat-grid > div:last-child {
+        border-bottom: 0;
+    }
+
+    .public-detail-header h1 {
+        font-size: 30px;
+    }
+
+    .portal-block-card {
+        padding: 20px;
+    }
+}

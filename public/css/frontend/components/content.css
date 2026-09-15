@@ -1,0 +1,394 @@
+.public-detail {
+    padding: 48px 0 74px;
+}
+
+.public-detail-narrow {
+    max-width: 850px;
+}
+
+.public-breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 26px;
+    color: var(--color-muted);
+    font-size: 12px;
+}
+
+.public-breadcrumb a:hover {
+    color: var(--color-green-700);
+}
+
+.public-detail-header h1 {
+    max-width: 900px;
+    margin-bottom: 0;
+    color: var(--color-primary-900);
+    font-size: clamp(30px, 4vw, 46px);
+    font-weight: 760;
+    line-height: 1.18;
+    letter-spacing: -0.035em;
+}
+
+.public-detail-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px 16px;
+    margin-top: 15px;
+    color: var(--color-muted);
+    font-size: 12px;
+}
+
+.public-detail-cover {
+    width: 100%;
+    max-height: 540px;
+    margin: 34px 0;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+}
+
+.public-detail-lead {
+    margin-bottom: 28px;
+    color: var(--color-text-soft);
+    font-size: 17px;
+    font-weight: 450;
+    line-height: 1.85;
+}
+
+.public-detail-section {
+    margin-top: 38px;
+    padding-top: 28px;
+    border-top: 1px solid var(--color-border);
+}
+
+.public-detail-section h2 {
+    margin-bottom: 16px;
+    color: var(--color-primary-900);
+    font-size: 19px;
+    font-weight: 730;
+}
+
+.public-related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.public-related-card {
+    padding: 17px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: #fff;
+}
+
+.public-related-card:hover {
+    border-color: #cbd5df;
+}
+
+.public-related-card strong,
+.public-related-card span {
+    display: block;
+}
+
+.public-related-card strong {
+    color: var(--color-primary-900);
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+.public-related-card span {
+    margin-top: 9px;
+    color: var(--color-subtle);
+    font-size: 12px;
+}
+
+.public-download-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 32px;
+    padding: 17px;
+    border: 1px solid var(--color-border);
+    border-radius: 9px;
+    background: var(--color-surface-soft);
+}
+
+.public-download-card strong {
+    display: block;
+    color: var(--color-text);
+    font-size: 12px;
+}
+
+.public-download-card span {
+    display: block;
+    margin-top: 3px;
+    color: var(--color-subtle);
+    font-size: 12px;
+}
+
+.public-download-card a {
+    color: var(--color-green-700);
+    font-size: 12px;
+    font-weight: 750;
+}
+/* =========================================================
+   RICH CONTENT CONTAINMENT
+   Mencegah isi editor keluar dari container
+   ========================================================= */
+
+.public-prose {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    overflow-wrap: anywhere;
+    word-wrap: break-word;
+}
+
+.public-prose img,
+.public-prose video,
+.public-prose iframe,
+.public-prose figure {
+    max-width: 100% !important;
+}
+
+.public-prose img,
+.public-prose video {
+    height: auto !important;
+}
+
+.public-prose figure {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.public-prose iframe {
+    display: block;
+
+    width: 100% !important;
+}
+
+.public-prose table {
+    width: 100%;
+    max-width: 100%;
+
+    display: block;
+
+    overflow-x: auto;
+
+    border-collapse: collapse;
+}
+
+.public-prose pre {
+    max-width: 100%;
+
+    overflow-x: auto;
+
+    white-space: pre-wrap;
+}
+
+.public-prose code {
+    overflow-wrap: anywhere;
+}
+
+.public-prose p,
+.public-prose li,
+.public-prose blockquote,
+.public-prose h1,
+.public-prose h2,
+.public-prose h3,
+.public-prose h4,
+.public-prose h5,
+.public-prose h6 {
+    max-width: 100%;
+}
+
+/* Quill / editor alignment */
+
+.public-prose .ql-align-center {
+    text-align: center;
+}
+
+.public-prose .ql-align-right {
+    text-align: right;
+}
+
+.public-prose .ql-align-justify {
+    text-align: justify;
+}
+
+/* =========================================================
+   RICH CONTENT PRESENTATION
+   ========================================================= */
+
+.public-prose {
+    color: var(--color-text-soft);
+
+    font-size: 15px;
+    line-height: 1.85;
+}
+
+.public-prose > :first-child {
+    margin-top: 0;
+}
+
+.public-prose > :last-child {
+    margin-bottom: 0;
+}
+
+.public-prose h2 {
+    margin: 34px 0 14px;
+
+    color: var(--color-primary-900);
+
+    font-size: 27px;
+    font-weight: 750;
+    line-height: 1.3;
+}
+
+.public-prose h3 {
+    margin: 28px 0 12px;
+
+    color: var(--color-primary-900);
+
+    font-size: 22px;
+    font-weight: 730;
+    line-height: 1.35;
+}
+
+.public-prose h4 {
+    margin: 24px 0 10px;
+
+    color: var(--color-primary-900);
+
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.public-prose p {
+    margin: 0 0 18px;
+}
+
+.public-prose ul,
+.public-prose ol {
+    margin: 0 0 20px;
+
+    padding-left: 26px;
+}
+
+.public-prose li {
+    margin: 6px 0;
+}
+
+.public-prose blockquote {
+    margin: 24px 0;
+
+    padding: 16px 20px;
+
+    border-left: 4px solid var(--color-green-700);
+    border-radius: 0 8px 8px 0;
+
+    background: var(--color-surface-soft);
+
+    color: var(--color-text-soft);
+
+    font-style: italic;
+}
+
+.public-prose hr {
+    margin: 32px 0;
+
+    border: 0;
+    border-top: 1px solid var(--color-border);
+}
+
+/* Code block */
+
+.public-prose pre {
+    max-width: 100%;
+
+    margin: 24px 0;
+    padding: 18px 20px;
+
+    overflow-x: auto;
+
+    border-radius: 10px;
+
+    background: #101828;
+
+    color: #e4e7ec;
+
+    font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        "Liberation Mono",
+        monospace;
+
+    font-size: 13px;
+    line-height: 1.7;
+
+    white-space: pre;
+
+    tab-size: 4;
+}
+
+.public-prose pre code {
+    padding: 0;
+
+    background: transparent;
+
+    color: inherit;
+
+    font: inherit;
+
+    white-space: inherit;
+}
+
+.public-prose :not(pre) > code {
+    padding: 2px 6px;
+
+    border-radius: 5px;
+
+    background: #f2f4f7;
+
+    color: #b42318;
+
+    font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        "Liberation Mono",
+        monospace;
+
+    font-size: .9em;
+}
+
+/* Link */
+
+.public-prose a {
+    color: var(--color-green-700);
+
+    font-weight: 650;
+
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* Image */
+
+.public-prose img {
+    display: block;
+
+    max-width: 100%;
+    height: auto;
+
+    margin: 26px auto;
+
+    border-radius: var(--radius-md);
+}

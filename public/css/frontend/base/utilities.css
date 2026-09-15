@@ -1,0 +1,40 @@
+.text-muted {
+    color: var(--color-muted);
+}
+
+.text-subtle {
+    color: var(--color-subtle);
+}
+
+.text-primary {
+    color: var(--color-primary-900);
+}
+
+.text-success {
+    color: var(--color-green-700);
+}
+
+.bg-soft {
+    background: var(--color-surface-soft);
+}
+
+.w-full {
+    width: 100%;
+}
+
+.empty-public-state {
+    grid-column: 1 / -1;
+    padding: 34px;
+    border: 1px dashed #cfd6dd;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--color-subtle);
+    font-size: 12px;
+    text-align: center;
+}
+
+.empty-public-state.dark {
+    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.5);
+}

@@ -1,0 +1,41 @@
+:root {
+    --gov-navy-950: #07182e;
+    --gov-navy-900: #0b2345;
+    --gov-navy-800: #123563;
+
+    --gov-blue-600: #1d5fbf;
+    --gov-blue-500: #2874d8;
+
+    --gov-emerald-600: #087f5b;
+    --gov-emerald-500: #0ca678;
+
+    --danger-600: #c92a2a;
+    --warning-600: #d97706;
+
+    --surface: #ffffff;
+    --surface-soft: #f8fafc;
+    --background: #f2f5f9;
+
+    --text: #162033;
+    --text-muted: #667085;
+    --border: #e1e7ef;
+
+    --shadow-sm:
+        0 1px 2px rgba(16, 24, 40, .04),
+        0 2px 6px rgba(16, 24, 40, .03);
+
+    --shadow-md:
+        0 8px 24px rgba(16, 24, 40, .08);
+
+    --radius-sm: 6px;
+    --radius-md: 9px;
+    --radius-lg: 14px;
+
+    --control-sm: 32px;
+    --control-md: 40px;
+    --control-lg: 48px;
+
+    --admin-sidebar-width: 260px;
+    --admin-navbar-height: 64px;
+    --admin-content-max: 1520px;
+}

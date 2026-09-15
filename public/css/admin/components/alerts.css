@@ -1,0 +1,44 @@
+/* ALERT */
+
+.ui-alert {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+
+    padding: 13px 15px;
+    margin-bottom: 18px;
+
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+}
+
+.ui-alert-success {
+    background: #ecfdf3;
+    border-color: #abefc6;
+    color: #067647;
+}
+
+.ui-alert-danger {
+    background: #fef3f2;
+    border-color: #fecdca;
+    color: #b42318;
+}
+
+.ui-alert-warning {
+    background: #fffaeb;
+    border-color: #fedf89;
+    color: #b54708;
+}
+
+.ui-alert-info {
+    background: #eff8ff;
+    border-color: #b2ddff;
+    color: #175cd3;
+}
+
+.ui-alert-close {
+    border: 0;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+}

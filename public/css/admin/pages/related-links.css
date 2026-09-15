@@ -1,0 +1,324 @@
+/* ==========================================================================
+   Related Links / Quick Links Page (Modern & Enterprise UI)
+   ========================================================================== */
+
+.related-links-page {
+    width: 100%;
+    min-width: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Card Containers
+   -------------------------------------------------------------------------- */
+.related-links-card,
+.related-link-form-card {
+    overflow: hidden;
+    border: 1px solid var(--border, #e2e8f0);
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05);
+}
+
+/* --------------------------------------------------------------------------
+   Table Header (Flex Layout)
+   -------------------------------------------------------------------------- */
+.related-links-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--border, #e2e8f0);
+    background: #f8fafc;
+}
+
+/* --------------------------------------------------------------------------
+   Form Header (Block Layout - FIX UNTUK TAMPILAN MENYAMPING)
+   -------------------------------------------------------------------------- */
+.related-link-form-card > header {
+    display: block;
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--border, #e2e8f0);
+    background: #f8fafc;
+}
+
+/* Header Text Styles (Digabung untuk Tabel & Form) */
+.related-links-card-header span,
+.related-link-form-card > header span {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--gov-emerald-600, #059669);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.related-links-card-header h2,
+.related-link-form-card > header h2 {
+    margin: 0 0 4px 0;
+    color: var(--gov-navy-900, #0f172a);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.related-links-card-header p,
+.related-link-form-card > header p {
+    margin: 0;
+    color: var(--text-muted, #64748b);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.related-links-card-header > strong {
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Table Layout
+   -------------------------------------------------------------------------- */
+.related-links-table-wrap {
+    overflow-x: auto;
+}
+
+.related-links-table-wrap .ui-table {
+    min-width: 720px;
+}
+
+.related-links-image-column {
+    width: 120px;
+}
+
+.related-links-action-column {
+    width: 160px;
+}
+
+.related-link-logo {
+    width: 80px;
+    height: 60px;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #f8fafc;
+}
+
+.related-link-logo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    padding: 4px;
+}
+
+.related-link-logo span {
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.related-link-name {
+    color: #0f172a;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.related-link-url {
+    display: block;
+    max-width: 420px;
+    overflow: hidden;
+    margin-top: 4px;
+    color: #64748b;
+    font-size: 12px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.related-link-url:hover {
+    color: #0ea5e9;
+    text-decoration: underline;
+}
+
+.related-links-empty {
+    min-height: 260px;
+    display: grid;
+    place-items: center;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.related-links-pagination {
+    padding: 16px 28px;
+    border-top: 1px solid var(--border, #e2e8f0);
+}
+
+/* --------------------------------------------------------------------------
+   Editor Form
+   -------------------------------------------------------------------------- */
+.related-link-editor {
+    max-width: 820px;
+}
+
+.related-link-form-body {
+    display: grid;
+    gap: 24px;
+    padding: 28px;
+}
+
+.related-link-media-field {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   Media Preview (Image Selection)
+   -------------------------------------------------------------------------- */
+.related-link-media-preview {
+    min-height: 140px;
+    overflow: hidden;
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    background: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.related-link-media-preview.has-media,
+.related-link-media-preview:not(:empty) {
+    border-style: solid;
+    border-color: #e2e8f0;
+}
+
+/* FIX UNTUK MENYEMBUNYIKAN KOTAK SECARA SEMPURNA SAAT JS BEKERJA */
+.related-link-media-empty[hidden],
+.related-link-media-selected[hidden] {
+    display: none !important;
+}
+
+/* State: Kosong */
+.related-link-media-empty {
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 24px;
+    color: #64748b;
+    text-align: center;
+}
+
+.related-link-media-empty > span {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    background: #e2e8f0;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.related-link-media-empty strong {
+    color: #0f172a;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.related-link-media-empty small {
+    color: #64748b;
+    font-size: 12px;
+}
+
+/* State: Terpilih */
+.related-link-media-selected {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: #ffffff;
+}
+
+.related-link-media-selected img {
+    width: 140px;
+    height: 90px;
+    flex: 0 0 140px;
+    object-fit: contain;
+    padding: 4px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #f8fafc;
+}
+
+.related-link-media-selected strong {
+    display: block;
+    color: #0f172a;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.related-link-media-selected span {
+    display: block;
+    margin-top: 6px;
+    color: #64748b;
+    font-size: 12px;
+}
+
+/* Buttons */
+.related-link-media-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.related-link-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Layout
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+    .related-links-card-header,
+    .related-link-form-card > header,
+    .related-link-form-body {
+        padding: 20px;
+    }
+
+    .related-links-pagination {
+        padding: 16px 20px;
+    }
+
+    .related-link-media-selected {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    
+    .related-link-media-actions {
+        flex-direction: column;
+    }
+    
+    .related-link-media-actions > * {
+        width: 100%;
+        text-align: center;
+    }
+
+    .related-link-form-actions {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 16px;
+    }
+}

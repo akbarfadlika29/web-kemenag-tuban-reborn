@@ -1,0 +1,58 @@
+/* Tablet dan HP */
+@media (max-width: 760px) {
+    body.ppid-consistent {
+        --front-gutter: 16px;
+        --front-space: 28px;
+    }
+
+    body.ppid-consistent .public-detail,
+    body.ppid-consistent .dip-page {
+        padding-bottom: 40px;
+    }
+
+    body.ppid-consistent :is(
+        .public-card-body,
+        .news-public-body,
+        .kemenag-news-content,
+        .service-public-card,
+        .ppid-public-card,
+        .reg-public-card,
+        .service-info-card
+    ) {
+        padding: 18px;
+    }
+
+    body.ppid-consistent .public-document-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    body.ppid-consistent .public-document-card > a {
+        width: 100%;
+    }
+
+    body.ppid-consistent .reg-metadata {
+        grid-template-columns: 1fr;
+    }
+
+    body.ppid-consistent :is(
+        .public-search input,
+        .public-filter-bar input,
+        .public-filter-bar select
+    ) {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.ppid-consistent :is(
+        .button,
+        .ui-btn,
+        .public-content-card,
+        .news-public-card,
+        .service-public-card
+    ) {
+        transition: none;
+        transform: none;
+    }
+}

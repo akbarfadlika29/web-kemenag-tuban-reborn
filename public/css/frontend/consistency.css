@@ -1,0 +1,462 @@
+/* Standar bersama frontend WEB PPID */
+body.ppid-consistent {
+    --container: 1180px;
+    --front-gutter: 24px;
+    --front-space: 40px;
+    --front-radius: 12px;
+    --front-border: #e1e8e5;
+    --front-muted: #61716a;
+    --front-green: #087f5b;
+    --front-title: #233a32;
+
+    font-family: var(--font-sans, "Segoe UI", Arial, sans-serif);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* Lebar yang sama untuk header, navigasi, konten, dan footer. */
+body.ppid-consistent .container {
+    width: calc(100% - var(--front-gutter) * 2) !important;
+    max-width: var(--container) !important;
+    min-width: 0;
+    margin-inline: auto !important;
+    padding-inline: 0 !important;
+    box-sizing: border-box;
+}
+
+body.ppid-consistent .container .container {
+    width: 100% !important;
+}
+
+body.ppid-consistent .public-detail-narrow {
+    max-width: var(--container) !important;
+}
+
+/* Jarak halaman */
+body.ppid-consistent .public-page-header {
+    padding-block: var(--front-space);
+    border-bottom: 1px solid var(--front-border);
+    background: #f6f9f7;
+}
+
+body.ppid-consistent .public-detail,
+body.ppid-consistent .dip-page {
+    padding-top: var(--front-space);
+    padding-bottom: 64px;
+}
+
+body.ppid-consistent .section {
+    padding-block: var(--front-space);
+}
+
+body.ppid-consistent .public-page-header + .section {
+    padding-top: 32px;
+}
+
+/* Judul halaman */
+body.ppid-consistent :is(
+    .public-page-header h1,
+    .public-detail-header h1,
+    .dip-heading h1
+) {
+    max-width: 100%;
+    margin: 8px 0 12px;
+    color: var(--front-title);
+    font-size: clamp(28px, 3.3vw, 36px);
+    font-weight: 750;
+    line-height: 1.3;
+    letter-spacing: -.025em;
+    overflow-wrap: anywhere;
+}
+
+body.ppid-consistent :is(
+    .public-page-header p,
+    .dip-heading p,
+    .public-detail-lead
+) {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--front-muted);
+}
+
+body.ppid-consistent :is(
+    .public-breadcrumb,
+    .dip-breadcrumb
+) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+body.ppid-consistent :is(
+    .section-kicker,
+    .hero-kicker,
+    .dip-eyebrow,
+    .related-links-kicker
+) {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .07em;
+}
+
+/* Judul bagian dan isi */
+body.ppid-consistent :is(
+    .section-heading h2,
+    .related-links-heading h2,
+    .public-detail-section h2,
+    .public-prose h2
+) {
+    font-size: clamp(22px, 2.4vw, 26px);
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+body.ppid-consistent .public-prose {
+    width: 100%;
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.85;
+    overflow-wrap: anywhere;
+}
+
+body.ppid-consistent .public-prose h3 {
+    font-size: 21px;
+    line-height: 1.45;
+}
+
+body.ppid-consistent .public-prose h4 {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+body.ppid-consistent .public-prose p {
+    margin-bottom: 18px;
+}
+
+/* Kartu dan panel */
+body.ppid-consistent :is(
+    .public-content-card,
+    .news-public-card,
+    .kemenag-news-card,
+    .service-public-card,
+    .ppid-public-card,
+    .gallery-public-card,
+    .reg-public-card,
+    .service-info-card,
+    .dip-panel
+) {
+    border-radius: var(--front-radius);
+    border-color: var(--front-border);
+    box-shadow: 0 3px 14px rgb(25 61 44 / 4%);
+}
+
+body.ppid-consistent :is(
+    .public-card-body,
+    .news-public-body,
+    .kemenag-news-content,
+    .service-public-card,
+    .ppid-public-card,
+    .reg-public-card,
+    .service-info-card
+) {
+    padding: 22px;
+}
+
+body.ppid-consistent :is(
+    .public-card-body h2,
+    .news-public-body h3,
+    .kemenag-news-content h3,
+    .service-public-card h3,
+    .ppid-public-card h3,
+    .ppid-list-card h2,
+    .reg-public-card h2,
+    .service-info-card h2
+) {
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+body.ppid-consistent :is(
+    .public-card-body p,
+    .news-public-body p,
+    .kemenag-news-content p,
+    .service-public-card p,
+    .ppid-public-card p,
+    .ppid-list-card p,
+    .section-heading p,
+    .related-links-heading p
+) {
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+body.ppid-consistent :is(
+    .public-card-meta,
+    .public-detail-meta,
+    .news-public-date,
+    .news-card-unit,
+    .home-news-card-unit,
+    .kemenag-news-meta,
+    .ppid-public-meta span,
+    .public-related-card span,
+    .service-info-card dt,
+    .ppid-metadata-grid span
+) {
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+body.ppid-consistent :is(
+    .public-badge,
+    .public-card-category,
+    .news-public-category,
+    .service-public-category,
+    .public-tags a,
+    .public-tags span
+) {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+body.ppid-consistent :is(
+    .ppid-metadata-grid strong,
+    .service-info-card dd,
+    .public-document-card strong,
+    .public-download-card strong,
+    .public-related-card strong
+) {
+    font-size: 14px;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+}
+
+body.ppid-consistent :is(
+    .public-document-card span,
+    .public-download-card span
+) {
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* Boutons frontend, termasuk regulasi dan tabel PPID */
+body.ppid-consistent :is(
+    .button,
+    .ui-btn,
+    .dip-btn,
+    .public-search button,
+    .public-filter-bar button,
+    .public-document-card > a,
+    .public-download-card > a
+) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-sizing: border-box;
+    min-height: 44px !important;
+    height: auto !important;
+    padding: 10px 16px !important;
+    border-radius: 8px !important;
+    font-family: inherit;
+    font-size: 14px !important;
+    font-weight: 650;
+    line-height: 1.4 !important;
+    text-align: center;
+    text-decoration: none;
+}
+
+body.ppid-consistent :is(
+    .public-document-card > a,
+    .public-download-card > a
+) {
+    flex-shrink: 0;
+    border: 1px solid #cbd7d0;
+    background: #fff;
+    color: var(--front-green);
+}
+
+body.ppid-consistent :is(
+    .button,
+    .ui-btn,
+    .dip-btn
+)[hidden] {
+    display: none !important;
+}
+
+/* Input pencarian dan filter */
+body.ppid-consistent :is(
+    .public-search,
+    .public-filter-bar,
+    .reg-filter
+) {
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+body.ppid-consistent :is(
+    .public-search input,
+    .public-filter-bar input,
+    .public-filter-bar select,
+    .reg-filter input,
+    .reg-filter select,
+    .dip-field input,
+    .dip-field select
+) {
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid #cbd7d0;
+    border-radius: 8px;
+    background-color: #fff;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+body.ppid-consistent :is(
+    .news-main-tabs a,
+    .public-tabs a,
+    .news-category-tabs a,
+    .home-news-nav-items a,
+    .dip-tab
+) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Tabel: ukuran teks dan padding bersama */
+body.ppid-consistent :is(
+    .dip-table,
+    .public-prose table
+) {
+    border-collapse: collapse;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+body.ppid-consistent :is(
+    .dip-table thead th,
+    .public-prose thead th
+) {
+    padding: 14px 18px;
+    background: #edf5f0;
+    color: #365346;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+}
+
+body.ppid-consistent .public-prose :is(td, th) {
+    padding: 16px 18px;
+    border: 1px solid var(--front-border);
+    vertical-align: top;
+}
+
+body.ppid-consistent .dip-title-link {
+    font-size: 16px;
+    line-height: 1.55;
+}
+
+body.ppid-consistent .empty-public-state {
+    padding: 36px 24px;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Anak grid tidak mendorong lebar halaman */
+body.ppid-consistent :is(
+    .public-card-grid,
+    .news-public-grid,
+    .service-public-grid,
+    .ppid-public-grid,
+    .gallery-public-grid,
+    .service-detail-layout,
+    .home-content-layout,
+    .ppid-metadata-grid,
+    .reg-metadata
+) > * {
+    min-width: 0;
+}
+
+body.ppid-consistent .public-detail-cover {
+    width: 100%;
+    border-radius: var(--front-radius);
+}
+
+body.ppid-consistent :is(
+    .public-page-header,
+    .public-detail,
+    .dip-page
+) :is(a, button, input, select, textarea):focus-visible {
+    outline: 3px solid #18865f;
+    outline-offset: 3px;
+}
+
+/* Tablet dan HP */
+@media (max-width: 760px) {
+    body.ppid-consistent {
+        --front-gutter: 16px;
+        --front-space: 28px;
+    }
+
+    body.ppid-consistent .public-detail,
+    body.ppid-consistent .dip-page {
+        padding-bottom: 40px;
+    }
+
+    body.ppid-consistent :is(
+        .public-card-body,
+        .news-public-body,
+        .kemenag-news-content,
+        .service-public-card,
+        .ppid-public-card,
+        .reg-public-card,
+        .service-info-card
+    ) {
+        padding: 18px;
+    }
+
+    body.ppid-consistent .public-document-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    body.ppid-consistent .public-document-card > a {
+        width: 100%;
+    }
+
+    body.ppid-consistent .reg-metadata {
+        grid-template-columns: 1fr;
+    }
+
+    body.ppid-consistent :is(
+        .public-search input,
+        .public-filter-bar input,
+        .public-filter-bar select
+    ) {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.ppid-consistent :is(
+        .button,
+        .ui-btn,
+        .public-content-card,
+        .news-public-card,
+        .service-public-card
+    ) {
+        transition: none;
+        transform: none;
+    }
+}

@@ -1,0 +1,109 @@
+.section {
+    padding: 72px 0;
+}
+
+.section-soft {
+    background: var(--color-surface-soft);
+}
+
+.section-dark {
+    background: var(--color-primary-950);
+    color: #fff;
+}
+
+.section-wrapper {
+    padding: 24px 0;
+    background: var(--color-surface-soft);
+}
+
+.portal-block-card {
+    padding: 32px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+}
+
+.portal-block-dark {
+    border-color: var(--color-primary-900);
+    background: var(--color-primary-950);
+}
+
+.section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 28px;
+    margin-bottom: 30px;
+}
+
+.section-heading.compact {
+    margin-bottom: 20px;
+}
+
+.section-heading h2 {
+    margin-bottom: 0;
+    color: var(--color-primary-900);
+    font-size: 28px;
+    font-weight: 740;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+}
+
+.section-heading p {
+    max-width: 620px;
+    margin: 8px 0 0;
+    color: var(--color-muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.section-link {
+    flex: 0 0 auto;
+    color: var(--color-green-700);
+    font-size: 12px;
+    font-weight: 750;
+}
+
+.section-link:hover {
+    text-decoration: underline;
+}
+
+.section-heading-light h2 {
+    color: #fff;
+}
+
+.section-heading-light p {
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.section-link-light {
+    color: #88dcb0;
+}
+
+.public-page-header {
+    padding: 52px 0;
+    border-bottom: 1px solid var(--color-border);
+    background:
+        linear-gradient(
+            180deg,
+            #f9fbfc,
+            #f4f7f9
+        );
+}
+
+.public-page-header h1 {
+    margin-bottom: 0;
+    color: var(--color-primary-900);
+    font-size: 36px;
+    font-weight: 760;
+    letter-spacing: -0.03em;
+}
+
+.public-page-header p {
+    max-width: 680px;
+    margin: 10px 0 0;
+    color: var(--color-muted);
+    font-size: 13px;
+    line-height: 1.75;
+}

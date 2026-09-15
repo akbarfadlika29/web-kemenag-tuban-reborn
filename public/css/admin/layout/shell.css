@@ -1,0 +1,115 @@
+.admin-wrapper {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    overflow: hidden;
+
+    background: var(--background);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Admin Shell
+|--------------------------------------------------------------------------
+| Navbar dan footer tetap berada di viewport.
+| Hanya .content yang melakukan scroll vertikal.
+*/
+
+.admin-shell {
+    width:
+        calc(
+            100% - var(--admin-sidebar-width)
+        );
+
+    height: 100vh;
+    height: 100dvh;
+
+    min-width: 0;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    margin-left:
+        var(--admin-sidebar-width);
+
+    background: var(--background);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Content
+|--------------------------------------------------------------------------
+*/
+
+.admin-shell > .content {
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    flex: 1 1 0;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    padding: 32px 32px 44px;
+
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+.admin-content-inner {
+    width: 100%;
+    max-width: var(--admin-content-max);
+
+    margin-inline: auto;
+}
+
+.admin-content-inner > * {
+    min-width: 0;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Mobile Sidebar Overlay
+|--------------------------------------------------------------------------
+*/
+
+.admin-sidebar-overlay {
+    position: fixed;
+    z-index: 1150;
+
+    inset: 0;
+
+    display: none;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+
+    background:
+        rgba(7, 24, 46, 0.52);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Viewport Scroll Lock
+|--------------------------------------------------------------------------
+| Scroll halaman admin dikendalikan oleh .admin-shell > .content.
+*/
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+}

@@ -1,0 +1,612 @@
+/* ==========================================================================
+   Dashboard Root
+   ========================================================================== */
+
+.admin-dashboard {
+    width: 100%;
+    min-width: 0;
+}
+
+/* ==========================================================================
+   Primary Metrics (4 Columns)
+   ========================================================================== */
+
+.dashboard-primary-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.dashboard-primary-card {
+    position: relative;
+    min-width: 0;
+    min-height: 98px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    border: 1px solid var(--border, #e2e8f0);
+    border-radius: 12px;
+    background: #ffffff;
+    color: inherit;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.dashboard-primary-card:hover {
+    border-color: #94a3b8;
+    box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.06), 0 4px 6px -2px rgba(15, 23, 42, 0.03);
+    transform: translateY(-2px);
+}
+
+.dashboard-primary-icon {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #dbeafe;
+}
+
+.dashboard-primary-card:nth-child(2) .dashboard-primary-icon {
+    background: #f0fdf4;
+    color: #15803d;
+    border-color: #dcfce7;
+}
+
+.dashboard-primary-card:nth-child(3) .dashboard-primary-icon {
+    background: #faf5ff;
+    color: #7e22ce;
+    border-color: #f3e8ff;
+}
+
+.dashboard-primary-card:nth-child(4) .dashboard-primary-icon {
+    background: #fff7ed;
+    color: #c2410c;
+    border-color: #ffedd5;
+}
+
+.dashboard-primary-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.dashboard-primary-content {
+    min-width: 0;
+}
+
+.dashboard-primary-label {
+    display: block;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.dashboard-primary-value {
+    display: block;
+    margin-top: 2px;
+    color: #0f172a;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.dashboard-primary-meta {
+    display: block;
+    margin-top: 3px;
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+.dashboard-card-arrow {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    color: #cbd5e1;
+    font-size: 14px;
+    transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.dashboard-primary-card:hover .dashboard-card-arrow {
+    color: #1d4ed8;
+    transform: translateX(3px);
+}
+
+/* ==========================================================================
+   Module Overview (Pills)
+   ========================================================================== */
+
+.dashboard-overview {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.dashboard-overview-card {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 14px;
+    border: 1px solid var(--border, #e2e8f0);
+    border-radius: 8px;
+    background: #ffffff;
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.dashboard-overview-card:hover {
+    border-color: #94a3b8;
+    background: #f8fafc;
+    transform: translateY(-1px);
+}
+
+.dashboard-overview-card span {
+    min-width: 0;
+    color: #475467;
+    font-size: 12px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dashboard-overview-card strong {
+    flex: 0 0 auto;
+    color: #0f172a;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   Grid Layout System (Enterprise 8 : 4 Split)
+   ========================================================================== */
+
+.dashboard-main-grid,
+.dashboard-bottom-grid {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.95fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   Panels
+   ========================================================================== */
+
+.dashboard-panel {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--border, #e2e8f0);
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.dashboard-panel-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    background: #fafafa;
+}
+
+.dashboard-panel-header > div {
+    min-width: 0;
+}
+
+.dashboard-panel-kicker {
+    display: block;
+    color: #059669;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.dashboard-panel-header h2 {
+    margin: 2px 0 0;
+    color: #0f172a;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.dashboard-panel-header p {
+    margin: 3px 0 0;
+    color: #64748b;
+    font-size: 12.5px;
+    line-height: 1.4;
+}
+
+.dashboard-panel-link {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #1d4ed8;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.dashboard-panel-link:hover {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+}
+
+.dashboard-panel-link span {
+    transition: transform 0.15s ease;
+}
+
+.dashboard-panel-link:hover span {
+    transform: translateX(2px);
+}
+
+/* ==========================================================================
+   List Elements (Berita & Pengumuman)
+   ========================================================================== */
+
+.dashboard-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-list-item {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    color: inherit;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+}
+
+.dashboard-list-item:last-child {
+    border-bottom: 0;
+}
+
+.dashboard-list-item:hover {
+    background-color: #f8fafc;
+}
+
+.dashboard-list-main {
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.dashboard-list-main > strong {
+    display: block;
+    overflow: hidden;
+    color: #1e293b;
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dashboard-list-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.dashboard-list-meta span {
+    color: #64748b;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.dashboard-list-side {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dashboard-list-item small,
+.dashboard-list-date {
+    flex: 0 0 auto;
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+/* ==========================================================================
+   Status Badges
+   ========================================================================== */
+
+.dashboard-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.dashboard-status.published {
+    background: #ecfdf5;
+    color: #047857;
+    border: 1px solid #d1fae5;
+}
+
+/* ==========================================================================
+   Agenda Sidebar Widget
+   ========================================================================== */
+
+.dashboard-agenda-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-agenda-item {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    color: inherit;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+}
+
+.dashboard-agenda-item:last-child {
+    border-bottom: 0;
+}
+
+.dashboard-agenda-item:hover {
+    background-color: #f8fafc;
+}
+
+.dashboard-agenda-date {
+    width: 44px;
+    height: 46px;
+    flex: 0 0 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #f8fafc;
+}
+
+.dashboard-agenda-date strong {
+    color: #0f172a;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.dashboard-agenda-date span {
+    margin-top: 2px;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.dashboard-agenda-content {
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.dashboard-agenda-content strong {
+    display: block;
+    overflow: hidden;
+    color: #1e293b;
+    font-size: 13px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dashboard-agenda-content span {
+    display: block;
+    margin-top: 3px;
+    overflow: hidden;
+    color: #64748b;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dashboard-agenda-arrow {
+    flex: 0 0 auto;
+    color: #cbd5e1;
+    font-size: 13px;
+    transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.dashboard-agenda-item:hover .dashboard-agenda-arrow {
+    color: #1d4ed8;
+    transform: translateX(3px);
+}
+
+/* ==========================================================================
+   Shortcuts / Quick Action Grid
+   ========================================================================== */
+
+.dashboard-shortcuts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding: 16px 20px;
+}
+
+.dashboard-shortcuts > a {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #ffffff;
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.dashboard-shortcuts > a:hover {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+    transform: translateY(-1px);
+}
+
+.dashboard-shortcut-icon {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.dashboard-shortcuts > a:nth-child(2) .dashboard-shortcut-icon {
+    background: #f0fdf4;
+    color: #15803d;
+}
+
+.dashboard-shortcuts > a:nth-child(3) .dashboard-shortcut-icon {
+    background: #faf5ff;
+    color: #7e22ce;
+}
+
+.dashboard-shortcuts > a:nth-child(4) .dashboard-shortcut-icon {
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+.dashboard-shortcut-copy {
+    min-width: 0;
+}
+
+.dashboard-shortcut-copy strong {
+    display: block;
+    overflow: hidden;
+    color: #1e293b;
+    font-size: 12.5px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dashboard-shortcut-copy small {
+    display: block;
+    margin-top: 1px;
+    overflow: hidden;
+    color: #64748b;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   Empty States
+   ========================================================================== */
+
+.dashboard-empty {
+    min-height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    padding: 24px;
+    text-align: center;
+}
+
+.dashboard-empty strong {
+    color: #475569;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.dashboard-empty span {
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 1280px) {
+    .dashboard-primary-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dashboard-overview {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 1024px) {
+    .dashboard-main-grid,
+    .dashboard-bottom-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .dashboard-primary-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-overview {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dashboard-shortcuts {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-panel-header p {
+        display: none;
+    }
+
+    .dashboard-list-side {
+        display: none;
+    }
+
+    .dashboard-list-date {
+        display: none;
+    }
+}

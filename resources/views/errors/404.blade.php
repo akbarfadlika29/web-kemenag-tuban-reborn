@@ -1,0 +1,5 @@
+@extends('errors.ppid-layout')
+@section('error_code', '404')
+@section('error_title', 'Halaman tidak ditemukan')
+@section('error_description', 'Halaman yang Anda tuju tidak tersedia atau alamatnya sudah berubah.')
+@section('error_note', 'Gunakan navigasi di bawah untuk melanjutkan.')

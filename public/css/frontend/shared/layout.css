@@ -1,0 +1,55 @@
+/* Standar bersama frontend WEB PPID */
+body.ppid-consistent {
+    --container: 1180px;
+    --front-gutter: 24px;
+    --front-space: 40px;
+    --front-radius: 12px;
+    --front-border: #e1e8e5;
+    --front-muted: #61716a;
+    --front-green: #087f5b;
+    --front-title: #233a32;
+
+    font-family: var(--font-sans, "Segoe UI", Arial, sans-serif);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* Lebar yang sama untuk header, navigasi, konten, dan footer. */
+body.ppid-consistent .container {
+    width: calc(100% - var(--front-gutter) * 2) !important;
+    max-width: var(--container) !important;
+    min-width: 0;
+    margin-inline: auto !important;
+    padding-inline: 0 !important;
+    box-sizing: border-box;
+}
+
+body.ppid-consistent .container .container {
+    width: 100% !important;
+}
+
+body.ppid-consistent .public-detail-narrow {
+    max-width: var(--container) !important;
+}
+
+/* Jarak halaman */
+body.ppid-consistent .public-page-header {
+    padding-block: var(--front-space);
+    border-bottom: 1px solid var(--front-border);
+    background: #f6f9f7;
+}
+
+body.ppid-consistent .public-detail,
+body.ppid-consistent .dip-page {
+    padding-top: var(--front-space);
+    padding-bottom: 64px;
+}
+
+body.ppid-consistent .section {
+    padding-block: var(--front-space);
+}
+
+body.ppid-consistent .public-page-header + .section {
+    padding-top: 32px;
+}
+

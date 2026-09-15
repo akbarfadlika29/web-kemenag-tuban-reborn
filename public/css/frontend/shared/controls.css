@@ -1,0 +1,90 @@
+/* Boutons frontend, termasuk regulasi dan tabel PPID */
+body.ppid-consistent :is(
+    .button,
+    .ui-btn,
+    .dip-btn,
+    .public-search button,
+    .public-filter-bar button,
+    .public-document-card > a,
+    .public-download-card > a
+) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-sizing: border-box;
+    min-height: 44px !important;
+    height: auto !important;
+    padding: 10px 16px !important;
+    border-radius: 8px !important;
+    font-family: inherit;
+    font-size: 14px !important;
+    font-weight: 650;
+    line-height: 1.4 !important;
+    text-align: center;
+    text-decoration: none;
+}
+
+body.ppid-consistent :is(
+    .public-document-card > a,
+    .public-download-card > a
+) {
+    flex-shrink: 0;
+    border: 1px solid #cbd7d0;
+    background: #fff;
+    color: var(--front-green);
+}
+
+body.ppid-consistent :is(
+    .button,
+    .ui-btn,
+    .dip-btn
+)[hidden] {
+    display: none !important;
+}
+
+/* Input pencarian dan filter */
+body.ppid-consistent :is(
+    .public-search,
+    .public-filter-bar,
+    .reg-filter
+) {
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+body.ppid-consistent :is(
+    .public-search input,
+    .public-filter-bar input,
+    .public-filter-bar select,
+    .reg-filter input,
+    .reg-filter select,
+    .dip-field input,
+    .dip-field select
+) {
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid #cbd7d0;
+    border-radius: 8px;
+    background-color: #fff;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+body.ppid-consistent :is(
+    .news-main-tabs a,
+    .public-tabs a,
+    .news-category-tabs a,
+    .home-news-nav-items a,
+    .dip-tab
+) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+

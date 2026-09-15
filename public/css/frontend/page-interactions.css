@@ -1,0 +1,230 @@
+/* Metadata di bawah judul */
+.page-interaction-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 20px;
+    margin: 16px 0 32px;
+    color: #647169;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.page-interaction-meta > span {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+}
+
+.page-interaction-meta strong {
+    color: #35483d;
+    font-weight: 650;
+}
+
+.interaction-icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    vertical-align: middle;
+}
+
+.page-interaction-meta .interaction-icon {
+    color: #52816b;
+    width: 16px;
+    height: 16px;
+    flex-basis: 16px;
+}
+
+/* Area interaksi di akhir isi */
+.page-interactions {
+    margin-top: 44px;
+    margin-bottom: 24px;
+}
+
+.page-interaction-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 24px 0 8px;
+    border-top: 1px solid #e3eae5;
+}
+
+.page-share-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.page-share-label {
+    margin-right: 5px;
+    color: #647169;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Tombol seragam */
+.page-interactions .page-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 10px 14px;
+    border: 1px solid #dce5df;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #46534c;
+    box-shadow: 0 1px 2px rgb(30 55 40 / 3%);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background-color .15s ease,
+        border-color .15s ease,
+        box-shadow .15s ease;
+}
+
+.page-interactions .page-action:hover {
+    background: #f4f8f5;
+    border-color: #b9cfc1;
+    box-shadow: 0 3px 8px rgb(30 55 40 / 6%);
+}
+
+.page-interactions .page-action:focus-visible {
+    outline: 3px solid var(--experience-accent, #247052);
+    outline-offset: 3px;
+}
+
+.page-interactions .page-action:disabled {
+    opacity: .5;
+    cursor: default;
+    box-shadow: none;
+}
+
+/* Suka: aksen merah lembut seperti contoh */
+.page-interactions .page-like {
+    min-width: 108px;
+    border-color: #eccdd2;
+    color: #b93851;
+    background: #ffffff;
+    font-size: 14px;
+}
+
+.page-interactions .page-like:hover {
+    border-color: #dba5af;
+    background: #fff5f6;
+}
+
+.page-interactions .page-like[aria-pressed="true"] {
+    border-color: #e2b4bd;
+    background: #fff1f3;
+    color: #ad3049;
+}
+
+.page-interactions .page-like[aria-pressed="true"] .interaction-icon {
+    fill: currentColor;
+}
+
+.interaction-heart-character {
+    display: none;
+}
+
+/* Warna merek cukup pada ikon */
+.page-interactions [data-share="facebook"] .interaction-icon {
+    color: #3665a4;
+}
+
+.page-interactions [data-share="whatsapp"] .interaction-icon {
+    color: var(--experience-accent, #247052);
+}
+
+.page-interactions [data-share="telegram"] .interaction-icon {
+    color: #287da1;
+}
+
+.page-interactions [data-share="x"] .interaction-icon {
+    color: #37413b;
+}
+
+.page-interactions [data-copy-page] .interaction-icon {
+    color: #647169;
+}
+
+.page-interaction-status {
+    margin: 12px 0 0;
+    color: #647169;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.page-interaction-status:empty {
+    display: none;
+}
+
+.page-copy-fallback {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    border: 1px solid #d1ddd5;
+    border-radius: 8px;
+    background: #fff;
+    color: #46534c;
+    font-size: 16px;
+}
+
+/* HP */
+@media (max-width: 640px) {
+    .page-interaction-meta {
+        gap: 10px 16px;
+        margin-bottom: 26px;
+        font-size: 12px;
+    }
+
+    .page-interactions {
+        margin-top: 32px;
+    }
+
+    .page-interaction-actions {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 20px;
+    }
+
+    .page-interactions .page-like {
+        align-self: flex-start;
+    }
+
+    .page-share-group {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .page-share-label {
+        grid-column: 1 / -1;
+        margin-bottom: 2px;
+    }
+
+    .page-share-group [data-copy-page] {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-interactions .page-action {
+        transition: none;
+    }
+}

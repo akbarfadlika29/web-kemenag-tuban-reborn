@@ -1,0 +1,203 @@
+/* WEB PPID — Admin popup */
+dialog.ppid-popup {
+    --popup-accent: #24674f;
+    --popup-accent-hover: #1c523e;
+    --popup-soft: #edf6f1;
+    --popup-border: #d6e8de;
+
+    box-sizing: border-box;
+    width: min(440px, calc(100vw - 32px));
+    max-width: calc(100vw - 32px);
+    max-height: calc(100dvh - 32px);
+    margin: auto;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 1px solid #e1e8e4;
+    border-radius: 20px;
+    background: #fff;
+    color: #24362d;
+    box-shadow:
+        0 24px 80px rgb(18 38 28 / 18%),
+        0 4px 16px rgb(18 38 28 / 8%);
+    font-family: inherit;
+    text-align: left;
+    color-scheme: light;
+}
+
+dialog.ppid-popup[open] {
+    animation: ppid-popup-enter 180ms ease-out;
+}
+
+dialog.ppid-popup::backdrop {
+    background: rgb(19 32 26 / 42%);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+dialog.ppid-popup[data-danger="true"] {
+    --popup-accent: #b43d48;
+    --popup-accent-hover: #942e38;
+    --popup-soft: #fff1f2;
+    --popup-border: #f3d7db;
+}
+
+.ppid-popup .ppid-popup-main {
+    padding: 30px 30px 26px;
+}
+
+.ppid-popup .ppid-popup-icon {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    margin: 0 0 22px;
+    border: 1px solid var(--popup-border);
+    border-radius: 18px;
+    background: var(--popup-soft);
+    color: var(--popup-accent);
+}
+
+.ppid-popup .ppid-popup-icon svg {
+    display: block;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+}
+
+.ppid-popup .ppid-popup-title {
+    margin: 0 0 10px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #24362d;
+    font-size: 21px;
+    font-weight: 650;
+    line-height: 1.4;
+    letter-spacing: -.025em;
+    overflow-wrap: anywhere;
+}
+
+.ppid-popup .ppid-popup-message {
+    margin: 0;
+    color: #64716a;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.8;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+.ppid-popup .ppid-popup-actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 18px 30px;
+    border-top: 1px solid #edf0ee;
+    background: #fafcfb;
+}
+
+.ppid-popup .ppid-popup-btn {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 108px;
+    min-height: 44px;
+    max-width: 100%;
+    margin: 0;
+    padding: 11px 18px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.45;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+    transition:
+        background-color 140ms ease,
+        border-color 140ms ease,
+        box-shadow 140ms ease;
+}
+
+.ppid-popup .ppid-popup-btn[hidden] {
+    display: none !important;
+}
+
+.ppid-popup .ppid-popup-cancel {
+    border-color: #dce4df;
+    background: #fff;
+    color: #46594d;
+}
+
+.ppid-popup .ppid-popup-cancel:hover {
+    border-color: #bdcec3;
+    background: #f1f5f2;
+}
+
+.ppid-popup .ppid-popup-confirm {
+    border-color: var(--popup-accent);
+    background: var(--popup-accent);
+    color: #fff;
+    box-shadow: 0 2px 4px rgb(20 40 28 / 8%);
+}
+
+.ppid-popup .ppid-popup-confirm:hover {
+    border-color: var(--popup-accent-hover);
+    background: var(--popup-accent-hover);
+}
+
+.ppid-popup .ppid-popup-btn:focus-visible {
+    outline: 3px solid var(--popup-accent);
+    outline-offset: 3px;
+}
+
+.ppid-popup .ppid-popup-btn:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+@keyframes ppid-popup-enter {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(.985);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 480px) {
+    .ppid-popup .ppid-popup-main {
+        padding: 24px 22px;
+    }
+
+    .ppid-popup .ppid-popup-actions {
+        padding: 16px 22px;
+    }
+
+    .ppid-popup .ppid-popup-btn {
+        flex: 1 1 110px;
+    }
+
+    .ppid-popup .ppid-popup-title {
+        font-size: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    dialog.ppid-popup[open] {
+        animation: none;
+    }
+
+    .ppid-popup .ppid-popup-btn {
+        transition: none;
+    }
+}

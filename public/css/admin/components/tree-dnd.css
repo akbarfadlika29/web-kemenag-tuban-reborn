@@ -1,0 +1,156 @@
+/* ==========================================================================
+   Global Tree Drag & Drop
+   ========================================================================== */
+
+[data-tree-dnd-root] {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 14px 16px;
+    padding: 12px 14px;
+
+    border: 1.5px dashed #cbd5e1;
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+    transition:
+        border-color .15s ease,
+        background .15s ease,
+        box-shadow .15s ease;
+}
+
+[data-tree-dnd-root-icon] {
+    width: 34px;
+    height: 34px;
+
+    flex: 0 0 34px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 8px;
+
+    background: #eaf2fd;
+
+    color: var(--gov-blue-600);
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+[data-tree-dnd-root] > div:last-child {
+    min-width: 0;
+}
+
+[data-tree-dnd-root] strong,
+[data-tree-dnd-root] span {
+    display: block;
+}
+
+[data-tree-dnd-root] strong {
+    color: #344054;
+
+    font-size: 12px;
+    font-weight: 680;
+}
+
+[data-tree-dnd-root] span {
+    margin-top: 2px;
+
+    color: #98a2b3;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+[data-tree-dnd-root].is-tree-dnd-over {
+    border-color: var(--gov-blue-500);
+
+    background: #eff6ff;
+
+    box-shadow:
+        inset 0 0 0 1px
+        rgba(40, 116, 216, .06);
+}
+
+/* Item */
+
+[data-tree-dnd-item] {
+    cursor: grab;
+}
+
+[data-tree-dnd-item]:active {
+    cursor: grabbing;
+}
+
+[data-tree-dnd-item].is-tree-dnd-dragging {
+    opacity: .38;
+}
+
+[data-tree-dnd-handle] {
+    flex: 0 0 auto;
+
+    color: #c0c7d1;
+
+    font-size: 12px;
+    line-height: 1;
+
+    letter-spacing: -3px;
+
+    user-select: none;
+}
+
+[data-tree-dnd-item]:hover
+[data-tree-dnd-handle] {
+    color: #667085;
+}
+
+/* Drop indicators */
+
+[data-tree-dnd-item]
+.is-tree-dnd-drop-before {
+    border-top:
+        3px solid var(--gov-blue-500);
+}
+
+[data-tree-dnd-item]
+.is-tree-dnd-drop-after {
+    border-bottom:
+        3px solid var(--gov-blue-500);
+}
+
+[data-tree-dnd-item]
+.is-tree-dnd-drop-inside {
+    background: #edf5ff;
+}
+
+[data-tree-dnd-item].is-tree-dnd-drop-before > * {
+    border-top:
+        3px solid var(--gov-blue-500);
+}
+
+[data-tree-dnd-item].is-tree-dnd-drop-after > * {
+    border-bottom:
+        3px solid var(--gov-blue-500);
+}
+
+[data-tree-dnd-item].is-tree-dnd-drop-inside > * {
+    background: #edf5ff;
+}
+
+[data-tree-dnd].is-tree-dnd-busy {
+    pointer-events: none;
+
+    opacity: .72;
+}
+
+@media (max-width: 720px) {
+    [data-tree-dnd-root] {
+        margin: 12px;
+
+        align-items: flex-start;
+    }
+}

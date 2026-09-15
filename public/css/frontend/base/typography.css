@@ -1,0 +1,62 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-primary-900);
+    font-weight: 700;
+}
+
+p {
+    color: var(--color-text-soft);
+}
+
+.section-kicker,
+.hero-kicker {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--color-green-600);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.public-prose {
+    color: #344054;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.public-prose h2 {
+    margin-top: 34px;
+    color: var(--color-primary-900);
+    font-size: 22px;
+}
+
+.public-prose h3 {
+    margin-top: 26px;
+    color: var(--color-primary-900);
+    font-size: 18px;
+}
+
+.public-prose p {
+    margin-bottom: 18px;
+}
+
+.public-prose ul,
+.public-prose ol {
+    padding-left: 22px;
+}
+
+.public-prose img {
+    height: auto;
+    margin: 24px auto;
+    border-radius: var(--radius-md);
+}
+
+.public-prose a {
+    color: var(--color-green-700);
+    text-decoration: underline;
+}

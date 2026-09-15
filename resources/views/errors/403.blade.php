@@ -1,0 +1,5 @@
+@extends('errors.ppid-layout')
+@section('error_code', '403')
+@section('error_title', 'Akses belum diizinkan')
+@section('error_description', 'Akun Anda belum memiliki izin untuk membuka halaman atau menjalankan tindakan ini.')
+@section('error_note', 'Hubungi Admin pemberi akses jika Anda memerlukan permission tambahan.')

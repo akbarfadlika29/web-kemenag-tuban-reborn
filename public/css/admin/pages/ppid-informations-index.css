@@ -1,0 +1,174 @@
+.ppid-index {
+    display: grid;
+    gap: 18px;
+}
+
+.ppid-index-filter-card,
+.ppid-index-table-card {
+    border: 1px solid #e4e7ec;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.ppid-index-filter-card {
+    padding: 18px;
+}
+
+.ppid-index-filter {
+    display: grid;
+    grid-template-columns:
+        minmax(250px, 1.7fr)
+        repeat(5, minmax(120px, 1fr))
+        auto;
+    gap: 10px;
+    align-items: end;
+}
+
+.ppid-index-filter label {
+    display: block;
+    margin-bottom: 5px;
+    color: #344054;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.ppid-index-filter-actions,
+.ppid-index-actions {
+    display: flex;
+    gap: 7px;
+}
+
+.ppid-index-actions form {
+    margin: 0;
+}
+
+.ppid-index-result {
+    display: flex;
+    justify-content: space-between;
+    color: #667085;
+    font-size: 12px;
+}
+
+.ppid-index-result strong {
+    color: #344054;
+}
+
+.ppid-index-table-card {
+    overflow: hidden;
+}
+
+.ppid-index-table-scroll {
+    overflow-x: auto;
+}
+
+.ppid-index-table {
+    width: 100%;
+    min-width: 1200px;
+    border-collapse: collapse;
+}
+
+.ppid-index-table th {
+    padding: 12px 14px;
+    background: #f8fafc;
+    color: #475467;
+    font-size: 12px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.ppid-index-table td {
+    padding: 13px 14px;
+    border-top: 1px solid #f0f2f5;
+    color: #475467;
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.ppid-index-title-cell {
+    min-width: 280px;
+}
+
+.ppid-index-title-cell strong,
+.ppid-index-title-cell span,
+.ppid-index-title-cell small {
+    display: block;
+}
+
+.ppid-index-title-cell strong {
+    color: #101828;
+    font-size: 12px;
+}
+
+.ppid-index-title-cell span {
+    margin-top: 2px;
+    color: #98a2b3;
+    font-size: 12px;
+}
+
+.ppid-index-title-cell small {
+    margin-top: 4px;
+    color: #5925dc;
+    font-weight: 700;
+}
+
+.ppid-classification,
+.ppid-publication {
+    display: inline-flex;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.ppid-classification.is-berkala {
+    background: #eff6ff;
+    color: #175cd3;
+}
+
+.ppid-classification.is-serta_merta {
+    background: #fff4ed;
+    color: #c4320a;
+}
+
+.ppid-classification.is-setiap_saat {
+    background: #ecfdf3;
+    color: #027a48;
+}
+
+.ppid-publication.is-draft {
+    background: #f2f4f7;
+    color: #475467;
+}
+
+.ppid-publication.is-published {
+    background: #ecfdf3;
+    color: #027a48;
+}
+
+.ppid-publication.is-scheduled {
+    background: #fffaeb;
+    color: #b54708;
+}
+
+.ppid-publication.is-archived {
+    background: #fef3f2;
+    color: #b42318;
+}
+
+.ppid-index-empty {
+    padding: 50px !important;
+    color: #98a2b3;
+    text-align: center;
+}
+
+@media (max-width: 1200px) {
+    .ppid-index-filter {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .ppid-index-filter {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,5 @@
+@extends('errors.ppid-layout')
+@section('error_code', '419')
+@section('error_title', 'Sesi formulir telah berakhir')
+@section('error_description', 'Halaman terlalu lama terbuka atau sesi Anda berubah. Buka kembali formulir sebelum mengirim ulang.')
+@section('error_note', 'Perubahan yang belum tersimpan mungkin perlu dimasukkan kembali.')

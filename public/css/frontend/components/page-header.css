@@ -1,0 +1,89 @@
+/*
+ * Breadcrumb frontend bersama.
+ * Warna mengikuti experience-style; ukuran dikelola di sini.
+ */
+body.ppid-public :is(.public-breadcrumb, .dip-breadcrumb) {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 10px;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 48px;
+    margin: 0 0 24px;
+    padding: 12px 16px;
+    border: 1px solid var(--front-border, #dce6df);
+    border-radius: 12px;
+    background: var(--experience-soft, #eff5f2);
+    box-shadow: inset 1px 1px 3px rgb(47 74 57 / 4%);
+    color: var(--front-muted, #607267);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+body.ppid-public :is(.public-breadcrumb, .dip-breadcrumb) a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+    color: var(--experience-accent, #247052);
+    text-decoration: none;
+}
+
+body.ppid-public :is(.public-breadcrumb, .dip-breadcrumb) a:hover {
+    color: var(--experience-hover, #1d5b43);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+body.ppid-public :is(.public-breadcrumb, .dip-breadcrumb) svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+body.ppid-public :is(.public-breadcrumb, .dip-breadcrumb)
+[aria-current="page"] {
+    min-width: 0;
+    color: var(--front-muted, #607267);
+    overflow-wrap: anywhere;
+}
+
+/* Susunan header halaman. */
+body.ppid-public .public-page-header h1 {
+    margin: 0 0 12px;
+}
+
+body.ppid-public .public-page-header > .container > p {
+    max-width: 70ch;
+    margin: 0;
+    color: var(--front-muted, #607267);
+    line-height: 1.75;
+}
+
+body.ppid-public .public-detail-header {
+    margin-bottom: 24px;
+}
+
+body.ppid-public .public-detail-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 18px;
+    color: var(--front-muted, #607267);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+@media (max-width: 760px) {
+    body.ppid-public :is(.public-breadcrumb, .dip-breadcrumb) {
+        margin-bottom: 20px;
+        padding: 11px 14px;
+        font-size: 13px;
+    }
+}

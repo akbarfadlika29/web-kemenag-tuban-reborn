@@ -1,0 +1,140 @@
+/* ==========================================================================
+   Button
+   ========================================================================== */
+
+.ui-btn {
+    max-width: 100%;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    font-weight: 650;
+    font-size: 13px;
+    line-height: 1;
+
+    text-align: center;
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease,
+        box-shadow 0.15s ease,
+        transform 0.15s ease;
+}
+
+.ui-btn:hover {
+    transform: translateY(-1px);
+}
+
+.ui-btn:active {
+    transform: translateY(0);
+}
+
+.ui-btn-sm {
+    min-height: var(--control-sm);
+
+    padding: 0 11px;
+
+    font-size: 12px;
+}
+
+.ui-btn-md {
+    min-height: var(--control-md);
+
+    padding: 0 15px;
+}
+
+.ui-btn-lg {
+    min-height: var(--control-lg);
+
+    padding: 0 20px;
+
+    font-size: 14px;
+}
+
+.ui-btn-block {
+    width: 100%;
+}
+
+/* ==========================================================================
+   Variants
+   ========================================================================== */
+
+.ui-btn-primary {
+    border-color: var(--gov-navy-900);
+
+    background: var(--gov-navy-900);
+
+    color: #fff;
+
+    box-shadow:
+        0 2px 5px rgba(11, 35, 69, 0.14);
+}
+
+.ui-btn-primary:hover {
+    border-color: var(--gov-navy-800);
+
+    background: var(--gov-navy-800);
+}
+
+.ui-btn-secondary {
+    border-color: #d0d7e2;
+
+    background: #fff;
+
+    color: #344054;
+}
+
+.ui-btn-secondary:hover {
+    border-color: #b8c3d1;
+
+    background: #f7f9fb;
+}
+
+.ui-btn-success {
+    border-color: var(--gov-emerald-600);
+
+    background: var(--gov-emerald-600);
+
+    color: #fff;
+}
+
+.ui-btn-danger {
+    border-color: var(--danger-600);
+
+    background: var(--danger-600);
+
+    color: #fff;
+}
+
+.ui-btn-ghost {
+    background: transparent;
+
+    color: var(--text-muted);
+}
+
+.ui-btn-ghost:hover {
+    background: #f5f7fa;
+
+    color: var(--gov-navy-900);
+}
+
+.ui-btn.is-disabled,
+.ui-btn:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    transform: none;
+}

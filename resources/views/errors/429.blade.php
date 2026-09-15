@@ -1,0 +1,5 @@
+@extends('errors.ppid-layout')
+@section('error_code', '429')
+@section('error_title', 'Terlalu banyak permintaan')
+@section('error_description', 'Mohon tunggu beberapa saat sebelum mencoba kembali.')
+@section('error_note', 'Hindari menekan tombol berulang kali selama permintaan masih diproses.')

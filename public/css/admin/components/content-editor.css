@@ -1,0 +1,140 @@
+.content-editor {
+    width: 100%;
+    min-width: 0;
+
+    overflow: hidden;
+
+    border: 1px solid #dfe5ec;
+    border-radius: 10px;
+
+    background: #fff;
+}
+
+.content-editor-toolbar {
+    min-height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 6px 8px;
+
+    border-bottom: 1px solid #e4e7ec;
+
+    background: #f8fafc;
+}
+
+.content-editor-modes {
+    display: inline-flex;
+
+    padding: 2px;
+
+    border: 1px solid #d0d5dd;
+    border-radius: 7px;
+
+    background: #fff;
+}
+
+.content-editor-mode {
+    min-height: 28px;
+
+    padding: 4px 10px;
+
+    border: 0;
+    border-radius: 5px;
+
+    background: transparent;
+
+    color: #667085;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.content-editor-mode:hover {
+    background: #f2f4f7;
+
+    color: #344054;
+}
+
+.content-editor-mode.is-active {
+    background: #eff6ff;
+
+    color: #175cd3;
+}
+
+.content-editor-mode-hint {
+    color: #98a2b3;
+
+    font-size: 12px;
+}
+
+.content-editor-visual[hidden],
+.content-editor-source[hidden] {
+    display: none !important;
+}
+
+.content-editor .ql-toolbar.ql-snow {
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+}
+
+.content-editor .ql-container.ql-snow {
+    border: 0;
+}
+
+.content-editor-source-input {
+    display: block;
+
+    width: 100%;
+    min-height: 520px;
+
+    padding: 24px;
+
+    resize: vertical;
+
+    border: 0;
+    outline: 0;
+
+    background: #101828;
+
+    color: #d0d5dd;
+
+    font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        "Liberation Mono",
+        monospace;
+
+    font-size: 13px;
+    line-height: 1.7;
+
+    tab-size: 4;
+}
+
+.content-editor-source-input:focus {
+    box-shadow:
+        inset 0 0 0 2px
+        rgba(23, 92, 211, .35);
+}
+
+@media (max-width: 700px) {
+    .content-editor-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .content-editor-source-input {
+        min-height: 400px;
+        padding: 18px;
+    }
+}

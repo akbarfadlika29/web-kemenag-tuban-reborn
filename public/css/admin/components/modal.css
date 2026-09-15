@@ -1,0 +1,70 @@
+/* MODAL */
+
+.ui-modal-backdrop {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+    background: rgba(7,24,46,.55);
+    backdrop-filter: blur(4px);
+}
+
+.ui-modal-backdrop.is-open {
+    display: flex;
+}
+
+.ui-modal {
+    width: 100%;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 24px 80px rgba(7,24,46,.22);
+}
+
+.ui-modal-sm {
+    max-width: 420px;
+}
+
+.ui-modal-md {
+    max-width: 560px;
+}
+
+.ui-modal-lg {
+    max-width: 800px;
+}
+
+.ui-modal-header,
+.ui-modal-body,
+.ui-modal-footer {
+    padding: 18px 20px;
+}
+
+.ui-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.ui-modal-header h3 {
+    margin: 0;
+}
+
+.ui-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    border-top: 1px solid var(--border);
+}
+
+.ui-modal-close {
+    border: 0;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+}

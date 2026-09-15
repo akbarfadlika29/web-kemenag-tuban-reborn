@@ -1,0 +1,133 @@
+.ppid-category-index {
+    display: grid;
+    gap: 18px;
+}
+
+.ppid-category-filter {
+    display: flex;
+    gap: 10px;
+}
+
+.ppid-category-filter .ui-control {
+    flex: 1;
+}
+
+.ppid-category-form {
+    max-width: 760px;
+    display: grid;
+    gap: 18px;
+}
+
+.ppid-category-switch {
+    display: flex;
+    gap: 10px;
+    padding: 14px;
+    border: 1px solid #e4e7ec;
+    border-radius: 9px;
+    background: #f9fafb;
+    cursor: pointer;
+}
+
+.ppid-category-switch input {
+    margin-top: 3px;
+}
+
+.ppid-category-switch span,
+.ppid-category-switch strong,
+.ppid-category-switch small {
+    display: block;
+}
+
+.ppid-category-switch strong {
+    color: #344054;
+    font-size: 12px;
+}
+
+.ppid-category-switch small {
+    margin-top: 2px;
+    color: #98a2b3;
+    font-size: 12px;
+}
+
+.ppid-category-actions {
+    padding-top: 16px;
+    border-top: 1px solid #eaecf0;
+}
+
+.ppid-category-table-card {
+    overflow: hidden;
+    border: 1px solid #e4e7ec;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.ppid-category-table-scroll {
+    overflow-x: auto;
+}
+
+.ppid-category-table {
+    width: 100%;
+    min-width: 800px;
+    border-collapse: collapse;
+}
+
+.ppid-category-table th {
+    padding: 12px 14px;
+    background: #f8fafc;
+    color: #475467;
+    font-size: 12px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.ppid-category-table td {
+    padding: 13px 14px;
+    border-top: 1px solid #f0f2f5;
+    color: #475467;
+    font-size: 12px;
+}
+
+.ppid-category-table td strong {
+    display: block;
+    color: #101828;
+    font-size: 12px;
+}
+
+.ppid-category-description {
+    display: block;
+    margin-top: 3px;
+    color: #98a2b3;
+}
+
+.ppid-category-status {
+    display: inline-flex;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.ppid-category-status.is-active {
+    background: #ecfdf3;
+    color: #027a48;
+}
+
+.ppid-category-status.is-inactive {
+    background: #f2f4f7;
+    color: #475467;
+}
+
+.ppid-category-row-actions {
+    display: flex;
+    gap: 7px;
+}
+
+.ppid-category-row-actions form {
+    margin: 0;
+}
+
+.ppid-category-empty {
+    padding: 40px !important;
+    color: #98a2b3;
+    text-align: center;
+}

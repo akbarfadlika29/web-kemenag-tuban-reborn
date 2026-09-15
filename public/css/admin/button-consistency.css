@@ -1,0 +1,87 @@
+/*
+ * Standar tombol backend WEB PPID.
+ * Mengikuti --control-sm, --control-md, --control-lg.
+ */
+body .ui-btn {
+    --ppid-button-height: var(--control-md, 40px);
+    --ppid-button-padding: 15px;
+    --ppid-button-font: 13px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    gap: 7px;
+
+    min-height: var(--ppid-button-height) !important;
+    height: auto !important;
+    padding: 8px var(--ppid-button-padding) !important;
+
+    font-family: inherit !important;
+    font-size: var(--ppid-button-font) !important;
+    font-weight: 650 !important;
+    line-height: 1.25 !important;
+
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 8px !important;
+
+    text-align: center;
+    text-decoration: none !important;
+    vertical-align: middle;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+/* Aksi tabel menggunakan ukuran kecil. */
+body :is(.ui-table, table) .ui-btn,
+body .ui-btn.ui-btn-sm {
+    --ppid-button-height: var(--control-sm, 32px);
+    --ppid-button-padding: 11px;
+    --ppid-button-font: 12px;
+
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+/* Ukuran eksplisit tetap dihormati, termasuk di dalam tabel. */
+body .ui-btn.ui-btn-md {
+    --ppid-button-height: var(--control-md, 40px);
+    --ppid-button-padding: 15px;
+    --ppid-button-font: 13px;
+
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+}
+
+body .ui-btn.ui-btn-lg {
+    --ppid-button-height: var(--control-lg, 48px);
+    --ppid-button-padding: 20px;
+    --ppid-button-font: 14px;
+
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+body .ui-btn > svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+body .ui-btn:focus-visible {
+    outline: 3px solid var(--gov-emerald-600, #16845b);
+    outline-offset: 3px;
+}
+
+body .ui-btn:disabled,
+body .ui-btn.is-disabled {
+    opacity: .5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+body .ui-btn[hidden] {
+    display: none !important;
+}

@@ -1,0 +1,68 @@
+/* Tabel: ukuran teks dan padding bersama */
+body.ppid-consistent :is(
+    .dip-table,
+    .public-prose table
+) {
+    border-collapse: collapse;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+body.ppid-consistent :is(
+    .dip-table thead th,
+    .public-prose thead th
+) {
+    padding: 14px 18px;
+    background: #edf5f0;
+    color: #365346;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+}
+
+body.ppid-consistent .public-prose :is(td, th) {
+    padding: 16px 18px;
+    border: 1px solid var(--front-border);
+    vertical-align: top;
+}
+
+body.ppid-consistent .dip-title-link {
+    font-size: 16px;
+    line-height: 1.55;
+}
+
+body.ppid-consistent .empty-public-state {
+    padding: 36px 24px;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Anak grid tidak mendorong lebar halaman */
+body.ppid-consistent :is(
+    .public-card-grid,
+    .news-public-grid,
+    .service-public-grid,
+    .ppid-public-grid,
+    .gallery-public-grid,
+    .service-detail-layout,
+    .home-content-layout,
+    .ppid-metadata-grid,
+    .reg-metadata
+) > * {
+    min-width: 0;
+}
+
+body.ppid-consistent .public-detail-cover {
+    width: 100%;
+    border-radius: var(--front-radius);
+}
+
+body.ppid-consistent :is(
+    .public-page-header,
+    .public-detail,
+    .dip-page
+) :is(a, button, input, select, textarea):focus-visible {
+    outline: 3px solid #18865f;
+    outline-offset: 3px;
+}
+

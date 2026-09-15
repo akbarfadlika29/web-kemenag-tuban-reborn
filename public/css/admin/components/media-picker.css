@@ -1,0 +1,678 @@
+/* ==========================================================================
+   Global Media Picker (Modern & Enterprise UI - Final Complete)
+   ========================================================================== */
+
+.admin-media-picker[hidden] {
+    display: none !important;
+}
+
+.admin-media-picker {
+    position: fixed;
+    inset: 0;
+    z-index: 1500;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.admin-media-picker-backdrop {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    background: rgba(7, 24, 46, 0.65);
+    backdrop-filter: blur(6px);
+    cursor: default;
+    animation: fade-in 0.2s ease-out forwards;
+}
+
+.admin-media-picker-dialog {
+    position: relative;
+    z-index: 1;
+    width: min(1040px, 100%);
+    max-height: min(820px, calc(100vh - 48px));
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    overflow: hidden;
+    border: 1px solid rgba(7, 24, 46, 0.08);
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 
+        0 10px 25px -5px rgba(7, 24, 46, 0.1),
+        0 30px 60px -15px rgba(7, 24, 46, 0.25);
+    animation: modal-pop 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modal-pop {
+    from { opacity: 0; transform: scale(0.96) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+.admin-media-picker-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px 28px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.admin-media-picker-heading > span {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.admin-media-picker-heading h2 {
+    margin: 0;
+    color: var(--gov-navy-900);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.admin-media-picker-heading p {
+    margin: 6px 0 0;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.admin-media-picker-close {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.admin-media-picker-close:hover {
+    background: #f1f5f9;
+    color: var(--gov-navy-900);
+}
+
+.admin-media-picker-close svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+/* --------------------------------------------------------------------------
+   Tabs
+   -------------------------------------------------------------------------- */
+.admin-media-picker-tabs {
+    display: flex;
+    gap: 16px;
+    padding: 0 28px;
+    border-bottom: 1px solid var(--border);
+    background: #f8fafc;
+}
+
+.admin-media-picker-tab {
+    position: relative;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 4px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.admin-media-picker-tab::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gov-navy-900);
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+.admin-media-picker-tab svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.admin-media-picker-tab:hover {
+    color: var(--gov-navy-900);
+}
+
+.admin-media-picker-tab.is-active {
+    color: var(--gov-navy-900);
+}
+
+.admin-media-picker-tab.is-active::after {
+    transform: scaleX(1);
+}
+
+/* --------------------------------------------------------------------------
+   Content & Toolbar
+   -------------------------------------------------------------------------- */
+.admin-media-picker-content {
+    min-height: 0;
+    overflow-y: auto;
+    padding: 24px 28px;
+}
+
+.admin-media-picker-panel[hidden] {
+    display: none !important;
+}
+
+.admin-media-picker-toolbar {
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) 160px 190px;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.admin-media-picker-search {
+    min-width: 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #ffffff;
+    transition: all 0.2s;
+}
+
+.admin-media-picker-search:focus-within {
+    border-color: var(--gov-navy-900);
+    box-shadow: 0 0 0 3px rgba(7, 24, 46, 0.08);
+}
+
+.admin-media-picker-search svg {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+    fill: none;
+    stroke: var(--text-muted);
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.admin-media-picker-search input {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--gov-navy-900);
+    font: inherit;
+    font-size: 13px;
+}
+
+/* --------------------------------------------------------------------------
+   Grid Items (Media Library)
+   -------------------------------------------------------------------------- */
+.admin-media-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 16px;
+}
+
+.admin-media-picker-item {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #ffffff;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.admin-media-picker-item:hover {
+    border-color: #a8b5c4;
+    box-shadow: 0 8px 20px rgba(7, 24, 46, 0.06);
+    transform: translateY(-2px);
+}
+
+.admin-media-picker-item.is-selected {
+    border-color: var(--gov-navy-900);
+    box-shadow: 0 0 0 2px var(--gov-navy-900);
+}
+
+.admin-media-picker-item-preview {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: #f1f5f9;
+    border-bottom: 1px solid var(--border);
+}
+
+.admin-media-picker-item-preview img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.admin-media-picker-file-icon {
+    width: 50px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(7, 24, 46, 0.06);
+    color: var(--gov-navy-900);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.admin-media-picker-check {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    display: none;
+    place-items: center;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    background: var(--gov-navy-900);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(7, 24, 46, 0.2);
+}
+
+.admin-media-picker-item.is-selected .admin-media-picker-check {
+    display: grid;
+}
+
+.admin-media-picker-item-body {
+    padding: 10px 12px;
+}
+
+.admin-media-picker-item-body strong {
+    display: block;
+    overflow: hidden;
+    color: var(--gov-navy-900);
+    font-size: 12px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.admin-media-picker-item-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 6px;
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+/* States */
+.admin-media-picker-message {
+    padding: 60px 20px;
+    color: var(--text-muted);
+    font-size: 13px;
+    text-align: center;
+}
+
+.admin-media-picker-spinner {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: -3px;
+    border: 2px solid #e2e8f0;
+    border-top-color: var(--gov-navy-900);
+    border-radius: 50%;
+    animation: media-picker-spin 0.8s linear infinite;
+}
+
+@keyframes media-picker-spin {
+    to { transform: rotate(360deg); }
+}
+
+.admin-media-picker-load-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px dashed var(--border);
+}
+
+/* --------------------------------------------------------------------------
+   Upload Area (Form, Dropzone, Inputs)
+   -------------------------------------------------------------------------- */
+.admin-media-upload-form {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+.admin-media-dropzone {
+    min-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    background: #f8fafc;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.admin-media-dropzone:hover,
+.admin-media-dropzone.is-dragging {
+    border-color: var(--gov-navy-900);
+    background: #f0f4f8;
+}
+
+.admin-media-dropzone input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.admin-media-dropzone-icon {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    background: #ffffff;
+    color: var(--gov-navy-900);
+    box-shadow: 0 4px 12px rgba(7, 24, 46, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.admin-media-dropzone:hover .admin-media-dropzone-icon {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(7, 24, 46, 0.1);
+}
+
+.admin-media-dropzone-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.admin-media-dropzone strong {
+    color: var(--gov-navy-900);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.admin-media-dropzone > span:not(.admin-media-dropzone-icon) {
+    margin-top: 6px;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.admin-media-dropzone small {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 6px 14px;
+    background: #e2e8f0;
+    border-radius: 999px;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 700;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Form Inputs */
+.admin-media-upload-fields {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.ui-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.ui-form-group[hidden] {
+    display: none !important;
+}
+
+.ui-form-label {
+    margin-bottom: 8px;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.ui-control {
+    width: 100%;
+    min-height: 40px;
+    padding: 8px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--gov-navy-900);
+    font-family: inherit;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.ui-control:focus {
+    outline: none;
+    border-color: var(--gov-navy-900);
+    box-shadow: 0 0 0 3px rgba(7, 24, 46, 0.08);
+}
+
+.ui-control::placeholder {
+    color: #94a3b8;
+}
+
+.admin-media-upload-error {
+    margin-top: 20px;
+    padding: 14px 16px;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    background: #fef2f2;
+    color: #b91c1c;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.admin-media-upload-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+
+/* Button UI (Upload & Footer) */
+.ui-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 20px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ui-button-primary {
+    background: var(--gov-navy-900);
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(7, 24, 46, 0.1);
+}
+
+.ui-button-primary:hover {
+    background: #0a1f35;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(7, 24, 46, 0.15);
+}
+
+.ui-button-secondary {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    color: #475569;
+}
+
+.ui-button-secondary:hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+    color: var(--gov-navy-900);
+}
+
+.ui-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+.admin-media-picker-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 28px;
+    border-top: 1px solid var(--border);
+    background: #f8fafc;
+}
+
+.admin-media-picker-selection {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.admin-media-picker-selection strong {
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    background: var(--gov-navy-900);
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.admin-media-picker-footer-actions {
+    display: flex;
+    gap: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Layout
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+    .admin-media-picker {
+        padding: 16px;
+    }
+
+    .admin-media-picker-dialog {
+        max-height: calc(100vh - 32px);
+    }
+
+    .admin-media-picker-toolbar {
+        grid-template-columns: minmax(0, 1fr) repeat(2, 145px);
+    }
+
+    .admin-media-upload-fields {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .admin-media-picker {
+        padding: 0;
+    }
+
+    .admin-media-picker-dialog {
+        width: 100%;
+        height: 100%;
+        max-height: none;
+        border: 0;
+        border-radius: 0;
+    }
+
+    .admin-media-picker-header {
+        padding: 20px 20px 16px;
+    }
+
+    .admin-media-picker-tabs {
+        padding: 0 20px;
+    }
+
+    .admin-media-picker-content {
+        padding: 20px;
+    }
+
+    .admin-media-picker-toolbar {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-media-picker-footer {
+        padding: 16px 20px;
+    }
+}

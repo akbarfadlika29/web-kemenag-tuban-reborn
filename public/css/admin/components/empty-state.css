@@ -1,0 +1,25 @@
+/* EMPTY */
+
+.ui-empty {
+    padding: 48px 24px;
+    text-align: center;
+}
+
+.ui-empty-icon {
+    margin-bottom: 14px;
+}
+
+.ui-empty h3 {
+    margin: 0;
+    font-size: 17px;
+}
+
+.ui-empty p {
+    margin: 7px auto 0;
+    max-width: 480px;
+    color: var(--text-muted);
+}
+
+.ui-empty-action {
+    margin-top: 18px;
+}

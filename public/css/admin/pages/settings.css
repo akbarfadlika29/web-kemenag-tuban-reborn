@@ -1,0 +1,532 @@
+/* ==========================================================================
+   Settings Page
+   ========================================================================== */
+
+.settings-page {
+    width: 100%;
+    min-width: 0;
+}
+
+.settings-form {
+    width: 100%;
+}
+
+.settings-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr)
+        300px;
+    gap: 20px;
+    align-items: start;
+}
+
+.settings-main,
+.settings-sidebar {
+    min-width: 0;
+}
+
+/* ==========================================================================
+   Main Panel
+   ========================================================================== */
+
+.settings-panel {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: #fff;
+}
+
+/* Tabs */
+
+.settings-tabs {
+    display: flex;
+    align-items: stretch;
+    gap: 2px;
+    padding: 8px 8px 0;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--border);
+    background: #f8fafc;
+    scrollbar-width: none;
+}
+
+.settings-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.settings-tab {
+    position: relative;
+    min-width: max-content;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 11px 13px;
+    border: 0;
+    border-radius: 8px 8px 0 0;
+    background: transparent;
+    color: #667085;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        color .15s ease,
+        background .15s ease;
+}
+
+.settings-tab::after {
+    position: absolute;
+    right: 10px;
+    bottom: -1px;
+    left: 10px;
+    height: 2px;
+    border-radius: 999px;
+    background: transparent;
+    content: "";
+}
+
+.settings-tab:hover {
+    background: #fff;
+    color: var(--gov-navy-900);
+}
+
+.settings-tab.is-active {
+    background: #fff;
+    color: var(--gov-navy-900);
+}
+
+.settings-tab.is-active::after {
+    background: var(--gov-emerald-600);
+}
+
+.settings-tab-icon {
+    width: 17px;
+    height: 17px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 17px;
+}
+
+.settings-tab-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.settings-tab-error {
+    width: 6px;
+    height: 6px;
+    flex: 0 0 6px;
+    border-radius: 50%;
+    background: #d92d20;
+}
+
+/* Tab Content */
+
+.settings-tab-content {
+    min-height: 420px;
+}
+
+.settings-tab-panel {
+    padding: 20px;
+}
+
+.settings-section-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #edf0f3;
+}
+
+.settings-section-kicker {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--gov-emerald-600);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
+.settings-section-header h2 {
+    margin: 0;
+    color: var(--gov-navy-900);
+    font-size: 16px;
+    font-weight: 750;
+}
+
+.settings-section-header p {
+    max-width: 650px;
+    margin: 5px 0 0;
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   Fields
+   ========================================================================== */
+
+.settings-fields {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.settings-field {
+    min-width: 0;
+}
+
+.settings-field-full {
+    grid-column: 1 / -1;
+}
+
+.settings-label {
+    display: block;
+    margin-bottom: 6px;
+    color: #344054;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.settings-required {
+    color: #d92d20;
+}
+
+.settings-control {
+    width: 100%;
+    min-height: 38px;
+    padding: 8px 10px;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    outline: 0;
+    background: #fff;
+    color: #344054;
+    font: inherit;
+    font-size: 12px;
+    line-height: 1.45;
+    transition:
+        border-color .15s ease,
+        box-shadow .15s ease;
+}
+
+.settings-control:hover {
+    border-color: #b8c2ce;
+}
+
+.settings-control:focus {
+    border-color: var(--gov-emerald-600);
+    box-shadow:
+        0 0 0 3px rgba(22, 163, 74, .08);
+}
+
+.settings-control.is-invalid {
+    border-color: #d92d20;
+}
+
+.settings-textarea {
+    min-height: 104px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.settings-error {
+    margin-top: 5px;
+    color: #d92d20;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+/* ==========================================================================
+   Sidebar
+   ========================================================================== */
+
+.settings-sidebar {
+    display: grid;
+    gap: 16px;
+}
+
+.settings-side-card {
+    overflow: hidden;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: #fff;
+}
+
+.settings-side-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 13px;
+    border-bottom: 1px solid #edf0f3;
+}
+
+.settings-side-icon {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 9px;
+    background: #ecf8f1;
+    color: var(--gov-emerald-600);
+}
+
+.settings-side-icon svg {
+    width: 17px;
+    height: 17px;
+}
+
+.settings-side-kicker {
+    display: block;
+    margin-bottom: 2px;
+    color: #98a2b3;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.settings-side-header h3 {
+    margin: 0;
+    color: var(--gov-navy-900);
+    font-size: 12px;
+    font-weight: 750;
+}
+
+/* Overview */
+
+.settings-overview-list {
+    display: grid;
+    gap: 0;
+}
+
+.settings-overview-list > div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+.settings-overview-list > div:last-child {
+    border-bottom: 0;
+}
+
+.settings-overview-list span {
+    flex: 0 0 auto;
+    color: #98a2b3;
+    font-size: 12px;
+}
+
+.settings-overview-list strong {
+    min-width: 0;
+    color: #475467;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: right;
+}
+
+.settings-overview-note {
+    margin: 12px 0 0;
+    padding: 10px;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #667085;
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+/* ==========================================================================
+   Logo
+   ========================================================================== */
+
+.settings-logo-preview {
+    width: 100%;
+    height: 150px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    padding: 14px;
+    border: 1px dashed #cfd8e3;
+    border-radius: 11px;
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #f8fafc
+        );
+}
+
+.settings-logo-preview img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+}
+
+.settings-media-empty {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 4px;
+    color: #667085;
+    text-align: center;
+}
+
+.settings-media-empty-icon {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 3px;
+    border-radius: 8px;
+    background: #e9eef5;
+    color: #667085;
+    font-size: 17px;
+    line-height: 1;
+}
+
+.settings-media-empty strong {
+    color: #475467;
+    font-size: 12px;
+}
+
+.settings-media-empty > span:last-child {
+    max-width: 170px;
+    color: #98a2b3;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.settings-logo-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 10px;
+}
+
+.settings-logo-help {
+    margin: 10px 0 0;
+    color: #98a2b3;
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+/* ==========================================================================
+   Actions
+   ========================================================================== */
+
+.settings-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fff;
+}
+
+.settings-actions > div {
+    min-width: 0;
+}
+
+.settings-actions strong,
+.settings-actions span {
+    display: block;
+}
+
+.settings-actions strong {
+    color: #344054;
+    font-size: 12px;
+}
+
+.settings-actions span {
+    margin-top: 2px;
+    color: #98a2b3;
+    font-size: 12px;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1050px) {
+    .settings-layout {
+        grid-template-columns:
+            minmax(0, 1fr)
+            250px;
+    }
+}
+
+@media (max-width: 900px) {
+    .settings-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-sidebar {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .settings-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-field-full {
+        grid-column: auto;
+    }
+
+    .settings-tab-panel {
+        padding: 16px;
+    }
+
+    .settings-sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .settings-actions .ui-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 520px) {
+    .settings-tabs {
+        padding: 6px 6px 0;
+    }
+
+    .settings-tab {
+        padding: 10px;
+    }
+
+    .settings-tab-panel {
+        padding: 14px;
+    }
+
+    .settings-section-header {
+        margin-bottom: 16px;
+        padding-bottom: 13px;
+    }
+
+    .settings-logo-preview {
+        height: 130px;
+    }
+}

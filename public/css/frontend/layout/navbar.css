@@ -1,0 +1,178 @@
+.site-nav {
+  position: relative;
+  z-index: 50;
+  background: var(--color-primary-900);
+  box-shadow: var(--shadow-sm);
+}
+
+.site-nav-inner {
+  min-height: 54px;
+  display: flex;
+  align-items: stretch;
+}
+
+/* ==========================================================================
+   Item
+   ========================================================================== */
+
+.site-nav-item {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+.site-nav-link-row {
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+}
+
+.site-nav-link {
+  position: relative;
+  min-height: 54px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 18px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.site-nav-link::after {
+  position: absolute;
+  right: 18px;
+  bottom: 0;
+  left: 18px;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: #65c18c;
+  content: "";
+  opacity: 0;
+  transform: scaleX(0.45);
+  transition: 0.18s ease;
+}
+
+.site-nav-link:hover,
+.site-nav-link.active {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+.site-nav-link.active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.site-nav-link-disabled {
+  cursor: default;
+}
+
+/* ==========================================================================
+   Submenu Toggle
+   ========================================================================== */
+
+.site-nav-item.has-children > .site-nav-link-row > .site-nav-link {
+  padding-right: 8px;
+}
+
+.site-nav-submenu-toggle {
+  width: 30px;
+  min-height: 54px;
+  flex: 0 0 30px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+}
+
+.site-nav-submenu-toggle svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.18s ease;
+}
+
+.site-nav-item.is-submenu-open > .site-nav-link-row > .site-nav-submenu-toggle svg {
+  transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   Dropdown
+   ========================================================================== */
+
+.site-nav-submenu {
+  position: absolute;
+  z-index: 80;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  display: none;
+  padding: 6px;
+  border: 1px solid var(--color-border);
+  border-radius: 0 0 10px 10px;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.13);
+}
+
+.site-nav-item:hover > .site-nav-submenu,
+.site-nav-item:focus-within > .site-nav-submenu,
+.site-nav-item.is-submenu-open > .site-nav-submenu {
+  display: block;
+}
+
+.site-nav-submenu .site-nav-item {
+  width: 100%;
+  display: block;
+}
+
+.site-nav-submenu .site-nav-link-row {
+  width: 100%;
+}
+
+.site-nav-submenu .site-nav-link {
+  min-height: 40px;
+  flex: 1 1 auto;
+  padding: 0 12px;
+  border-radius: 7px;
+  color: var(--color-primary-900);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.site-nav-submenu .site-nav-link::after {
+  display: none;
+}
+
+.site-nav-submenu .site-nav-link:hover,
+.site-nav-submenu .site-nav-link.active {
+  background: rgba(17, 72, 117, 0.07);
+  color: var(--color-primary-900);
+}
+
+.site-nav-submenu .site-nav-submenu-toggle {
+  width: 34px;
+  min-height: 40px;
+  flex-basis: 34px;
+  color: #64748b;
+}
+
+.site-nav-submenu .site-nav-submenu-toggle svg {
+  transform: rotate(-90deg);
+}
+
+.site-nav-submenu .site-nav-item.is-submenu-open > .site-nav-link-row > .site-nav-submenu-toggle svg {
+  transform: rotate(90deg);
+}
+
+.site-nav-submenu .site-nav-submenu {
+  top: -6px;
+  left: calc(100% + 6px);
+  border-radius: 10px;
+}

@@ -1,0 +1,127 @@
+.news-main-tabs,
+.public-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 24px;
+}
+
+.news-main-tabs a,
+.public-tabs a {
+    padding: 8px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 7px;
+    background: #fff;
+    color: var(--color-text-soft);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.news-main-tabs a.active,
+.public-tabs a.active {
+    border-color: var(--color-primary-900);
+    background: var(--color-primary-900);
+    color: #fff;
+}
+
+.news-category-section {
+    margin-bottom: 20px;
+}
+
+.news-category-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.news-category-tabs a {
+    padding: 7px 11px;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--color-text-soft);
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.news-category-tabs a.active {
+    border-color: var(--color-green-600);
+    background: var(--color-green-100);
+    color: var(--color-green-700);
+}
+
+.news-card-context {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 9px;
+}
+
+.news-card-unit {
+    color: var(--color-subtle);
+    font-size: 12px;
+    font-weight: 650;
+}
+/* NEWS CATEGORY AND TAG ARCHIVES */
+
+.news-archive-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px 0;
+    color: #617565;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.news-archive-summary a {
+    color: #087354;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.news-category-link {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.news-category-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.public-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+}
+
+.public-tags .news-tag-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 8px 14px;
+    border: 1px solid #d4e5d8;
+    border-radius: 9px;
+    background: #f0f7f1;
+    color: #176744;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.public-tags .news-tag-link:hover {
+    background: #e2f0e5;
+    border-color: #9fc6aa;
+}
+
+.news-category-link:focus-visible,
+.news-tag-link:focus-visible {
+    outline: 3px solid #21835f;
+    outline-offset: 3px;
+}

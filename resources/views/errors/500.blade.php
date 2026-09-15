@@ -1,0 +1,5 @@
+@extends('errors.ppid-layout')
+@section('error_code', '500')
+@section('error_title', 'Terjadi gangguan pada sistem')
+@section('error_description', 'Permintaan Anda belum dapat diselesaikan. Silakan mencoba kembali beberapa saat lagi.')
+@section('error_note', 'Jika gangguan berulang, sampaikan waktu kejadian dan halaman yang dibuka kepada pengelola.')

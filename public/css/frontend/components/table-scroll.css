@@ -1,0 +1,49 @@
+/* Gulir hanya pada tabel, bukan seluruh halaman. */
+body.ppid-public .public-table-scroll {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+}
+
+body.ppid-public .public-table-scroll > table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+body.ppid-public .public-table-scroll th {
+    padding: 14px 16px;
+    background: var(--experience-soft, #eff5f2);
+    color: #3f5949;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+}
+
+body.ppid-public .public-table-scroll td {
+    padding: 15px 16px;
+    vertical-align: top;
+    border-bottom: 1px solid #e5ece7;
+}
+
+body.ppid-public .public-table-scroll tbody tr:hover {
+    background: #f7fbf8;
+}
+
+body.ppid-public .public-table-scroll:focus-visible {
+    outline: 3px solid var(--experience-accent, #247052);
+    outline-offset: 3px;
+}
+
+
+@media (max-width: 600px) {
+    body.ppid-public .public-table-scroll :is(th, td) {
+        padding: 12px;
+    }
+}
