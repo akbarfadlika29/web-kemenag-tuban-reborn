@@ -300,11 +300,7 @@ class StorePpidInformationRequest extends FormRequest
             /*
              * Dokumen
              */
-            'documents' => [
-                'required',
-                'array',
-                'min:1',
-            ],
+            'documents' => ['present', 'array'],
 
             'documents.*.media_id' => [
                 'required',
@@ -387,12 +383,6 @@ class StorePpidInformationRequest extends FormRequest
 
             'classification.required' =>
                 'Klasifikasi informasi wajib dipilih.',
-
-            'documents.required' =>
-                'Minimal satu dokumen wajib ditambahkan.',
-
-            'documents.min' =>
-                'Minimal satu dokumen wajib ditambahkan.',
 
             'documents.*.media_id.distinct' =>
                 'Dokumen yang sama tidak boleh ditambahkan dua kali.',

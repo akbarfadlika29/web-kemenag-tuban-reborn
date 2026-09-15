@@ -52,6 +52,7 @@ class SearchController extends Controller
 
             $ppidInformations = PpidInformation::query()
                 ->published()
+                ->where('access_level', 'public')
                 ->where(
                     'title',
                     'ILIKE',
