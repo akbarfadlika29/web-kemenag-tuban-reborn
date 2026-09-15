@@ -467,7 +467,7 @@
                 </div>
 
                 <p class="ppid-documents-help">
-                    Seret dokumen untuk mengubah urutan. Satu dokumen dapat
+                    Dokumen tidak wajib diunggah. Untuk ketersediaan Online, tambahkan dokumen publik agar dapat dibuka pengunjung. Seret dokumen untuk mengubah urutan. Satu dokumen dapat
                     ditetapkan sebagai dokumen utama.
                 </p>
 

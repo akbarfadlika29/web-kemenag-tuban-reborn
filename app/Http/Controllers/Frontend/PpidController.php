@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\PpidInformation;
 use App\Models\Unit;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class PpidController extends Controller
@@ -15,30 +16,33 @@ class PpidController extends Controller
         $filters = $request->validate([
             'classification' => [
                 'nullable',
-                'string',
                 'in:berkala,serta_merta,setiap_saat',
             ],
             'search' => ['nullable', 'string', 'max:200'],
             'year' => ['nullable', 'integer', 'between:1,9999'],
             'unit_id' => ['nullable', 'integer', 'min:1'],
             'page' => ['nullable', 'integer', 'min:1'],
+            'per_page' => ['nullable', 'in:20,50,100,all'],
         ]);
 
         $classification = $filters['classification'] ?? '';
         $search = trim($filters['search'] ?? '');
         $year = $filters['year'] ?? '';
         $unitId = $filters['unit_id'] ?? '';
+        $perPage = (string) ($filters['per_page'] ?? '20');
 
         $classifications = [
             '' => 'Daftar Informasi Publik',
             'berkala' => 'Informasi Berkala',
             'serta_merta' => 'Informasi Serta-merta',
-            'setiap_saat' => 'Informasi Setiap Saat',
+            'setiap_saat' => 'Informasi Tersedia Setiap Saat',
         ];
 
         $pageTitle = $classifications[$classification];
 
-        $base = PpidInformation::query()->published();
+        $base = PpidInformation::query()
+            ->published()
+            ->where('access_level', 'public');
 
         $years = (clone $base)
             ->whereNotNull('year')
@@ -50,38 +54,76 @@ class PpidController extends Controller
         $units = Unit::query()
             ->whereIn(
                 'id',
-                (clone $base)->select('unit_id')->whereNotNull('unit_id')
+                (clone $base)
+                    ->select('unit_id')
+                    ->whereNotNull('unit_id')
             )
             ->orderBy('name')
             ->get(['id', 'name']);
 
-        $informations = (clone $base)
-            ->with(['category', 'unit'])
+        $query = (clone $base)
             ->when(
                 $classification !== '',
-                fn ($query) => $query->where('classification', $classification)
+                fn ($q) => $q->where('classification', $classification)
             )
             ->when(
                 $year !== '',
-                fn ($query) => $query->where('year', $year)
+                fn ($q) => $q->where('year', $year)
             )
             ->when(
                 $unitId !== '',
-                fn ($query) => $query->where('unit_id', $unitId)
+                fn ($q) => $q->where('unit_id', $unitId)
             )
-            ->when($search !== '', function ($query) use ($search) {
-                $query->where(function ($query) use ($search) {
-                    $query->where('title', 'ilike', '%'.$search.'%')
-                        ->orWhere('excerpt', 'ilike', '%'.$search.'%');
+            ->when($search !== '', function ($q) use ($search) {
+                $q->where(function ($q) use ($search) {
+                    $q->where('title', 'ilike', '%'.$search.'%')
+                        ->orWhere(
+                            'information_holder',
+                            'ilike',
+                            '%'.$search.'%'
+                        )
+                        ->orWhere(
+                            'person_in_charge',
+                            'ilike',
+                            '%'.$search.'%'
+                        );
                 });
-            })
+            });
+
+        $limit = $perPage === 'all'
+            ? max(1, (clone $query)->count())
+            : (int) $perPage;
+
+        $informations = $query
+            ->with([
+                'documents' => function ($q) {
+                    $q->where('document_status', 'active')
+                        ->whereHas('media', function ($q) {
+                            $q->where('is_public', true)
+                                ->where('disk', 'public');
+                        })
+                        ->with('media');
+                },
+            ])
             ->orderByDesc('is_featured')
             ->orderByDesc('published_at')
             ->orderByDesc('id')
-            ->paginate(15)
+            ->paginate(
+                $limit,
+                ['*'],
+                'page',
+                $perPage === 'all' ? 1 : null
+            )
             ->withQueryString();
 
-        return view('frontend.ppid.index', compact(
+        $view = match ($classification) {
+            'berkala' => 'frontend.ppid.berkala.index',
+            'serta_merta' => 'frontend.ppid.serta-merta.index',
+            'setiap_saat' => 'frontend.ppid.setiap-saat.index',
+            default => 'frontend.ppid.index',
+        };
+
+        return view($view, compact(
             'informations',
             'classification',
             'classifications',
@@ -89,23 +131,27 @@ class PpidController extends Controller
             'search',
             'year',
             'unitId',
+            'perPage',
             'years',
-            'units',
+            'units'
         ));
     }
 
-    public function show(string $slug): View
+    /*
+     * Tautan detail lama tetap dapat digunakan.
+     * Pengunjung diarahkan ke daftar klasifikasi terkait.
+     */
+    public function show(string $slug): RedirectResponse
     {
         $information = PpidInformation::query()
             ->published()
-            ->with([
-                'category',
-                'unit',
-                'documents.media',
-            ])
+            ->where('access_level', 'public')
             ->where('slug', $slug)
             ->firstOrFail();
 
-        return view('frontend.ppid.show', compact('information'));
+        return redirect()->route('ppid.index', [
+            'classification' => $information->classification,
+            'search' => mb_substr($information->title, 0, 200),
+        ]);
     }
 }
