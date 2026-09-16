@@ -162,6 +162,10 @@
                         >
                             Informasi Setiap Saat
                         </option>
+<option value="dikecualikan"
+    @selected($selectedClassification === 'dikecualikan')>
+    Informasi Dikecualikan
+</option>
                     </x-form.select>
                 </div>
 
@@ -466,7 +470,15 @@
                     </x-ui.button>
                 </div>
 
-                <p class="ppid-documents-help">
+                <p class="ppid-documents-help" data-ppid-sk-help>
+    <strong>Khusus Informasi Dikecualikan:</strong>
+    isi judul dengan nama SK, pilih tahun dan unit pengelola,
+    lalu pilih satu PDF SK sebagai dokumen utama.
+    Daftar informasi cukup berada di dalam PDF tersebut.
+    Untuk menampilkannya di website, gunakan akses Publik,
+    ketersediaan Online, dan status Terbit.
+</p>
+<p class="ppid-documents-help">
                     Dokumen tidak wajib diunggah. Untuk ketersediaan Online, tambahkan dokumen publik agar dapat dibuka pengunjung. Seret dokumen untuk mengubah urutan. Satu dokumen dapat
                     ditetapkan sebagai dokumen utama.
                 </p>

@@ -191,6 +191,7 @@ class PpidInformation extends Model
 
             'setiap_saat' =>
                 'Informasi Setiap Saat',
+            'dikecualikan' => 'Informasi Dikecualikan',
 
             default =>
                 $this->classification,
