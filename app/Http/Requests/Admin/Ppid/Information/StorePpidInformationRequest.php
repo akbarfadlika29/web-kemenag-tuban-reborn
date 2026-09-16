@@ -134,6 +134,7 @@ class StorePpidInformationRequest extends FormRequest
                     'berkala',
                     'serta_merta',
                     'setiap_saat',
+                    'dikecualikan',
                 ]),
             ],
 
@@ -300,27 +301,30 @@ class StorePpidInformationRequest extends FormRequest
             /*
              * Dokumen
              */
-            'documents' => ['present', 'array'],
+            'documents' => [
+                'present',
+                'array',
+                Rule::when(
+                    $this->input('classification') === 'dikecualikan',
+                    ['max:1']
+                ),
+            ],
 
             'documents.*.media_id' => [
                 'required',
                 'integer',
                 'distinct',
+                Rule::exists('media', 'id')->where(function ($query) {
+                    $query->where('is_public', true)
+                        ->whereNull('deleted_at');
 
-                Rule::exists(
-                    'media',
-                    'id'
-                )->where(
-                    fn ($query) =>
-                        $query
-                            ->where(
-                                'is_public',
-                                true
-                            )
-                            ->whereNull(
-                                'deleted_at'
-                            )
-                ),
+                    if ($this->input('classification') === 'dikecualikan') {
+                        $query->where('mime_type', 'application/pdf')
+                            ->where('disk', 'public');
+                    }
+
+                    return $query;
+                }),
             ],
 
             'documents.*.title' => [
@@ -378,6 +382,8 @@ class StorePpidInformationRequest extends FormRequest
             'unit_id.required' =>
                 'Unit kerja wajib dipilih.',
 
+            'documents.max' =>
+                'Cukup pilih satu PDF SK sebagai dokumen utama.',
             'title.required' =>
                 'Judul informasi wajib diisi.',
 

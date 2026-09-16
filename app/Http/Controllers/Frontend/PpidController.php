@@ -16,7 +16,7 @@ class PpidController extends Controller
         $filters = $request->validate([
             'classification' => [
                 'nullable',
-                'in:berkala,serta_merta,setiap_saat',
+                'in:berkala,serta_merta,setiap_saat,dikecualikan',
             ],
             'search' => ['nullable', 'string', 'max:200'],
             'year' => ['nullable', 'integer', 'between:1,9999'],
@@ -36,13 +36,19 @@ class PpidController extends Controller
             'berkala' => 'Informasi Berkala',
             'serta_merta' => 'Informasi Serta-merta',
             'setiap_saat' => 'Informasi Tersedia Setiap Saat',
+            'dikecualikan' => 'Informasi Dikecualikan',
         ];
 
         $pageTitle = $classifications[$classification];
 
         $base = PpidInformation::query()
             ->published()
-            ->where('access_level', 'public');
+            ->where('access_level', 'public')
+            ->with('unit');
+
+        if ($classification !== 'dikecualikan') {
+            $base->where('classification', '!=', 'dikecualikan');
+        }
 
         $years = (clone $base)
             ->whereNotNull('year')
@@ -118,6 +124,7 @@ class PpidController extends Controller
 
         $view = match ($classification) {
             'berkala' => 'frontend.ppid.berkala.index',
+            'dikecualikan' => 'frontend.ppid.dikecualikan.index',
             'serta_merta' => 'frontend.ppid.serta-merta.index',
             'setiap_saat' => 'frontend.ppid.setiap-saat.index',
             default => 'frontend.ppid.index',
