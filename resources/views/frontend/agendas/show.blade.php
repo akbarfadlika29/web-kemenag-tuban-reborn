@@ -6,7 +6,7 @@
 )
 
 @section(
-    'meta_description',
+    'meta_description', 
     $agenda->meta_description
         ?: Str::limit(
             strip_tags($agenda->description ?? ''),
