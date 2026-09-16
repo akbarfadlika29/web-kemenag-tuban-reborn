@@ -73,10 +73,10 @@
                 </button>
             </form>
 
-            <div class="service-public-grid">
+            <div class="service-directory-grid">
                 @forelse ($services as $service)
-                    <article class="service-public-card">
-                        <div class="service-public-icon">
+                    <article class="service-directory-card">
+                        <div class="service-directory-icon">
                             {{ strtoupper(
                                 mb_substr(
                                     $service->title,
@@ -86,7 +86,7 @@
                             ) }}
                         </div>
 
-                        <span class="service-public-category">
+                        <span class="service-directory-category">
                             {{ $service->category?->name ?? 'Layanan' }}
                         </span>
 
@@ -104,7 +104,7 @@
                             ) }}
                         </p>
 
-                        <div class="service-public-meta">
+                        <div class="service-directory-meta">
                             <span>
                                 {{ $service->service_channel_label }}
                             </span>

@@ -5,11 +5,11 @@
             if (tabs.dataset.initialized === 'true') return;
 
             const section = tabs.closest('.portal-block-card');
-            const grid = section?.querySelector('.kemenag-news-grid');
+            const grid = section?.querySelector('[data-home-news-grid]');
 
             if (!grid) return;
 
-            const cards = [...grid.querySelectorAll('.news-filter-card')];
+            const cards = [...grid.querySelectorAll('[data-home-news-card]')];
             const buttons = [...tabs.querySelectorAll('[data-news-type]')];
 
             tabs.dataset.initialized = 'true';
@@ -31,7 +31,7 @@
 
                 buttons.forEach((item) => {
                     const selected = item === button;
-                    item.classList.toggle('active', selected);
+                    item.classList.toggle('is-active', selected);
                     item.setAttribute('aria-pressed', String(selected));
                 });
 

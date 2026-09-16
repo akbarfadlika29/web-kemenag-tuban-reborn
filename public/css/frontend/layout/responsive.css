@@ -3,13 +3,6 @@
         gap: 48px;
     }
 
-    .news-public-grid,
-    .kemenag-news-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .service-public-grid,
-    .ppid-public-grid,
     .public-card-grid,
     .gallery-public-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -151,10 +144,6 @@
         flex-direction: column;
     }
 
-    .service-public-grid,
-    .news-public-grid,
-    .kemenag-news-grid,
-    .ppid-public-grid,
     .public-card-grid,
     .gallery-public-grid,
     .gallery-detail-grid,
@@ -165,24 +154,9 @@
         grid-template-columns: 1fr;
     }
 
-    .home-news-nav-group {
-        grid-template-columns: 1fr;
-        gap: 8px;
-    }
 
-    .home-news-nav-label {
-        padding-top: 0;
-    }
 
-    .home-news-nav-items {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        padding-bottom: 3px;
-    }
 
-    .home-news-nav-items a {
-        flex: 0 0 auto;
-    }
 
     .public-list-item {
         grid-template-columns:

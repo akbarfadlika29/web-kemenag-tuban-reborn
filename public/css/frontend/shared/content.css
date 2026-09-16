@@ -40,9 +40,6 @@ body.ppid-consistent .empty-public-state {
 /* Anak grid tidak mendorong lebar halaman */
 body.ppid-consistent :is(
     .public-card-grid,
-    .news-public-grid,
-    .service-public-grid,
-    .ppid-public-grid,
     .gallery-public-grid,
     .service-detail-layout,
     .home-content-layout,

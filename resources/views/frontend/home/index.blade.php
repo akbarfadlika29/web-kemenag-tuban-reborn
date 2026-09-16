@@ -20,265 +20,13 @@
                 @include('frontend.home._quick-links', ['embedded' => true])
 
                 {{-- LAYANAN --}}
-                <div class="portal-block-card">
-                    <div class="section-heading">
-                        <div>
-                            <span class="section-kicker">
-                                Pelayanan Publik
-                            </span>
-
-                            <h2>
-                                Layanan Masyarakat
-                            </h2>
-                        </div>
-
-                        <a
-                            href="{{ route('services.index') }}"
-                            class="section-link"
-                        >
-                            Semua Layanan →
-                        </a>
-                    </div>
-
-                    <div class="service-public-grid">
-                        @forelse ($services as $service)
-                            <article class="service-public-card">
-                                <div class="service-public-icon">
-                                    {{ strtoupper(mb_substr($service->title, 0, 1)) }}
-                                </div>
-
-                                <span class="service-public-category">
-                                    {{ $service->category?->name ?? 'Layanan' }}
-                                </span>
-
-                                <h3>
-                                    <a href="{{ route('services.show', $service->slug) }}">
-                                        {{ $service->title }}
-                                    </a>
-                                </h3>
-
-                                <p>
-                                    {{ Str::limit(
-                                        $service->excerpt
-                                            ?: strip_tags($service->description ?? ''),
-                                        100
-                                    ) }}
-                                </p>
-
-                                <a
-                                    href="{{ route('services.show', $service->slug) }}"
-                                    class="public-action-link"
-                                >
-                                    Detail Layanan →
-                                </a>
-                            </article>
-                        @empty
-                            <div class="empty-public-state">
-                                Belum ada layanan.
-                            </div>
-                        @endforelse
-                    </div>
-                </div>
+                @include('frontend.home._services-directory')
 
                 {{-- BERITA --}}
-                <div class="portal-block-card">
-                    <div class="section-heading">
-                        <div>
-                            <span class="section-kicker">
-                                Informasi Terkini
-                            </span>
-
-                            <h2>
-                                Berita & Warta Satker
-                            </h2>
-                        </div>
-
-                        <a
-                            href="{{ route('news.index') }}"
-                            class="section-link"
-                        >
-                            Semua Berita →
-                        </a>
-                    </div>
-
-                    @php
-    $homeNewsTypes = $latestNews
-        ->map(fn ($item) => trim((string) ($item->unit?->type ?? '')))
-        ->filter(fn ($type) => $type !== '')
-        ->unique()
-        ->sort()
-        ->values();
-@endphp
-
-<div class="kemenag-news-tabs"
-     data-home-news-types
-     role="group"
-     aria-label="Filter berita berdasarkan jenis unit">
-    <button type="button"
-            class="kemenag-tab-btn active"
-            data-news-type="all"
-            aria-pressed="true">
-        Terbaru
-    </button>
-
-    @foreach ($homeNewsTypes as $type)
-        <button type="button"
-                class="kemenag-tab-btn"
-                data-news-type="{{ 'type-'.md5($type) }}"
-                aria-pressed="false">
-            {{ mb_strtoupper(str_replace(['_', '-'], ' ', $type)) }}
-        </button>
-    @endforeach
-</div>
-
-                    <div class="kemenag-news-grid">
-                        @forelse ($latestNews as $news)
-                            @php
-                                $newsUnitType = trim((string) ($news->unit?->type ?? ''));
-
-                                $unitClass = $newsUnitType !== ''
-                                    ? 'type-'.md5($newsUnitType)
-                                    : '';
-
-                                $coverUrl =
-                                    $news->coverMedia
-                                        ? Storage::disk(
-                                            $news->coverMedia->disk
-                                        )->url(
-                                            $news->coverMedia->path
-                                        )
-                                        : null;
-                            @endphp
-
-                            <article
-                                class="kemenag-news-card news-filter-card {{ $unitClass }}"
-                            >
-                                <div class="kemenag-news-thumb">
-                                    <a href="{{ route('news.show', $news->slug) }}">
-                                        @if ($coverUrl)
-                                            <img
-                                                src="{{ $coverUrl }}"
-                                                alt="{{ $news->coverMedia->alt_text ?? $news->title }}"
-                                                loading="lazy"
-                                            >
-                                        @else
-                                            <div class="kemenag-news-fallback">
-                                                <span>
-                                                    Berita
-                                                </span>
-                                            </div>
-                                        @endif
-                                    </a>
-
-                                    <span class="kemenag-news-badge">
-                                        {{ $news->unit?->short_name
-                                            ?: ($news->unit?->name ?? 'Kemenag')
-                                        }}
-                                    </span>
-                                </div>
-
-                                <div class="kemenag-news-content">
-                                    <div class="kemenag-news-meta">
-                                        {{-- news-category-link:kemenag-news-cat --}}
-@if ($news->category?->is_active)
-    <a class="kemenag-news-cat news-category-link" href="{{ route('news.index', ['category' => $news->category->slug]) }}">
-        {{ $news->category->name }}
-    </a>
-@else
-    <span class="kemenag-news-cat">{{ $news->category?->name ?? 'Berita' }}</span>
-@endif
-
-                                        <span class="kemenag-news-date">
-                                            {{ optional($news->published_at)->translatedFormat('d M Y') }}
-                                        </span>
-                                    </div>
-
-                                    <h3>
-                                        <a href="{{ route('news.show', $news->slug) }}">
-                                            {{ $news->title }}
-                                        </a>
-                                    </h3>
-
-                                    <p>
-                                        {{ Str::limit(
-                                            $news->excerpt
-                                                ?: strip_tags($news->content ?? ''),
-                                            95
-                                        ) }}
-                                    </p>
-
-                                    <a
-                                        href="{{ route('news.show', $news->slug) }}"
-                                        class="kemenag-news-link"
-                                    >
-                                        Baca Selengkapnya →
-                                    </a>
-                                </div>
-                            </article>
-                        @empty
-                            <div class="empty-public-state">
-                                Belum ada berita.
-                            </div>
-                        @endforelse
-                    </div>
-                </div>
+                @include('frontend.home._news-grid')
 
                 {{-- PPID --}}
-                <div class="portal-block-card">
-                    <div class="section-heading">
-                        <div>
-                            <span class="section-kicker">
-                                Keterbukaan Informasi
-                            </span>
-
-                            <h2>
-                                Informasi PPID
-                            </h2>
-                        </div>
-
-                        <a
-                            href="{{ route('ppid.index') }}"
-                            class="section-link"
-                        >
-                            Semua Informasi →
-                        </a>
-                    </div>
-
-                    <div class="ppid-public-grid">
-                        @forelse ($ppidInformations as $information)
-                            <article class="ppid-public-card">
-                                <span>
-                                    {{ $information->classification_label }}
-                                </span>
-
-                                <h3>
-                                    <a href="{{ route('ppid.show', $information->slug) }}">
-                                        {{ $information->title }}
-                                    </a>
-                                </h3>
-
-                                <p>
-                                    {{ Str::limit(
-                                        $information->excerpt
-                                            ?: strip_tags($information->description ?? ''),
-                                        100
-                                    ) }}
-                                </p>
-
-                                <a
-                                    href="{{ route('ppid.show', $information->slug) }}"
-                                    class="public-action-link"
-                                >
-                                    Lihat Dokumen →
-                                </a>
-                            </article>
-                        @empty
-                            <div class="empty-public-state">
-                                Belum ada informasi PPID.
-                            </div>
-                        @endforelse
-                    </div>
-                </div>
+                @include('frontend.home._ppid-directory')
             </div>
 
             {{-- =========================================================
@@ -357,7 +105,7 @@
                                 </span>
 
                                 <h2>
-                                    Agenda Terdekat
+                                    Agenda Terbaru
                                 </h2>
                             </div>
 
@@ -383,9 +131,24 @@
                                     </div>
 
                                     <div>
-                                        <span class="agenda-public-time">
-                                            {{ $agenda->start_at->format('H:i') }} WIB
-                                        </span>
+                                        <div class="agenda-public-meta">
+                                            <span class="agenda-public-time">
+                                                {{ $agenda->start_at->format('H:i') }} WIB
+                                            </span>
+
+                                            @php
+                                                $agendaState = $agenda->event_state;
+                                                $agendaStateLabel = match ($agendaState) {
+                                                    'upcoming' => 'Akan Datang',
+                                                    'ongoing' => 'Berlangsung',
+                                                    default => 'Selesai',
+                                                };
+                                            @endphp
+
+                                            <span class="agenda-public-status is-{{ $agendaState }}">
+                                                {{ $agendaStateLabel }}
+                                            </span>
+                                        </div>
 
                                         <h3>
                                             <a href="{{ route('agendas.show', $agenda->slug) }}">
@@ -402,7 +165,7 @@
                                 </article>
                             @empty
                                 <div class="empty-public-state">
-                                    Belum ada agenda mendatang.
+                                    Belum ada agenda.
                                 </div>
                             @endforelse
                         </div>
@@ -416,6 +179,18 @@
     {{-- SCRIPT TAB FILTER --}}
     
 @endsection
+
+
+@push('page-styles')
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/frontend/components/home-directory.css') }}?v={{ filemtime(public_path('css/frontend/components/home-directory.css')) }}"
+    >
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/frontend/components/home-news.css') }}?v={{ filemtime(public_path('css/frontend/components/home-news.css')) }}"
+    >
+@endpush
 
 @push('scripts')
     <script defer

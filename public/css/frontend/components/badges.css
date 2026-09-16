@@ -17,8 +17,6 @@
     font-weight: 750;
 }
 
-.service-public-category,
-.news-public-category,
 .public-card-category {
     color: var(--color-green-700);
     font-size: 12px;

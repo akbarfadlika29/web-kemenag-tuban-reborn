@@ -1,4 +1,4 @@
-{{-- Urutan dipertahankan dari consistency.css. --}}
+{{-- Shared frontend styles: layout, typography, cards, controls, content, responsive. --}}
 <link rel="stylesheet"
       href="{{ asset('css/frontend/shared/layout.css') }}?v={{ filemtime(public_path('css/frontend/shared/layout.css')) }}">
 

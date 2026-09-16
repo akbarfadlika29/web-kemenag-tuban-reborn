@@ -12,10 +12,6 @@
 
     body.ppid-consistent :is(
         .public-card-body,
-        .news-public-body,
-        .kemenag-news-content,
-        .service-public-card,
-        .ppid-public-card,
         .reg-public-card,
         .service-info-card
     ) {
@@ -48,9 +44,7 @@
     body.ppid-consistent :is(
         .button,
         .ui-btn,
-        .public-content-card,
-        .news-public-card,
-        .service-public-card
+        .public-content-card
     ) {
         transition: none;
         transform: none;

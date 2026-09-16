@@ -9,7 +9,6 @@ use App\Models\HeroSlide;
 use App\Models\News;
 use App\Models\PpidInformation;
 use App\Models\Service;
-use App\Models\Unit;
 use App\Services\QuickLink\QuickLinkFrontendService;
 use Illuminate\View\View;
 
@@ -42,32 +41,13 @@ class HomeController extends Controller
                 'unit',
                 'coverMedia',
             ])
-            ->orderByDesc('is_featured')
             ->orderByDesc('published_at')
             ->limit(8)
-            ->get();
-
-        $newsUnits = Unit::query()
-            ->whereHas(
-                'news',
-                function ($query) {
-                    $query->published();
-                }
-            )
-            ->select(
-                'id',
-                'name',
-                'slug'
-            )
             ->get();
 
         $announcements =
             Announcement::query()
                 ->published()
-                ->with([
-                    'unit',
-                    'coverMedia',
-                ])
                 ->orderByDesc('is_pinned')
                 ->orderByDesc('published_at')
                 ->limit(5)
@@ -75,26 +55,13 @@ class HomeController extends Controller
 
         $agendas = Agenda::query()
             ->published()
-            ->with([
-                'unit',
-                'coverMedia',
-            ])
-            ->where(
-                'start_at',
-                '>=',
-                now()->startOfDay()
-            )
-            ->orderBy('start_at')
-            ->limit(4)
+            ->orderByDesc('start_at')
+            ->limit(5)
             ->get();
 
         $services = Service::query()
             ->published()
-            ->with([
-                'category',
-                'unit',
-                'coverMedia',
-            ])
+            ->with('category')
             ->orderByDesc('is_featured')
             ->orderByDesc('published_at')
             ->limit(6)
@@ -104,11 +71,6 @@ class HomeController extends Controller
             PpidInformation::query()
                 ->published()
                 ->where('access_level', 'public')
-                ->with([
-                    'category',
-                    'unit',
-                    'primaryDocument.media',
-                ])
                 ->orderByDesc('is_featured')
                 ->orderByDesc('published_at')
                 ->limit(6)
@@ -120,7 +82,6 @@ class HomeController extends Controller
                 'quickLinks',
                 'heroSlides',
                 'latestNews',
-                'newsUnits',
                 'announcements',
                 'agendas',
                 'services',

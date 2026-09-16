@@ -54,6 +54,9 @@
       href="{{ asset('css/frontend/components/filter-panel.css') }}?v={{ filemtime(public_path('css/frontend/components/filter-panel.css')) }}">
 <link rel="stylesheet"
       href="{{ asset('css/frontend/components/table-scroll.css') }}?v={{ filemtime(public_path('css/frontend/components/table-scroll.css')) }}">
+
+    {{-- CSS khusus halaman/komponen yang harus menang setelah tema global. --}}
+    @stack('page-styles')
 </head>
 
 <body class="ppid-public ppid-consistent ppid-soft">
