@@ -86,6 +86,10 @@
                         >
                             Setiap Saat
                         </option>
+<option value="dikecualikan"
+    @selected($classification === 'dikecualikan')>
+    Informasi Dikecualikan
+</option>
                     </select>
                 </div>
 
