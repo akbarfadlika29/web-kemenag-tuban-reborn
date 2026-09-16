@@ -101,35 +101,44 @@
                         </a>
                     </div>
 
-                    <div class="kemenag-news-tabs">
-                        <button
-                            type="button"
-                            class="kemenag-tab-btn active"
-                            onclick="filterKemenagNews('all', this)"
-                        >
-                            Terbaru
-                        </button>
+                    @php
+    $homeNewsTypes = $latestNews
+        ->map(fn ($item) => trim((string) ($item->unit?->type ?? '')))
+        ->filter(fn ($type) => $type !== '')
+        ->unique()
+        ->sort()
+        ->values();
+@endphp
 
-                        @if (isset($newsUnits))
-                            @foreach ($newsUnits as $unit)
-                                <button
-                                    type="button"
-                                    class="kemenag-tab-btn"
-                                    onclick="filterKemenagNews('unit-{{ $unit->id }}', this)"
-                                >
-                                    {{ $unit->short_name ?: $unit->name }}
-                                </button>
-                            @endforeach
-                        @endif
-                    </div>
+<div class="kemenag-news-tabs"
+     data-home-news-types
+     role="group"
+     aria-label="Filter berita berdasarkan jenis unit">
+    <button type="button"
+            class="kemenag-tab-btn active"
+            data-news-type="all"
+            aria-pressed="true">
+        Terbaru
+    </button>
+
+    @foreach ($homeNewsTypes as $type)
+        <button type="button"
+                class="kemenag-tab-btn"
+                data-news-type="{{ 'type-'.md5($type) }}"
+                aria-pressed="false">
+            {{ mb_strtoupper(str_replace(['_', '-'], ' ', $type)) }}
+        </button>
+    @endforeach
+</div>
 
                     <div class="kemenag-news-grid">
                         @forelse ($latestNews as $news)
                             @php
-                                $unitClass =
-                                    $news->unit_id
-                                        ? 'unit-' . $news->unit_id
-                                        : '';
+                                $newsUnitType = trim((string) ($news->unit?->type ?? ''));
+
+                                $unitClass = $newsUnitType !== ''
+                                    ? 'type-'.md5($newsUnitType)
+                                    : '';
 
                                 $coverUrl =
                                     $news->coverMedia
@@ -405,18 +414,12 @@
     {{-- LINK TERKAIT --}}
     <x-frontend.related-links />
     {{-- SCRIPT TAB FILTER --}}
-    <script>
-        function filterKemenagNews(targetClass, btn) {
-            document.querySelectorAll('.kemenag-tab-btn').forEach(el => el.classList.remove('active'));
-            btn.classList.add('active');
-            document.querySelectorAll('.news-filter-card').forEach(card => {
-                card.style.display = (targetClass === 'all' || card.classList.contains(targetClass)) ? 'flex' : 'none';
-            });
-        }
-    </script>
+    
 @endsection
 
 @push('scripts')
+    <script defer
+            src="{{ asset('js/frontend/components/home-news-types.js') }}?v={{ filemtime(public_path('js/frontend/components/home-news-types.js')) }}"></script>
     <script src="{{ asset('js/frontend/components/hero-slider.js') }}"></script>
     <script src="{{ asset('js/frontend/components/related-links.js') }}"></script>
 @endpush

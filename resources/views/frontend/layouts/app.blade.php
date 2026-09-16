@@ -31,10 +31,7 @@
         content="@yield('meta_description', $defaultDescription)"
     >
 
-    <link
-        rel="stylesheet"
-        href="{{ asset('css/frontend/app.css') }}"
-    >
+    @include('frontend.partials.base-styles')
 
     @stack('styles')
 
@@ -60,6 +57,7 @@
 </head>
 
 <body class="ppid-public ppid-consistent ppid-soft">
+    @include('frontend.partials.global-loading')
     <a href="#public-main" class="public-skip-link">Langsung ke konten utama</a>
     @include('frontend.partials.header')
 
