@@ -6,7 +6,7 @@
         </div>
 
         <a href="{{ route('news.index') }}" class="section-link">
-            Semua Berita →
+            Lihat Semua
         </a>
     </div>
 

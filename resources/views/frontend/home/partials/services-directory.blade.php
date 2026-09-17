@@ -14,7 +14,7 @@
             href="{{ route('services.index') }}"
             class="section-link"
         >
-            Semua Layanan →
+            Lihat Semua
         </a>
     </div>
 

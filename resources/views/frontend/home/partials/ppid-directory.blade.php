@@ -14,7 +14,7 @@
             href="{{ route('ppid.index') }}"
             class="section-link"
         >
-            Semua Informasi →
+            Lihat Semua
         </a>
     </div>
 

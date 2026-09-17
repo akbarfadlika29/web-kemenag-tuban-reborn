@@ -55,7 +55,7 @@
                                 href="{{ route('announcements.index') }}"
                                 class="section-link"
                             >
-                                Semua Pengumuman →
+                                Lihat Semua
                             </a>
                         </div>
 
@@ -105,7 +105,7 @@
                                 </span>
 
                                 <h2>
-                                    Agenda Terbaru
+                                    Agenda
                                 </h2>
                             </div>
 
@@ -113,7 +113,7 @@
                                 href="{{ route('agendas.index') }}"
                                 class="section-link"
                             >
-                                Semua Agenda →
+                                Lihat Semua
                             </a>
                         </div>
 
