@@ -3,10 +3,23 @@
 @section('title', $pageTitle)
 
 @section('content')
-    @include('frontend.ppid.partials.directory')
+    @if ($classification === 'dikecualikan')
+        @include('frontend.ppid.partials.exempt-directory')
+    @else
+        @include('frontend.ppid.partials.directory')
+    @endif
 @endsection
 
 @push('styles')
-<link rel="stylesheet"
-      href="{{ asset('css/frontend/pages/ppid-directory.css') }}?v={{ filemtime(public_path('css/frontend/pages/ppid-directory.css')) }}">
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/frontend/pages/ppid/directory.css') }}?v={{ filemtime(public_path('css/frontend/pages/ppid/directory.css')) }}"
+    >
+
+    @if ($classification === 'dikecualikan')
+        <link
+            rel="stylesheet"
+            href="{{ asset('css/frontend/pages/ppid/exempt.css') }}?v={{ filemtime(public_path('css/frontend/pages/ppid/exempt.css')) }}"
+        >
+    @endif
 @endpush

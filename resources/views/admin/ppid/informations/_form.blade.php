@@ -877,5 +877,5 @@
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
 
-    <script src="{{ asset('js/modules/ppid-information-editor.js') }}"></script>
+    <script src="{{ asset('js/admin/pages/ppid-information-editor.js') }}"></script>
 @endpush

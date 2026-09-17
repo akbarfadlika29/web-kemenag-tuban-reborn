@@ -14,11 +14,11 @@
 <link rel="stylesheet" href="{{ asset('css/frontend/components/pagination.css') }}?v={{ filemtime(public_path('css/frontend/components/pagination.css')) }}">
 <link rel="stylesheet" href="{{ asset('css/frontend/components/content.css') }}?v={{ filemtime(public_path('css/frontend/components/content.css')) }}">
 <link rel="stylesheet" href="{{ asset('css/frontend/components/related-links.css') }}?v={{ filemtime(public_path('css/frontend/components/related-links.css')) }}">
-<link rel="stylesheet" href="{{ asset('css/frontend/pages/home.css') }}?v={{ filemtime(public_path('css/frontend/pages/home.css')) }}">
+<link rel="stylesheet" href="{{ asset('css/frontend/pages/home/index.css') }}?v={{ filemtime(public_path('css/frontend/pages/home/index.css')) }}">
 <link rel="stylesheet" href="{{ asset('css/frontend/pages/news.css') }}?v={{ filemtime(public_path('css/frontend/pages/news.css')) }}">
 <link rel="stylesheet" href="{{ asset('css/frontend/pages/announcements.css') }}?v={{ filemtime(public_path('css/frontend/pages/announcements.css')) }}">
 <link rel="stylesheet" href="{{ asset('css/frontend/pages/agendas.css') }}?v={{ filemtime(public_path('css/frontend/pages/agendas.css')) }}">
 <link rel="stylesheet" href="{{ asset('css/frontend/pages/galleries.css') }}?v={{ filemtime(public_path('css/frontend/pages/galleries.css')) }}">
-<link rel="stylesheet" href="{{ asset('css/frontend/pages/ppid.css') }}?v={{ filemtime(public_path('css/frontend/pages/ppid.css')) }}">
+<link rel="stylesheet" href="{{ asset('css/frontend/pages/ppid/index.css') }}?v={{ filemtime(public_path('css/frontend/pages/ppid/index.css')) }}">
 <link rel="stylesheet" href="{{ asset('css/frontend/pages/services.css') }}?v={{ filemtime(public_path('css/frontend/pages/services.css')) }}">
 <link rel="stylesheet" href="{{ asset('css/frontend/layout/responsive.css') }}?v={{ filemtime(public_path('css/frontend/layout/responsive.css')) }}">

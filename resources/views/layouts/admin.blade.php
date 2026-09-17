@@ -27,47 +27,47 @@
     {{-- WEB PPID: shared admin visual system --}}
     <link
         rel="stylesheet"
-        href="{{ asset('css/admin/premium.css') }}?v={{ filemtime(public_path('css/admin/premium.css')) }}"
+        href="{{ asset('css/admin/themes/premium.css') }}?v={{ filemtime(public_path('css/admin/themes/premium.css')) }}"
     >
     {{-- Custom admin dialogs --}}
     <link
         rel="stylesheet"
-        href="{{ asset('css/admin/popup.css') }}?v={{ filemtime(public_path('css/admin/popup.css')) }}"
+        href="{{ asset('css/admin/components/popup.css') }}?v={{ filemtime(public_path('css/admin/components/popup.css')) }}"
     >
-    <script src="{{ asset('js/admin/popup.js') }}?v={{ filemtime(public_path('js/admin/popup.js')) }}"></script>
+    <script src="{{ asset('js/admin/components/popup.js') }}?v={{ filemtime(public_path('js/admin/components/popup.js')) }}"></script>
 
     {{-- Selection and bulk deletion for existing delete forms --}}
     <link
         rel="stylesheet"
-        href="{{ asset('css/admin/bulk-delete.css') }}?v={{ filemtime(public_path('css/admin/bulk-delete.css')) }}"
+        href="{{ asset('css/admin/components/bulk-delete.css') }}?v={{ filemtime(public_path('css/admin/components/bulk-delete.css')) }}"
     >
     <script
         defer
-        src="{{ asset('js/admin/bulk-delete.js') }}?v={{ filemtime(public_path('js/admin/bulk-delete.js')) }}"
+        src="{{ asset('js/admin/components/bulk-delete.js') }}?v={{ filemtime(public_path('js/admin/components/bulk-delete.js')) }}"
     ></script>
 
     {{-- Responsive sidebar controls --}}
     <link
         rel="stylesheet"
-        href="{{ asset('css/admin/sidebar-control.css') }}?v={{ filemtime(public_path('css/admin/sidebar-control.css')) }}"
+        href="{{ asset('css/admin/layout/sidebar-control.css') }}?v={{ filemtime(public_path('css/admin/layout/sidebar-control.css')) }}"
     >
     <script
         defer
-        src="{{ asset('js/admin/sidebar-control.js') }}?v={{ filemtime(public_path('js/admin/sidebar-control.js')) }}"
+        src="{{ asset('js/admin/layout/sidebar-control.js') }}?v={{ filemtime(public_path('js/admin/layout/sidebar-control.js')) }}"
     ></script>
 
     {{-- Collapsible sidebar menu groups --}}
     <link
         rel="stylesheet"
-        href="{{ asset('css/admin/sidebar-accordion.css') }}?v={{ filemtime(public_path('css/admin/sidebar-accordion.css')) }}"
+        href="{{ asset('css/admin/layout/sidebar-accordion.css') }}?v={{ filemtime(public_path('css/admin/layout/sidebar-accordion.css')) }}"
     >
     <script
         defer
-        src="{{ asset('js/admin/sidebar-accordion.js') }}?v={{ filemtime(public_path('js/admin/sidebar-accordion.js')) }}"
+        src="{{ asset('js/admin/layout/sidebar-accordion.js') }}?v={{ filemtime(public_path('js/admin/layout/sidebar-accordion.js')) }}"
     ></script>
     <link
         rel="stylesheet"
-        href="{{ asset('css/admin/button-consistency.css') }}?v={{ filemtime(public_path('css/admin/button-consistency.css')) }}"
+        href="{{ asset('css/admin/components/button-consistency.css') }}?v={{ filemtime(public_path('css/admin/components/button-consistency.css')) }}"
     >
 </head>
 
@@ -100,12 +100,12 @@
 
     <x-admin.media-picker />
 
-    <script src="{{ asset('js/admin-ui.js') }}?v={{ filemtime(public_path('js/admin-ui.js')) }}"></script>
+    <script src="{{ asset('js/admin/app.js') }}?v={{ filemtime(public_path('js/admin/app.js')) }}"></script>
     <script src="{{ asset('js/admin/components/content-editor.js') }}"></script>
 
     <script src="{{ asset('js/admin/components/tree-dnd.js') }}?v={{ filemtime(public_path('js/admin/components/tree-dnd.js')) }}"></script>
 
-    <script src="{{ asset('js/admin/media-picker.js') }}"></script>
+    <script src="{{ asset('js/admin/components/media-picker.js') }}"></script>
 
     @stack('scripts')
 </body>

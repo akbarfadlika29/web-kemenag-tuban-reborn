@@ -38,7 +38,7 @@
     {{-- WEB PPID: frontend visual system --}}
     <link
         rel="stylesheet"
-        href="{{ asset('css/frontend/premium.css') }}?v={{ filemtime(public_path('css/frontend/premium.css')) }}"
+        href="{{ asset('css/frontend/themes/premium.css') }}?v={{ filemtime(public_path('css/frontend/themes/premium.css')) }}"
     >
     @include('frontend.partials.shared-styles')
     <link

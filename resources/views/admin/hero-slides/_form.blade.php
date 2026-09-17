@@ -274,6 +274,6 @@
 
 @push('scripts')
     <script
-        src="{{ asset('js/admin/modules/hero-slides.js') }}"
+        src="{{ asset('js/admin/pages/hero-slides.js') }}"
     ></script>
 @endpush

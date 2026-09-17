@@ -808,5 +808,5 @@
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 
-    <script src="{{ asset('js/modules/news-editor.js') }}"></script>
+    <script src="{{ asset('js/admin/pages/news-editor.js') }}"></script>
 @endpush

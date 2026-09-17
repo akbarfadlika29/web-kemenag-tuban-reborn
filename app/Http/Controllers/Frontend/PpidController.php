@@ -122,15 +122,7 @@ class PpidController extends Controller
             )
             ->withQueryString();
 
-        $view = match ($classification) {
-            'berkala' => 'frontend.ppid.berkala.index',
-            'dikecualikan' => 'frontend.ppid.dikecualikan.index',
-            'serta_merta' => 'frontend.ppid.serta-merta.index',
-            'setiap_saat' => 'frontend.ppid.setiap-saat.index',
-            default => 'frontend.ppid.index',
-        };
-
-        return view($view, compact(
+        return view('frontend.ppid.index', compact(
             'informations',
             'classification',
             'classifications',

@@ -86,6 +86,6 @@ Route::get(
     [ServiceController::class, 'show']
 )->name('services.show');
 
-require __DIR__.'/regulations-public.php';
+require __DIR__.'/frontend/regulations.php';
 
-require __DIR__.'/public-interactions.php';
+require __DIR__.'/frontend/interactions.php';

@@ -5,7 +5,7 @@
 @section('content')
 
     {{-- HERO SLIDER --}}
-    @include('frontend.home._hero-slider')
+    @include('frontend.home.partials.hero-slider')
 
     {{-- KONTEN HOME: UTAMA + SIDEBAR --}}
     <section class="section-wrapper home-content-section">
@@ -17,16 +17,16 @@
             <div class="home-content-main">
 
                 {{-- AKSES CEPAT --}}
-                @include('frontend.home._quick-links', ['embedded' => true])
+                @include('frontend.home.partials.quick-links', ['embedded' => true])
 
                 {{-- LAYANAN --}}
-                @include('frontend.home._services-directory')
+                @include('frontend.home.partials.services-directory')
 
                 {{-- BERITA --}}
-                @include('frontend.home._news-grid')
+                @include('frontend.home.partials.news-grid')
 
                 {{-- PPID --}}
-                @include('frontend.home._ppid-directory')
+                @include('frontend.home.partials.ppid-directory')
             </div>
 
             {{-- =========================================================
@@ -184,17 +184,17 @@
 @push('page-styles')
     <link
         rel="stylesheet"
-        href="{{ asset('css/frontend/components/home-directory.css') }}?v={{ filemtime(public_path('css/frontend/components/home-directory.css')) }}"
+        href="{{ asset('css/frontend/pages/home/directory.css') }}?v={{ filemtime(public_path('css/frontend/pages/home/directory.css')) }}"
     >
     <link
         rel="stylesheet"
-        href="{{ asset('css/frontend/components/home-news.css') }}?v={{ filemtime(public_path('css/frontend/components/home-news.css')) }}"
+        href="{{ asset('css/frontend/pages/home/news.css') }}?v={{ filemtime(public_path('css/frontend/pages/home/news.css')) }}"
     >
 @endpush
 
 @push('scripts')
     <script defer
-            src="{{ asset('js/frontend/components/home-news-types.js') }}?v={{ filemtime(public_path('js/frontend/components/home-news-types.js')) }}"></script>
-    <script src="{{ asset('js/frontend/components/hero-slider.js') }}"></script>
-    <script src="{{ asset('js/frontend/components/related-links.js') }}"></script>
+            src="{{ asset('js/frontend/pages/home/news-types.js') }}?v={{ filemtime(public_path('js/frontend/pages/home/news-types.js')) }}"></script>
+    <script src="{{ asset('js/frontend/pages/home/hero-slider.js') }}"></script>
+    <script src="{{ asset('js/frontend/pages/home/related-links.js') }}"></script>
 @endpush
