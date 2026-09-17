@@ -30,5 +30,3 @@
 @import url("./components/misc.css");
 @import url("./components/content-system.css");
 
-/* RESPONSIVE - HARUS TERAKHIR */
-@import url("./layout/responsive.css");

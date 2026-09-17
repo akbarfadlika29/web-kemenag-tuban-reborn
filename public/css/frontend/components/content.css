@@ -141,6 +141,10 @@
     max-width: 100%;
     min-width: 0;
 
+    color: var(--color-text-soft);
+    font-size: 15px;
+    line-height: 1.85;
+
     overflow-wrap: anywhere;
     word-wrap: break-word;
 }
@@ -181,10 +185,28 @@
 
 .public-prose pre {
     max-width: 100%;
+    margin: 24px 0;
+    padding: 18px 20px;
 
     overflow-x: auto;
 
-    white-space: pre-wrap;
+    border-radius: 10px;
+    background: #101828;
+    color: #e4e7ec;
+
+    font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        "Liberation Mono",
+        monospace;
+    font-size: 13px;
+    line-height: 1.7;
+
+    white-space: pre;
+    tab-size: 4;
 }
 
 .public-prose code {
@@ -221,12 +243,6 @@
    RICH CONTENT PRESENTATION
    ========================================================= */
 
-.public-prose {
-    color: var(--color-text-soft);
-
-    font-size: 15px;
-    line-height: 1.85;
-}
 
 .public-prose > :first-child {
     margin-top: 0;
@@ -305,36 +321,6 @@
 
 /* Code block */
 
-.public-prose pre {
-    max-width: 100%;
-
-    margin: 24px 0;
-    padding: 18px 20px;
-
-    overflow-x: auto;
-
-    border-radius: 10px;
-
-    background: #101828;
-
-    color: #e4e7ec;
-
-    font-family:
-        ui-monospace,
-        SFMono-Regular,
-        Menlo,
-        Monaco,
-        Consolas,
-        "Liberation Mono",
-        monospace;
-
-    font-size: 13px;
-    line-height: 1.7;
-
-    white-space: pre;
-
-    tab-size: 4;
-}
 
 .public-prose pre code {
     padding: 0;
@@ -385,10 +371,31 @@
 .public-prose img {
     display: block;
 
-    max-width: 100%;
-    height: auto;
-
     margin: 26px auto;
 
     border-radius: var(--radius-md);
+}
+
+/* Responsive content */
+@media (max-width: 900px) {
+    .public-related-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 760px) {
+    .public-related-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .public-download-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .public-detail-header h1 {
+        font-size: 30px;
+    }
 }

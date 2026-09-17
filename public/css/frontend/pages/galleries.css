@@ -84,3 +84,23 @@
     color: var(--color-muted);
     font-size: 12px;
 }
+
+/* Responsive galleries */
+@media (max-width: 1050px) {
+    .gallery-public-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .gallery-detail-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 760px) {
+    .gallery-public-grid,
+    .gallery-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}

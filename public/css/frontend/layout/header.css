@@ -148,6 +148,7 @@
 
 @media (max-width: 760px) {
     .site-header-inner {
+        min-height: 76px;
         gap: 12px;
     }
 

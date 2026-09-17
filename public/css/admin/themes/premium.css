@@ -13,12 +13,12 @@
     --gov-emerald-600: #087354;
     --gov-emerald-500: #14966f;
 
-    --background: #f3f6f5;
     --surface: #ffffff;
-    --surface-soft: #f7faf8;
-    --text: #243c34;
-    --text-muted: #61736b;
-    --border: #dfe7e2;
+    --background: #f4f6f5;
+    --surface-soft: #f8faf9;
+    --text: #293d33;
+    --text-muted: #66776d;
+    --border: #e0e7e2;
 
     --radius-sm: 7px;
     --radius-md: 10px;
@@ -70,14 +70,11 @@
 /* CONTENT */
 
 .admin-wrapper .admin-shell > .content {
-    padding: 28px 30px 36px;
+    padding: clamp(16px, 2vw, 30px);
     scrollbar-width: thin;
     scrollbar-color: #bfcfc5 transparent;
 }
 
-.admin-wrapper .admin-content-inner {
-    min-width: 0;
-}
 
 .admin-wrapper .admin-page-stack {
     gap: 22px;
@@ -357,19 +354,19 @@
 .admin-wrapper .ui-page-header h1 {
     margin: 0;
     color: #193e2f;
-    font-size: clamp(23px, 2vw, 28px);
+    font-size: clamp(22px, 2vw, 28px);
     font-weight: 700;
+    line-height: 1.35;
     letter-spacing: -.025em;
-    line-height: 1.25;
     overflow-wrap: anywhere;
 }
 
 .admin-wrapper .ui-page-header p {
+    max-width: 70ch;
     margin: 8px 0 0;
-    max-width: 72ch;
     color: #61736b;
     font-size: 14px;
-    line-height: 1.65;
+    line-height: 1.75;
 }
 
 .admin-wrapper .ui-page-actions {
@@ -382,10 +379,12 @@
 /* CARDS AND SECTION HEADINGS */
 
 .admin-wrapper .ui-card {
+    min-width: 0;
     background: #fff;
     border: 1px solid var(--border);
     border-radius: 14px;
-    box-shadow: var(--shadow-sm);
+    border-color: #e0e7e2;
+    box-shadow: 0 3px 12px rgb(28 52 38 / 3%);
 }
 
 .admin-wrapper .ui-card-body {
@@ -761,9 +760,6 @@
         padding-inline: 20px;
     }
 
-    .admin-wrapper .admin-shell > .content {
-        padding: 24px 20px 30px;
-    }
 }
 
 @media (max-width: 768px) {
@@ -772,13 +768,7 @@
         padding-inline: 16px;
     }
 
-    .admin-wrapper .admin-shell > .content {
-        padding: 22px 16px 28px;
-    }
 
-    .admin-wrapper .ui-page-header {
-        margin-bottom: 20px;
-    }
 
     .admin-wrapper .ui-card-body {
         padding: 18px;
@@ -843,13 +833,6 @@
         width: 100%;
     }
 
-    .admin-wrapper .ui-page-header h1 {
-        font-size: 23px;
-    }
-
-    .admin-wrapper .ui-page-header p {
-        font-size: 13px;
-    }
 
     .admin-wrapper .admin-footer-inner {
         align-items: flex-start;
@@ -878,40 +861,15 @@
 }
 
 /* PPID ADMIN RHYTHM START */
-.admin-wrapper {
-    --background: #f4f6f5;
-    --surface-soft: #f8faf9;
-    --text: #293d33;
-    --text-muted: #66776d;
-    --border: #e0e7e2;
-}
 
-.admin-wrapper .admin-shell > .content {
-    padding: clamp(16px, 2vw, 30px);
-}
 
 .admin-wrapper .admin-content-inner {
     width: 100%;
     min-width: 0;
 }
 
-.admin-wrapper .ui-page-header {
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 24px;
-}
 
-.admin-wrapper .ui-page-header h1 {
-    font-size: clamp(22px, 2vw, 28px);
-    line-height: 1.35;
-    letter-spacing: -.025em;
-}
 
-.admin-wrapper .ui-page-header p {
-    max-width: 70ch;
-    font-size: 14px;
-    line-height: 1.75;
-}
 
 .admin-wrapper .ui-page-actions,
 .admin-wrapper .table-actions {
@@ -921,11 +879,6 @@
     gap: 8px;
 }
 
-.admin-wrapper .ui-card {
-    min-width: 0;
-    border-color: #e0e7e2;
-    box-shadow: 0 3px 12px rgb(28 52 38 / 3%);
-}
 
 .admin-wrapper .ui-table {
     width: 100%;

@@ -107,3 +107,20 @@
     font-size: 13px;
     line-height: 1.75;
 }
+
+/* Responsive sections */
+@media (max-width: 760px) {
+    .section {
+        padding: 54px 0;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 13px;
+    }
+
+    .section-heading h2 {
+        font-size: 25px;
+    }
+}

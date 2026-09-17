@@ -81,6 +81,14 @@ body.ppid-public .public-detail-meta {
 }
 
 @media (max-width: 760px) {
+    .public-page-header {
+        padding: 40px 0;
+    }
+
+    .public-page-header h1 {
+        font-size: 31px;
+    }
+
     body.ppid-public :is(.public-breadcrumb, .dip-breadcrumb) {
         margin-bottom: 20px;
         padding: 11px 14px;

@@ -204,3 +204,10 @@
 
 @include('frontend.partials.page-interactions', ['interactionModel' => $service])
 @endsection
+
+@push('styles')
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/frontend/pages/services.css') }}?v={{ filemtime(public_path('css/frontend/pages/services.css')) }}"
+    >
+@endpush

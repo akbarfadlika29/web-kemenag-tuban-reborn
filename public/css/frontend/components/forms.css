@@ -46,3 +46,11 @@
     font-size: 12px;
     font-weight: 750;
 }
+
+/* Responsive search and filters */
+@media (max-width: 760px) {
+    .public-search,
+    .public-filter-bar {
+        flex-direction: column;
+    }
+}

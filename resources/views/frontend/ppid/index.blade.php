@@ -13,6 +13,10 @@
 @push('styles')
     <link
         rel="stylesheet"
+        href="{{ asset('css/frontend/pages/ppid/index.css') }}?v={{ filemtime(public_path('css/frontend/pages/ppid/index.css')) }}"
+    >
+    <link
+        rel="stylesheet"
         href="{{ asset('css/frontend/pages/ppid/directory.css') }}?v={{ filemtime(public_path('css/frontend/pages/ppid/directory.css')) }}"
     >
 

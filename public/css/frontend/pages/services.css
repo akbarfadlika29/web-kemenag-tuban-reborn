@@ -180,3 +180,14 @@
         transition: none;
     }
 }
+
+/* Responsive service detail */
+@media (max-width: 900px) {
+    .service-detail-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .service-info-card {
+        position: static;
+    }
+}

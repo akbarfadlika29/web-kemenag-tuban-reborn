@@ -124,3 +124,10 @@
         </div>
     </section>
 @endsection
+
+@push('styles')
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/frontend/pages/news.css') }}?v={{ filemtime(public_path('css/frontend/pages/news.css')) }}"
+    >
+@endpush

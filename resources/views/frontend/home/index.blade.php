@@ -181,6 +181,13 @@
 @endsection
 
 
+@push('styles')
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/frontend/pages/home/index.css') }}?v={{ filemtime(public_path('css/frontend/pages/home/index.css')) }}"
+    >
+@endpush
+
 @push('page-styles')
     <link
         rel="stylesheet"

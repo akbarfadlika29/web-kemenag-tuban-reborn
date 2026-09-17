@@ -143,3 +143,10 @@
 
 @include('frontend.partials.page-interactions', ['interactionModel' => $agenda])
 @endsection
+
+@push('styles')
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/frontend/pages/agendas.css') }}?v={{ filemtime(public_path('css/frontend/pages/agendas.css')) }}"
+    >
+@endpush
