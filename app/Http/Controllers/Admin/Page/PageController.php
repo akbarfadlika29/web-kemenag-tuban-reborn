@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Page;
 
 use App\Http\Controllers\Controller;
+use App\Services\Access\UnitAccessService;
 use App\Http\Requests\Admin\Page\StorePageRequest;
 use App\Http\Requests\Admin\Page\UpdatePageRequest;
 use App\Models\Media;
@@ -496,8 +497,11 @@ class PageController extends Controller
 
     private function activeUnits()
     {
-        return Unit::query()
-            ->where('is_active', true)
+        $actor = request()->user();
+        abort_unless($actor, 401);
+
+        return app(UnitAccessService::class)
+            ->forCurrentRoute($actor, 'pages')
             ->orderBy('sort_order')
             ->orderBy('name')
             ->get();

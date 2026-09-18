@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Media;
 
 use App\Http\Controllers\Controller;
+use App\Services\Access\UnitAccessService;
 use App\Http\Requests\Admin\Media\StoreMediaRequest;
 use App\Models\Media;
 use App\Models\Unit;
@@ -129,11 +130,8 @@ class MediaPickerController extends Controller
             ->latest()
             ->paginate(24);
 
-        $units = Unit::query()
-            ->where(
-                'is_active',
-                true
-            )
+        $units = app(UnitAccessService::class)
+            ->forCurrentRoute(request()->user(), 'media')
             ->orderBy('name')
             ->get([
                 'id',

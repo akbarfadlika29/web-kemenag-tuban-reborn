@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Agenda;
 
 use App\Http\Controllers\Controller;
+use App\Services\Access\UnitAccessService;
 use App\Http\Requests\Admin\Agenda\StoreAgendaRequest;
 use App\Http\Requests\Admin\Agenda\UpdateAgendaRequest;
 use App\Models\Agenda;
@@ -483,11 +484,11 @@ class AgendaController extends Controller
 
     private function activeUnits()
     {
-        return Unit::query()
-            ->where(
-                'is_active',
-                true
-            )
+        $actor = request()->user();
+        abort_unless($actor, 401);
+
+        return app(UnitAccessService::class)
+            ->forCurrentRoute($actor, 'agendas')
             ->orderBy('sort_order')
             ->orderBy('name')
             ->get();

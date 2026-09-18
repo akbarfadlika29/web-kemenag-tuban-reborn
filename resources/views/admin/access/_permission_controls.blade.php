@@ -20,6 +20,9 @@
                         $permissionItem->slug,
                         strrpos($permissionItem->slug, '.') + 1
                     ),
+                    'allowed_scopes' => \App\Support\PermissionPolicy::allowedScopes(
+                        $permissionItem->slug
+                    ),
                 ];
             }
         }
@@ -149,7 +152,7 @@
                 if (!match) return;
 
                 const id = match[1];
-                const rule = limits[id] || {scope:null, action:''};
+                const rule = limits[id] || {scope:null, action:'', allowed_scopes:[]};
                 const row = select.closest('.role-permission');
                 const module = row.closest('.role-module');
                 const originalLabel = row.querySelector('label');
@@ -170,11 +173,17 @@
 
                 select.setAttribute('aria-label', 'Cakupan: ' + title);
 
-                const allowed = ['own_unit','all_units'].includes(rule.scope);
+                const policyScopes = Array.isArray(rule.allowed_scopes)
+                    ? rule.allowed_scopes
+                    : [];
+                const allowed =
+                    ['own_unit','all_units'].includes(rule.scope)
+                    && policyScopes.length > 0;
                 const originalScope = select.value;
                 const stale = originalScope !== 'none' && (
-                    !allowed ||
-                    (originalScope === 'all_units' && rule.scope !== 'all_units')
+                    !allowed
+                    || !policyScopes.includes(originalScope)
+                    || (originalScope === 'all_units' && rule.scope !== 'all_units')
                 );
 
                 // Cakupan yang sudah melampaui kewenangan perlu dipilih ulang.
@@ -194,10 +203,15 @@
 
                 Array.from(select.options).forEach(option => {
                     if (option.value === 'all_units') {
-                        option.disabled = rule.scope !== 'all_units';
+                        option.disabled =
+                            !allowed
+                            || !policyScopes.includes('all_units')
+                            || rule.scope !== 'all_units';
                     }
                     if (option.value === 'own_unit') {
-                        option.disabled = !allowed;
+                        option.disabled =
+                            !allowed
+                            || !policyScopes.includes('own_unit');
                     }
                 });
 
@@ -222,8 +236,9 @@
                     allowed,
                     limit: rule.scope,
                     action: rule.action,
+                    policyScopes,
                     lastScope: select.value === 'none'
-                        ? 'own_unit'
+                        ? (policyScopes.includes('own_unit') ? 'own_unit' : 'all_units')
                         : select.value
                 };
 
@@ -295,11 +310,16 @@
                 if (!entry.allowed) return;
 
                 if (checked) {
-                    entry.select.value =
-                        entry.lastScope === 'all_units' &&
-                        entry.limit === 'all_units'
-                            ? 'all_units'
-                            : 'own_unit';
+                    if (
+                        entry.policyScopes.includes(entry.lastScope)
+                        && (entry.lastScope !== 'all_units' || entry.limit === 'all_units')
+                    ) {
+                        entry.select.value = entry.lastScope;
+                    } else if (entry.policyScopes.includes('own_unit')) {
+                        entry.select.value = 'own_unit';
+                    } else {
+                        entry.select.value = 'all_units';
+                    }
                 } else {
                     if (entry.select.value !== 'none') {
                         entry.lastScope = entry.select.value;
@@ -387,8 +407,8 @@
                     if (!entry.allowed || !entry.checkbox.checked) return;
 
                     if (
-                        bulkScope.value === 'all_units' &&
-                        entry.limit !== 'all_units'
+                        !entry.policyScopes.includes(bulkScope.value)
+                        || (bulkScope.value === 'all_units' && entry.limit !== 'all_units')
                     ) {
                         skipped++;
                         return;

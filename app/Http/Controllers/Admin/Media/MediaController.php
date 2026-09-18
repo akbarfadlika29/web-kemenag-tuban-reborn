@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Media;
 
 use App\Http\Controllers\Controller;
+use App\Services\Access\UnitAccessService;
 use App\Http\Requests\Admin\Media\StoreMediaRequest;
 use App\Http\Requests\Admin\Media\UpdateMediaRequest;
 use App\Models\Media;
@@ -82,11 +83,8 @@ class MediaController extends Controller
             ->paginate(24)
             ->withQueryString();
 
-        $units = Unit::query()
-            ->where(
-                'is_active',
-                true
-            )
+        $units = app(UnitAccessService::class)
+            ->forCurrentRoute(request()->user(), 'media')
             ->orderBy('name')
             ->get();
 
@@ -104,11 +102,8 @@ class MediaController extends Controller
 
     public function create(): View
     {
-        $units = Unit::query()
-            ->where(
-                'is_active',
-                true
-            )
+        $units = app(UnitAccessService::class)
+            ->forCurrentRoute(request()->user(), 'media')
             ->orderBy('name')
             ->get();
 
@@ -153,11 +148,8 @@ class MediaController extends Controller
     public function edit(
         Media $medium
     ): View {
-        $units = Unit::query()
-            ->where(
-                'is_active',
-                true
-            )
+        $units = app(UnitAccessService::class)
+            ->forCurrentRoute(request()->user(), 'media')
             ->orderBy('name')
             ->get();
 

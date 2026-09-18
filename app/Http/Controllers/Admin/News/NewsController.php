@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\News;
 
 use App\Http\Controllers\Controller;
+use App\Services\Access\UnitAccessService;
 use App\Http\Requests\Admin\News\StoreNewsRequest;
 use App\Http\Requests\Admin\News\UpdateNewsRequest;
 use App\Models\Media;
@@ -506,8 +507,11 @@ class NewsController extends Controller
 
     private function activeUnits()
     {
-        return Unit::query()
-            ->where('is_active', true)
+        $actor = request()->user();
+        abort_unless($actor, 401);
+
+        return app(UnitAccessService::class)
+            ->forCurrentRoute($actor, 'news')
             ->orderBy('sort_order')
             ->orderBy('name')
             ->get();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Gallery;
 
 use App\Http\Controllers\Controller;
+use App\Services\Access\UnitAccessService;
 use App\Http\Requests\Admin\Gallery\StoreGalleryRequest;
 use App\Http\Requests\Admin\Gallery\UpdateGalleryRequest;
 use App\Models\Gallery;
@@ -443,17 +444,13 @@ class GalleryController extends Controller
 
     private function activeUnits()
     {
-        return Unit::query()
-            ->where(
-                'is_active',
-                true
-            )
-            ->orderBy(
-                'sort_order'
-            )
-            ->orderBy(
-                'name'
-            )
+        $actor = request()->user();
+        abort_unless($actor, 401);
+
+        return app(UnitAccessService::class)
+            ->forCurrentRoute($actor, 'galleries')
+            ->orderBy('sort_order')
+            ->orderBy('name')
             ->get();
     }
 
