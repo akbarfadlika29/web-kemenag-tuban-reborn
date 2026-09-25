@@ -4,138 +4,194 @@
 
 @section('content')
     <x-frontend.page-header class="services-header">
-    <x-slot:title>Layanan</x-slot:title>
-    <x-slot:description>Temukan informasi layanan publik
-                sesuai kebutuhan Anda.</x-slot:description>
-</x-frontend.page-header>
+        <x-slot:title>Layanan Publik</x-slot:title>
+        <x-slot:description>
+            Temukan layanan berdasarkan nama, kategori, dan kanal pelayanan.
+        </x-slot:description>
+    </x-frontend.page-header>
 
-    <section class="section">
+    <section class="section services-directory">
         <div class="container">
-            <form
-                method="GET"
-                action="{{ route('services.index') }}"
-                class="public-filter-bar"
-            >
-                <input
-                    type="search"
-                    name="search"
-                    value="{{ $search }}"
-                    placeholder="Cari layanan..."
-                >
+            <x-frontend.filter-panel label="Cari dan saring layanan publik">
+                <form method="GET"
+                      action="{{ route('services.index') }}"
+                      class="services-directory-filters">
+                    <label class="services-directory-search">
+                        Cari layanan
+                        <input type="search"
+                               name="search"
+                               value="{{ $search }}"
+                               maxlength="200"
+                               placeholder="Nama atau ringkasan layanan">
+                    </label>
 
-                <select name="category_id">
-                    <option value="">
-                        Semua Kategori
-                    </option>
+                    <label>
+                        Kategori
+                        <select name="category_id">
+                            <option value="">Semua kategori</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}"
+                                    @selected((string) $categoryId === (string) $category->id)>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </label>
 
-                    @foreach ($categories as $category)
-                        <option
-                            value="{{ $category->id }}"
-                            @selected(
-                                (string) $categoryId ===
-                                (string) $category->id
-                            )
-                        >
-                            {{ $category->name }}
-                        </option>
-                    @endforeach
-                </select>
+                    <label>
+                        Kanal
+                        <select name="channel">
+                            <option value="">Semua kanal</option>
+                            <option value="online"
+                                @selected($channel === 'online')>
+                                Online
+                            </option>
+                            <option value="offline"
+                                @selected($channel === 'offline')>
+                                Offline
+                            </option>
+                            <option value="hybrid"
+                                @selected($channel === 'hybrid')>
+                                Online & Offline
+                            </option>
+                        </select>
+                    </label>
 
-                <select name="channel">
-                    <option value="">
-                        Semua Kanal
-                    </option>
+                    <button type="submit" class="services-directory-apply">
+                        Terapkan
+                    </button>
 
-                    <option
-                        value="online"
-                        @selected($channel === 'online')
-                    >
-                        Online
-                    </option>
+                    <a href="{{ route('services.index') }}"
+                       class="services-directory-reset">
+                        Atur ulang
+                    </a>
+                </form>
+            </x-frontend.filter-panel>
 
-                    <option
-                        value="offline"
-                        @selected($channel === 'offline')
-                    >
-                        Offline
-                    </option>
-
-                    <option
-                        value="hybrid"
-                        @selected($channel === 'hybrid')
-                    >
-                        Online & Offline
-                    </option>
-                </select>
-
-                <button type="submit">
-                    Terapkan
-                </button>
-            </form>
-
-            <div class="service-directory-grid">
-                @forelse ($services as $service)
-                    <article class="service-directory-card">
-                        <div class="service-directory-icon">
-                            {{ strtoupper(
-                                mb_substr(
-                                    $service->title,
-                                    0,
-                                    1
-                                )
-                            ) }}
-                        </div>
-
-                        <span class="service-directory-category">
-                            {{ $service->category?->name ?? 'Layanan' }}
-                        </span>
-
-                        <h3>
-                            <a href="{{ route('services.show', $service->slug) }}">
-                                {{ $service->title }}
-                            </a>
-                        </h3>
-
-                        <p>
-                            {{ Str::limit(
-                                $service->excerpt
-                                    ?: strip_tags($service->description ?? ''),
-                                130
-                            ) }}
-                        </p>
-
-                        <div class="service-directory-meta">
-                            <span>
-                                {{ $service->service_channel_label }}
-                            </span>
-
-                            @if ($service->is_free)
-                                <span>Gratis</span>
-                            @endif
-                        </div>
-
-                        <a
-                            href="{{ route('services.show', $service->slug) }}"
-                            class="public-action-link"
-                        >
-                            Detail Layanan →
-                        </a>
-                    </article>
-                @empty
-                    <div class="empty-public-state">
-                        Belum ada layanan.
+            <div class="services-directory-panel">
+                <div class="services-directory-heading">
+                    <div>
+                        <h2>Daftar Layanan</h2>
+                        <p>Informasi layanan yang tersedia untuk masyarakat.</p>
                     </div>
-                @endforelse
-            </div>
 
-            {{ $services->links() }}
+                    <span class="services-directory-count">
+                        {{ number_format($services->total(), 0, ',', '.') }}
+                        layanan
+                    </span>
+                </div>
+
+                <p class="services-directory-scroll-hint">
+                    Geser tabel ke samping pada layar kecil untuk melihat
+                    seluruh informasi.
+                </p>
+
+                <x-frontend.table-scroll label="Daftar layanan publik">
+                    <table class="services-directory-table">
+                        <caption class="services-directory-caption">
+                            Daftar layanan publik
+                        </caption>
+
+                        <colgroup>
+                            <col style="width:31%">
+                            <col style="width:16%">
+                            <col style="width:18%">
+                            <col style="width:13%">
+                            <col style="width:12%">
+                            <col style="width:10%">
+                        </colgroup>
+
+                        <thead>
+                            <tr>
+                                <th scope="col">Layanan</th>
+                                <th scope="col">Kategori</th>
+                                <th scope="col">Unit Pengelola</th>
+                                <th scope="col">Kanal</th>
+                                <th scope="col">Biaya</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @forelse ($services as $service)
+                                <tr>
+                                    <th scope="row">
+                                        <a href="{{ route('services.show', $service->slug) }}"
+                                           class="services-directory-name">
+                                            {{ $service->title }}
+                                        </a>
+
+                                        @if ($service->excerpt || $service->description)
+                                            <span class="services-directory-excerpt">
+                                                {{ Str::limit(
+                                                    $service->excerpt
+                                                        ?: strip_tags($service->description ?? ''),
+                                                    110
+                                                ) }}
+                                            </span>
+                                        @endif
+                                    </th>
+
+                                    <td>
+                                        {{ $service->category?->name ?? '—' }}
+                                    </td>
+
+                                    <td>
+                                        {{ $service->unit?->name ?? '—' }}
+                                    </td>
+
+                                    <td>
+                                        <span class="services-directory-channel">
+                                            {{ $service->service_channel_label }}
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        @if ($service->is_free)
+                                            <span class="services-directory-free">
+                                                Gratis
+                                            </span>
+                                        @else
+                                            {{ $service->fee_description ?: 'Lihat rincian' }}
+                                        @endif
+                                    </td>
+
+                                    <td class="services-directory-action-cell">
+                                        <a href="{{ route('services.show', $service->slug) }}"
+                                           class="services-directory-view"
+                                           aria-label="Lihat layanan {{ $service->title }}">
+                                            Lihat
+                                        </a>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="6" class="services-directory-empty">
+                                        Tidak ada layanan yang sesuai dengan filter Anda.
+                                    </td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </x-frontend.table-scroll>
+
+                <div class="services-directory-footer">
+                    <p>
+                        Menampilkan {{ $services->firstItem() ?? 0 }}–{{ $services->lastItem() ?? 0 }}
+                        dari {{ number_format($services->total(), 0, ',', '.') }}
+                        layanan
+                    </p>
+
+                    @if ($services->hasPages())
+                        {{ $services->links() }}
+                    @endif
+                </div>
+            </div>
         </div>
     </section>
 @endsection
 
-@push('styles')
-    <link
-        rel="stylesheet"
-        href="{{ asset('css/frontend/pages/services.css') }}?v={{ filemtime(public_path('css/frontend/pages/services.css')) }}"
-    >
+@push('page-styles')
+    <link rel="stylesheet"
+          href="{{ asset('css/frontend/pages/services-directory-table.css') }}?v={{ filemtime(public_path('css/frontend/pages/services-directory-table.css')) }}">
 @endpush

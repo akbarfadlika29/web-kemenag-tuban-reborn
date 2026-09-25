@@ -89,7 +89,9 @@ class NewsController extends Controller
                 $status !== '',
                 fn ($query) =>
                     $query->where(
-                        'status',
+                        in_array($status, ['submitted', 'rejected'], true)
+                            ? 'editorial_state'
+                            : 'status',
                         $status
                     )
             )
@@ -221,7 +223,14 @@ class NewsController extends Controller
                 app(\App\Services\Access\NewsWriteAccess::class)
                     ->check('create', null, $data);
 
+                $workflow = app(\App\Services\Access\NewsEditorialService::class);
+                $data = $workflow->prepareWrite(request()->user(), null, $data);
                 $news = News::create($data);
+                $workflow->record(
+                    $news,
+                    request()->user(),
+                    $news->status === 'published' ? 'publish' : 'create'
+                );
 
                 $news->tags()->sync(
                     $tagIds
@@ -239,6 +248,13 @@ class NewsController extends Controller
 
     public function edit(News $news): View
     {
+        abort_unless(
+            app(\App\Services\Access\NewsEditorialPolicy::class)
+                ->canWrite(request()->user(), $news),
+            403,
+            'Berita tidak dapat Anda ubah pada status ini.'
+        );
+
         $news->load([
             'tags',
             'coverMedia',
@@ -322,7 +338,17 @@ class NewsController extends Controller
                 app(\App\Services\Access\NewsWriteAccess::class)
                     ->check('update', $news, $data);
 
+                $workflow = app(\App\Services\Access\NewsEditorialService::class);
+                $previousStatus = $news->status;
+                $data = $workflow->prepareWrite(request()->user(), $news, $data);
                 $news->update($data);
+                $workflow->record(
+                    $news,
+                    request()->user(),
+                    $news->status === 'published'
+                        ? 'publish'
+                        : ($previousStatus === 'published' ? 'unpublish' : 'update')
+                );
 
                 $news->tags()->sync(
                     $tagIds

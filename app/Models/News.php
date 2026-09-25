@@ -13,6 +13,10 @@ class News extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'editorial_state',
+        'editorial_version',
+        'revision_required',
+        'rejection_reason',
         'wordpress_post_id',
         'unit_id',
         'category_id',
@@ -36,6 +40,8 @@ class News extends Model
             'published_at' => 'datetime',
             'is_featured' => 'boolean',
             'view_count' => 'integer',
+            'editorial_version' => 'integer',
+            'revision_required' => 'boolean',
         ];
     }
 

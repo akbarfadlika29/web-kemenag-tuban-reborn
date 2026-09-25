@@ -42,6 +42,22 @@
         );
 @endphp
 @csrf
+@if (isset($news))
+    <input type="hidden" name="editorial_version"
+           value="{{ old('editorial_version', $news->editorial_version) }}">
+    <div class="ui-card ui-card-body" style="margin-bottom:18px">
+        <a class="ui-btn ui-btn-secondary ui-btn-md"
+           href="{{ route('admin.news.editorial', $news) }}">
+            Pengajuan dan Riwayat
+        </a>
+        @if ($news->rejection_reason)
+            <p><strong>Alasan penolakan:</strong></p>
+            <p style="white-space:pre-wrap;overflow-wrap:anywhere">{{ $news->rejection_reason }}</p>
+        @endif
+    </div>
+@else
+    <p>Simpan berita terlebih dahulu, lalu gunakan tombol Pengajuan pada daftar berita.</p>
+@endif
 
 @php
     $selectedTagIds = old(
@@ -348,7 +364,11 @@
                         </option>
 @endif
 
-                        @if ($newsCanWithdraw)
+                        @if ($newsCanWithdraw && $newsPermissionActor && (
+                            $newsPermissionService->allowsUnit(
+                                $newsPermissionActor, 'news.review', $newsPermissionUnit
+                            ) || $newsCanPublish
+                        ))
 <option
                             value="archived"
                             @selected(
@@ -808,5 +828,5 @@
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 
-    <script src="{{ asset('js/admin/pages/news-editor.js') }}"></script>
+    <script src="{{ asset('js/admin/pages/news-editor.js') }}?v={{ filemtime(public_path('js/admin/pages/news-editor.js')) }}"></script>
 @endpush

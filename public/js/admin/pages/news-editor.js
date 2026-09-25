@@ -2,12 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const root =
         document.querySelector('[data-news-editor]');
 
-    if (
-        !root
-        || typeof Quill === 'undefined'
-    ) {
-        return;
-    }
+    if (!root) return;
 
     const form =
         root.closest('form');
@@ -20,17 +15,81 @@ document.addEventListener('DOMContentLoaded', function () {
             '[data-content-editor]'
         );
 
-    const contentEditor =
-        window.AdminContentEditor
-            ?.get(contentEditorRoot);
+    // NEWS_EDITOR_MEDIA_INDEPENDENT_V1
+    let editorWarningShown = false;
 
-    if (!contentEditor) {
-        console.error(
-            'Global Content Editor News gagal diinisialisasi.'
-        );
-
-        return;
+    function getNewsEditor() {
+        try {
+            return window.AdminContentEditor?.get(contentEditorRoot) || null;
+        } catch (error) {
+            if (!editorWarningShown) {
+                console.error('Editor berita belum siap.', error);
+            }
+            editorWarningShown = true;
+            return null;
+        }
     }
+
+    function showEditorMessage() {
+        let notice = root.querySelector('[data-news-editor-error]');
+
+        if (!notice) {
+            notice = document.createElement('p');
+            notice.dataset.newsEditorError = 'true';
+            notice.setAttribute('role', 'alert');
+            notice.setAttribute('tabindex', '-1');
+            notice.style.cssText =
+                'padding:12px;border:1px solid #e5b9b9;border-radius:8px;' +
+                'color:#8a2929;background:#fff6f6';
+            root.prepend(notice);
+        }
+
+        notice.textContent =
+            'Editor isi berita belum siap. Pastikan koneksi tersedia, ' +
+            'lalu muat ulang halaman setelah menyalin perubahan yang belum tersimpan. ' +
+            'Pemilih gambar tetap dapat digunakan.';
+
+        notice.focus();
+        notice.scrollIntoView({block: 'center'});
+    }
+
+    const contentEditor = {
+        getText() {
+            const editor = getNewsEditor();
+            if (editor) return editor.getText();
+
+            const parsed = new DOMParser().parseFromString(
+                contentInput?.value || '',
+                'text/html'
+            );
+
+            return parsed.body.textContent || '';
+        },
+
+        sync() {
+            const editor = getNewsEditor();
+
+            if (!editor) {
+                showEditorMessage();
+                return false;
+            }
+
+            editor.sync();
+            root.querySelector('[data-news-editor-error]')?.remove();
+            return true;
+        },
+
+        insertImage(media) {
+            const editor = getNewsEditor();
+
+            if (!editor) {
+                showEditorMessage();
+                return;
+            }
+
+            editor.insertImage(media);
+        },
+    };
 
     const titleInput =
         document.getElementById('title');
@@ -182,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function () {
      * =====================================================
      */
 
-    contentEditorRoot.addEventListener(
+    contentEditorRoot?.addEventListener(
         'content-editor:request-image',
         function () {
             openMediaPicker(
@@ -652,7 +711,7 @@ document.addEventListener('DOMContentLoaded', function () {
      * =====================================================
      */
 
-    contentEditorRoot.addEventListener(
+    contentEditorRoot?.addEventListener(
         'content-editor:change',
         function () {
             dirty = true;
@@ -809,16 +868,12 @@ document.addEventListener('DOMContentLoaded', function () {
          * Gunakan handler media existing agar
          * preview cover dan Quill tetap konsisten.
          */
-        mediaGrid.innerHTML = '';
-
-        renderMedia(media);
-
-        const item =
-            mediaGrid.lastElementChild;
-
-        item?.click();
-
-        mediaGrid.innerHTML = '';
+        // NEWS_MEDIA_SELECTION_FIX_V1
+        if (mode === 'cover') {
+            setCover(media);
+        } else {
+            insertMediaIntoEditor(media);
+        }
     }
 
     coverPickerButton?.addEventListener(
@@ -1279,8 +1334,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     form?.addEventListener(
         'submit',
-        function () {
-            contentEditor.sync();
+        function (event) {
+            if (!contentEditor.sync()) {
+                event.preventDefault();
+                return;
+            }
 
             dirty = false;
         }

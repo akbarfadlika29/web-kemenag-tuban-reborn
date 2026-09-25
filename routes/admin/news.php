@@ -30,3 +30,19 @@ Route::resource(
 )->except([
     'show',
 ]);
+
+Route::get('news/{news}/editorial', [
+    \App\Http\Controllers\Admin\News\NewsEditorialController::class, 'show',
+])->name('news.editorial');
+
+Route::post('news/{news}/submit', [
+    \App\Http\Controllers\Admin\News\NewsEditorialController::class, 'submit',
+])->name('news.submit');
+
+Route::post('news/{news}/reject', [
+    \App\Http\Controllers\Admin\News\NewsEditorialController::class, 'reject',
+])->name('news.reject');
+
+Route::post('news/{news}/publish', [
+    \App\Http\Controllers\Admin\News\NewsEditorialController::class, 'publish',
+])->name('news.publish');
