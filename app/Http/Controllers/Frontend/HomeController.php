@@ -71,6 +71,11 @@ class HomeController extends Controller
             PpidInformation::query()
                 ->published()
                 ->where('access_level', 'public')
+                ->with([
+                    'category',
+                    'unit',
+                    'primaryDocument.media',
+                ])
                 ->orderByDesc('is_featured')
                 ->orderByDesc('published_at')
                 ->limit(6)

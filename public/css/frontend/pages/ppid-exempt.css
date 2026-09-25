@@ -1,0 +1,59 @@
+/* Halaman daftar SK; menggunakan tombol dan filter PPID bersama. */
+body.ppid-public .ppid-exempt-directory .ppid-directory-scroll > table {
+    width: 100%;
+    min-width: 640px;
+    table-layout: fixed;
+}
+
+body.ppid-public .ppid-exempt-directory .ppid-directory-scroll > table :is(th, td) {
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: none;
+    padding: 16px;
+    vertical-align: top;
+    text-align: left;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+body.ppid-public .ppid-exempt-directory .ppid-directory-scroll > table tr > :nth-child(2),
+body.ppid-public .ppid-exempt-directory .ppid-directory-scroll > table tr > :last-child {
+    text-align: center;
+    padding-inline: 8px;
+}
+
+body.ppid-public .ppid-exempt-directory .ppid-directory-document {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 60px;
+    min-height: 40px;
+    padding: 8px 12px;
+    border: 1px solid var(--experience-accent, #247052);
+    border-radius: 8px;
+    background: var(--experience-accent, #247052);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+body.ppid-public .ppid-exempt-directory .ppid-directory-document:hover {
+    background: var(--experience-hover, #1d5b43);
+    border-color: var(--experience-hover, #1d5b43);
+}
+
+body.ppid-public .ppid-exempt-empty-document {
+    color: var(--front-muted, #607267);
+    font-size: 12px;
+}
+
+@media (max-width: 600px) {
+    body.ppid-public .ppid-exempt-directory .ppid-directory-document {
+        min-height: 44px;
+    }
+}

@@ -42,7 +42,11 @@ class SearchController extends Controller
             $ppidInformations = PpidInformation::query()
                 ->published()
                 ->where('access_level', 'public')
-                ->whereLike('title', $pattern)
+                ->where(
+                    'title',
+                    'ILIKE',
+                    '%' . $search . '%'
+                )
                 ->orderByDesc('published_at')
                 ->limit(6)
                 ->get();

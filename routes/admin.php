@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-require __DIR__.'/admin/auth.php';
+require __DIR__.'/modules/auth.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -28,24 +28,24 @@ Route::middleware([
     \App\Http\Middleware\EnsureAdminMediaAccess::class,
     \App\Http\Middleware\EnsureUserManagementAccess::class,
 ])->group(function () {
-    require __DIR__.'/admin/regulations.php';
+    require __DIR__.'/modules/regulations.php';
 
-    require __DIR__.'/admin/dashboard.php';
-    require __DIR__.'/admin/units.php';
-    require __DIR__.'/admin/media.php';
-    require __DIR__.'/admin/news.php';
-    require __DIR__.'/admin/pages.php';
-    require __DIR__.'/admin/announcements.php';
-    require __DIR__.'/admin/agendas.php';
-    require __DIR__.'/admin/galleries.php';
-    require __DIR__.'/admin/ppid.php';
-    require __DIR__.'/admin/services.php';
-    require __DIR__.'/admin/users.php';
-    require __DIR__.'/admin/access.php';
-    require __DIR__.'/admin/menus.php';
-    require __DIR__.'/admin/quick-links.php';
-    require __DIR__.'/admin/hero-slides.php';
-    require __DIR__.'/admin/related-links.php';
-    require __DIR__.'/admin/settings.php';
-    require __DIR__.'/admin/frontend-experience.php';
+    require __DIR__.'/modules/dashboard.php';
+    require __DIR__.'/modules/units.php';
+    require __DIR__.'/modules/media.php';
+    require __DIR__.'/modules/news.php';
+    require __DIR__.'/modules/pages.php';
+    require __DIR__.'/modules/announcements.php';
+    require __DIR__.'/modules/agendas.php';
+    require __DIR__.'/modules/galleries.php';
+    require __DIR__.'/modules/ppid.php';
+    require __DIR__.'/modules/services.php';
+    require __DIR__.'/modules/users.php';
+    require __DIR__.'/modules/access.php';
+    require __DIR__.'/modules/menus.php';
+    require __DIR__.'/modules/quick-links.php';
+    require __DIR__.'/modules/hero-slides.php';
+    require __DIR__.'/modules/related-links.php';
+    require __DIR__.'/modules/settings.php';
+    require __DIR__.'/modules/frontend-experience.php';
 });
