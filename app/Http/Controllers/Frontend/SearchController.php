@@ -15,12 +15,7 @@ class SearchController extends Controller
 {
     public function index(Request $request): View
     {
-        $search = trim(
-            (string) $request->input(
-                'search',
-                ''
-            )
-        );
+        $search = trim((string) $request->input('search', ''));
 
         $news = new Collection();
         $announcements = new Collection();
@@ -28,24 +23,18 @@ class SearchController extends Controller
         $services = new Collection();
 
         if ($search !== '') {
+            $pattern = '%' . $search . '%';
+
             $news = News::query()
                 ->published()
-                ->where(
-                    'title',
-                    'ILIKE',
-                    '%' . $search . '%'
-                )
+                ->whereLike('title', $pattern)
                 ->orderByDesc('published_at')
                 ->limit(6)
                 ->get();
 
             $announcements = Announcement::query()
                 ->published()
-                ->where(
-                    'title',
-                    'ILIKE',
-                    '%' . $search . '%'
-                )
+                ->whereLike('title', $pattern)
                 ->orderByDesc('published_at')
                 ->limit(6)
                 ->get();
@@ -53,22 +42,14 @@ class SearchController extends Controller
             $ppidInformations = PpidInformation::query()
                 ->published()
                 ->where('access_level', 'public')
-                ->where(
-                    'title',
-                    'ILIKE',
-                    '%' . $search . '%'
-                )
+                ->whereLike('title', $pattern)
                 ->orderByDesc('published_at')
                 ->limit(6)
                 ->get();
 
             $services = Service::query()
                 ->published()
-                ->where(
-                    'title',
-                    'ILIKE',
-                    '%' . $search . '%'
-                )
+                ->whereLike('title', $pattern)
                 ->orderByDesc('published_at')
                 ->limit(6)
                 ->get();
