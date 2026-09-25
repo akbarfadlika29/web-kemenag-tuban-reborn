@@ -1,0 +1,248 @@
+/* =========================================================
+   HOME DIRECTORY
+   Tabel/list ringkas untuk Layanan Publik dan Informasi PPID.
+   Namespace sengaja spesifik agar tidak berbenturan dengan
+   card/list di halaman indeks modul lain.
+   ========================================================= */
+
+.home-directory {
+    overflow: hidden;
+    border: 1px solid var(--front-border, #dce6df);
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+.home-directory-row {
+    display: grid;
+    min-width: 0;
+    align-items: center;
+    column-gap: 16px;
+}
+
+.home-directory-row-service,
+.home-directory-row-ppid {
+    grid-template-columns:
+        44px
+        minmax(220px, 1fr)
+        minmax(112px, 0.42fr)
+        minmax(82px, 0.26fr)
+        72px;
+}
+
+.home-directory-head {
+    min-height: 44px;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--front-border, #dce6df);
+    background: #f2f7f3;
+    color: #496255;
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: .055em;
+    text-transform: uppercase;
+}
+
+.home-directory-action-head {
+    text-align: right;
+}
+
+.home-directory-body > .home-directory-row {
+    min-height: 82px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #e8eeea;
+    transition: background-color 160ms ease;
+}
+
+.home-directory-body > .home-directory-row:last-child {
+    border-bottom: 0;
+}
+
+@media (hover: hover) {
+    .home-directory-body > .home-directory-row:hover {
+        background: #f8fbf9;
+    }
+}
+
+.home-directory-number {
+    color: #8a9c91;
+    font-size: 12px;
+    font-weight: 750;
+    font-variant-numeric: tabular-nums;
+}
+
+.home-directory-primary {
+    min-width: 0;
+}
+
+.home-directory-primary h3 {
+    margin: 0;
+    color: var(--front-title, #293d32);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.home-directory-primary h3 a {
+    color: inherit;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.home-directory-primary h3 a:hover {
+    color: var(--experience-accent, #247052);
+}
+
+.home-directory-primary p {
+    display: -webkit-box;
+    overflow: hidden;
+    margin: 5px 0 0;
+    color: var(--front-muted, #607267);
+    font-size: 12px;
+    line-height: 1.55;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.home-directory-cell {
+    min-width: 0;
+}
+
+.home-directory-badge {
+    max-width: 100%;
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 9px;
+    border: 1px solid #d8e8dd;
+    border-radius: 999px;
+    background: #f0f7f2;
+    color: #346148;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.home-directory-muted {
+    color: #63776a;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.home-directory-action {
+    text-align: right;
+}
+
+.home-directory-action a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    color: var(--experience-accent, #247052);
+    font-size: 12px;
+    font-weight: 750;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.home-directory-action a:hover {
+    color: var(--experience-hover, #1d5b43);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.home-directory-action a:focus-visible,
+.home-directory-primary a:focus-visible {
+    border-radius: 4px;
+    outline: 3px solid var(--experience-accent, #247052);
+    outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+    .home-directory {
+        overflow: visible;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+    }
+
+    .home-directory-head {
+        display: none;
+    }
+
+    .home-directory-body {
+        display: grid;
+        gap: 10px;
+    }
+
+    .home-directory-body > .home-directory-row,
+    .home-directory-row-service,
+    .home-directory-row-ppid {
+        grid-template-columns: 34px minmax(0, 1fr) auto;
+    }
+
+    .home-directory-body > .home-directory-row {
+        min-height: 0;
+        row-gap: 10px;
+        padding: 14px;
+        border: 1px solid var(--front-border, #dce6df);
+        border-radius: 11px;
+        background: #ffffff;
+    }
+
+    .home-directory-number {
+        grid-column: 1;
+        grid-row: 1 / span 3;
+        align-self: start;
+        padding-top: 2px;
+    }
+
+    .home-directory-primary {
+        grid-column: 2 / -1;
+        grid-row: 1;
+    }
+
+    .home-directory-cell {
+        grid-column: 2;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .home-directory-cell::before {
+        min-width: 66px;
+        color: #89988f;
+        content: attr(data-label);
+        font-size: 10px;
+        font-weight: 750;
+        letter-spacing: .045em;
+        text-transform: uppercase;
+    }
+
+    .home-directory-action {
+        grid-column: 3;
+        align-self: end;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-directory-body > .home-directory-row,
+    .home-directory-row-service,
+    .home-directory-row-ppid {
+        grid-template-columns: 28px minmax(0, 1fr);
+    }
+
+    .home-directory-primary,
+    .home-directory-cell,
+    .home-directory-action {
+        grid-column: 2;
+    }
+
+    .home-directory-action {
+        justify-self: start;
+        text-align: left;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-directory-body > .home-directory-row {
+        transition: none;
+    }
+}

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\Access\AccessService;
 use App\Support\PermissionCatalog;
+use App\Support\PermissionPolicy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
@@ -176,7 +177,15 @@ class AccessRoleController extends Controller
                     'Permission tidak dikenal.'
                 );
 
-                if ($scope === 'none') continue;
+                if ($scope === 'none') {
+                    continue;
+                }
+
+                $this->valid(
+                    PermissionPolicy::scopeAllowed($permission->slug, $scope),
+                    'scopes',
+                    'Scope '.$permission->name.' tidak sesuai jenis resource.'
+                );
 
                 $limit = $this->access->scope($owner, $permission->slug, true);
 

@@ -493,5 +493,5 @@
 @endpush
 
 @push('scripts')
-    <script src="{{ asset('js/modules/settings.js') }}"></script>
+    <script src="{{ asset('js/admin/pages/settings.js') }}"></script>
 @endpush

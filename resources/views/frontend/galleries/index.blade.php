@@ -63,3 +63,10 @@
         </div>
     </section>
 @endsection
+
+@push('styles')
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/frontend/pages/galleries.css') }}?v={{ filemtime(public_path('css/frontend/pages/galleries.css')) }}"
+    >
+@endpush

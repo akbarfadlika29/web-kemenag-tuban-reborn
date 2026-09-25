@@ -1,0 +1,405 @@
+/* Tampilan khusus detail Layanan Publik. */
+body.ppid-public .service-detail-page {
+    padding-block: 30px 64px;
+    background: var(--public-soft-background, #f2f6f3);
+}
+
+.service-detail-page .service-detail-heading {
+    margin: 0 0 24px;
+}
+
+.service-detail-page .service-detail-category {
+    display: inline-flex;
+    padding: 6px 12px;
+    border: 1px solid #d6e8db;
+    border-radius: 999px;
+    background: #edf6ef;
+    color: var(--experience-hover, #1d5b43);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.service-detail-page .service-detail-heading h1 {
+    max-width: 900px;
+    margin: 14px 0 5px;
+    color: var(--front-title, #293d32);
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.service-detail-page .service-detail-heading p {
+    margin: 0;
+    color: var(--front-muted, #607267);
+    font-size: 14px;
+}
+
+.service-detail-page .service-detail-cover {
+    display: block;
+    width: 100%;
+    max-height: 380px;
+    margin-bottom: 22px;
+    border-radius: 16px;
+    object-fit: cover;
+}
+
+.service-detail-page .service-detail-sections {
+    overflow: hidden;
+    border: 1px solid #dfe9e2;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 26px rgb(39 72 48 / 5%);
+}
+
+.service-detail-page .service-detail-section {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 18px;
+    padding: 25px 28px;
+}
+
+.service-detail-page .service-detail-section + .service-detail-section {
+    border-top: 1px solid #e9efeb;
+}
+
+.service-detail-page .service-detail-number {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+    background: #edf6ef;
+    color: var(--experience-hover, #1d5b43);
+    font-size: 13px;
+    font-weight: 750;
+}
+
+.service-detail-page .service-detail-section h2 {
+    margin: 2px 0 10px;
+    color: #294634;
+    font-size: 19px;
+    line-height: 1.45;
+}
+
+.service-detail-page .service-detail-value {
+    color: #405647;
+    font-size: 15px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.service-detail-page .service-detail-value p {
+    margin: 0 0 6px;
+}
+
+.service-detail-page .service-detail-value p:last-child {
+    margin-bottom: 0;
+}
+
+.service-detail-page .service-detail-empty {
+    color: #738279;
+}
+
+.service-detail-page .service-detail-free {
+    display: inline-flex;
+    padding: 4px 11px;
+    border-radius: 8px;
+    background: #edf6ef;
+    color: #206344;
+    font-weight: 700;
+}
+
+.service-detail-page .service-detail-contacts {
+    display: grid;
+    gap: 6px;
+    margin: 0;
+}
+
+.service-detail-page .service-detail-contacts > div {
+    display: grid;
+    grid-template-columns: 95px minmax(0, 1fr);
+    gap: 10px;
+}
+
+.service-detail-page .service-detail-contacts dt {
+    color: #687b6e;
+}
+
+.service-detail-page .service-detail-contacts dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.service-detail-page .service-detail-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 20px;
+    padding: 20px 24px;
+    border: 1px solid #d8e8dc;
+    border-radius: 14px;
+    background: #f8fcf9;
+}
+
+.service-detail-page .service-detail-action > div {
+    display: grid;
+    gap: 3px;
+    color: #2b4936;
+}
+
+.service-detail-page .service-detail-action span {
+    color: #66776b;
+    font-size: 13px;
+}
+
+.service-detail-page .service-detail-action .button span {
+    color: inherit;
+}
+
+.service-detail-page .service-detail-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 22px;
+    color: var(--experience-hover, #1d5b43);
+    font-size: 14px;
+    font-weight: 650;
+    text-decoration: none;
+}
+
+.service-detail-page .service-detail-back:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+    body.ppid-public .service-detail-page {
+        padding-block: 22px 44px;
+    }
+
+    .service-detail-page .service-detail-section {
+        grid-template-columns: 34px minmax(0, 1fr);
+        gap: 12px;
+        padding: 19px 16px;
+    }
+
+    .service-detail-page .service-detail-number {
+        width: 34px;
+        height: 34px;
+        font-size: 12px;
+    }
+
+    .service-detail-page .service-detail-section h2 {
+        font-size: 17px;
+    }
+
+    .service-detail-page .service-detail-contacts > div {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+    }
+
+    .service-detail-page .service-detail-action {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 18px;
+    }
+
+    .service-detail-page .service-detail-action .button {
+        width: 100%;
+    }
+}
+
+/* SERVICE DETAIL SPACING START */
+body.ppid-public .service-detail-page {
+    padding-block: 28px 48px;
+}
+
+.service-detail-page .service-detail-heading {
+    margin-bottom: 24px;
+}
+
+.service-detail-page .service-detail-heading h1 {
+    max-width: 100%;
+    margin: 12px 0 8px;
+    font-size: clamp(26px, 3vw, 34px);
+    line-height: 1.35;
+    letter-spacing: -.02em;
+}
+
+.service-detail-page .service-detail-heading p {
+    line-height: 1.7;
+}
+
+.service-detail-page .service-detail-sections {
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgb(39 72 48 / 4%);
+}
+
+.service-detail-page .service-detail-section {
+    grid-template-columns: 36px minmax(0, 1fr);
+    align-items: start;
+    gap: 16px;
+    padding: 24px;
+}
+
+.service-detail-page .service-detail-section > div {
+    min-width: 0;
+}
+
+.service-detail-page .service-detail-number {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--front-border, #dfe7e2);
+    border-radius: 10px;
+    background: var(--experience-soft, #eff5f2);
+    color: var(--experience-accent, #247052);
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.service-detail-page .service-detail-section h2 {
+    margin: 3px 0 10px;
+    color: var(--front-title, #293d32);
+    font-size: 18px;
+    font-weight: 650;
+    line-height: 1.5;
+}
+
+.service-detail-page .service-detail-value {
+    max-width: 85ch;
+    font-size: 15px;
+    line-height: 1.85;
+    overflow-wrap: anywhere;
+}
+
+.service-detail-page .service-detail-value p {
+    margin: 0 0 8px;
+}
+
+.service-detail-page .service-detail-value p:last-child {
+    margin-bottom: 0;
+}
+
+.service-detail-page .service-detail-value strong {
+    font-weight: 600;
+}
+
+.service-detail-page .service-detail-empty {
+    color: var(--front-muted, #607267);
+}
+
+.service-detail-page .service-detail-contacts {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+}
+
+.service-detail-page .service-detail-contacts > div {
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr);
+    align-items: baseline;
+    gap: 14px;
+}
+
+.service-detail-page .service-detail-contacts dt,
+.service-detail-page .service-detail-contacts dd {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.service-detail-page .service-detail-contacts dt {
+    color: var(--front-muted, #607267);
+}
+
+.service-detail-page .service-detail-action {
+    margin-top: 20px;
+    padding: 20px 24px;
+    gap: 18px;
+    border-radius: 12px;
+    background: var(--experience-soft, #eff5f2);
+}
+
+.service-detail-page .service-detail-action strong {
+    font-size: 15px;
+    font-weight: 650;
+    line-height: 1.6;
+}
+
+.service-detail-page .service-detail-action > div > span {
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.service-detail-page .service-detail-action .button {
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.service-detail-page .service-detail-back {
+    box-sizing: border-box;
+    min-height: 44px;
+    margin-top: 20px;
+    padding: 10px 16px;
+    border: 1px solid var(--front-border, #dfe7e2);
+    border-radius: 9px;
+    background: #fff;
+    color: var(--experience-accent, #247052);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration: none;
+}
+
+.service-detail-page .service-detail-back:hover {
+    background: var(--experience-soft, #eff5f2);
+    color: var(--experience-hover, #1d5b43);
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    body.ppid-public .service-detail-page {
+        padding-block: 20px 36px;
+    }
+
+    .service-detail-page .service-detail-section {
+        grid-template-columns: 30px minmax(0, 1fr);
+        gap: 12px;
+        padding: 20px 16px;
+    }
+
+    .service-detail-page .service-detail-number {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+        font-size: 11px;
+    }
+
+    .service-detail-page .service-detail-section h2 {
+        margin-top: 1px;
+        font-size: 17px;
+    }
+
+    .service-detail-page .service-detail-contacts > div {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2px;
+    }
+
+    .service-detail-page .service-detail-contacts dt {
+        font-size: 13px;
+    }
+
+    .service-detail-page .service-detail-action {
+        padding: 18px;
+    }
+
+    .service-detail-page .service-detail-back {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}
+/* SERVICE DETAIL SPACING END */

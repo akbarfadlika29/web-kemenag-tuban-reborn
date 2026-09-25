@@ -18,7 +18,7 @@
 @push('styles')
 <link
     rel="stylesheet"
-    href="{{ asset('css/frontend/page-interactions.css') }}?v={{ filemtime(public_path('css/frontend/page-interactions.css')) }}"
+    href="{{ asset('css/frontend/components/page-interactions.css') }}?v={{ filemtime(public_path('css/frontend/components/page-interactions.css')) }}"
 >
 @endpush
 
@@ -92,7 +92,7 @@
 
 @push('scripts')
 <script
-    src="{{ asset('js/frontend/page-interactions.js') }}?v={{ filemtime(public_path('js/frontend/page-interactions.js')) }}"
+    src="{{ asset('js/frontend/components/page-interactions.js') }}?v={{ filemtime(public_path('js/frontend/components/page-interactions.js')) }}"
     defer
 ></script>
 @endpush

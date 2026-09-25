@@ -29,6 +29,14 @@ class NewsWriteAccess
 
         abort_unless($actor->is_active, 403, 'Akun tidak aktif.');
 
+        if ($record) {
+            abort_unless(
+                app(NewsEditorialPolicy::class)->canWrite($actor, $record, $action),
+                403,
+                'Berita terkunci, bukan milik Anda, atau izin tidak mencukupi.'
+            );
+        }
+
         $permission = 'news.'.$action;
 
         if ($action !== 'create') {

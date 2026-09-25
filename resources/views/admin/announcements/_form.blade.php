@@ -622,5 +622,5 @@
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 
-    <script src="{{ asset('js/modules/announcement-editor.js') }}"></script>
+    <script src="{{ asset('js/admin/pages/announcement-editor.js') }}"></script>
 @endpush

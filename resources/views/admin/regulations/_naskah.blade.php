@@ -51,5 +51,5 @@
 </section>
 
 @push('scripts')
-<script src="{{ asset('js/admin/regulation-naskah.js') }}?v={{ filemtime(public_path('js/admin/regulation-naskah.js')) }}"></script>
+<script src="{{ asset('js/admin/pages/regulation-naskah.js') }}?v={{ filemtime(public_path('js/admin/pages/regulation-naskah.js')) }}"></script>
 @endpush

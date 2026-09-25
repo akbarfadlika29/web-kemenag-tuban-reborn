@@ -592,5 +592,5 @@
 @endpush
 
 @push('scripts')
-    <script src="{{ asset('js/modules/service-editor.js') }}"></script>
+    <script src="{{ asset('js/admin/pages/service-editor.js') }}"></script>
 @endpush

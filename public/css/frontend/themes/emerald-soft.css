@@ -75,7 +75,6 @@ body.ppid-soft :is(
 body.ppid-soft :is(
     .public-card-meta,
     .public-detail-meta,
-    .news-public-date,
     .news-card-unit,
     .dip-summary,
     .dip-table-summary,
@@ -155,8 +154,7 @@ body.ppid-soft :is(
     .dip-tab,
     .news-main-tabs a,
     .public-tabs a,
-    .news-category-tabs a,
-    .home-news-nav-items a
+    .news-category-tabs a
 ) {
     background: #ffffff;
     border-color: #dfe7e2;
@@ -167,8 +165,7 @@ body.ppid-soft :is(
     .dip-tab.is-active,
     .news-main-tabs a.active,
     .public-tabs a.active,
-    .news-category-tabs a.active,
-    .home-news-nav-items a.active
+    .news-category-tabs a.active
 ) {
     background: var(--experience-soft, #eff5f2);
     border-color: #aac6b6;
@@ -278,10 +275,6 @@ body.ppid-soft :is(.public-page-header, .dip-page) {
 
 body.ppid-soft :is(
     .public-content-card,
-    .news-public-card,
-    .kemenag-news-card,
-    .service-public-card,
-    .ppid-public-card,
     .gallery-public-card,
     .reg-public-card,
     .service-info-card,
@@ -297,8 +290,6 @@ body.ppid-soft :is(
 }
 
 body.ppid-soft :is(
-    .news-public-card,
-    .service-public-card,
     .gallery-public-card,
     .reg-public-card,
     .public-related-card
@@ -310,8 +301,6 @@ body.ppid-soft :is(
 
 @media (hover: hover) {
     body.ppid-soft :is(
-        .news-public-card,
-        .service-public-card,
         .gallery-public-card,
         .reg-public-card,
         .public-related-card
@@ -386,8 +375,6 @@ body.ppid-soft .ppid-pager .ppid-pager-item {
 
 @media (prefers-reduced-motion: reduce) {
     body.ppid-soft :is(
-        .news-public-card,
-        .service-public-card,
         .gallery-public-card,
         .reg-public-card,
         .public-related-card

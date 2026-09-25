@@ -73,3 +73,16 @@
     font-size: 12px;
     font-weight: 600;
 }
+
+/* Responsive card grid */
+@media (max-width: 1050px) {
+    .public-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 760px) {
+    .public-card-grid {
+        grid-template-columns: 1fr;
+    }
+}

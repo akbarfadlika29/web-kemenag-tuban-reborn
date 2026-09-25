@@ -60,3 +60,134 @@
     width: 100%;
     margin-top: 18px;
 }
+/* =========================================================
+   SERVICE DIRECTORY
+   Hanya untuk halaman daftar layanan publik.
+   ========================================================= */
+.service-directory-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.service-directory-card {
+    min-width: 0;
+    display: flex;
+    min-height: 250px;
+    flex-direction: column;
+    padding: 22px;
+    border: 1px solid var(--front-border, #dce6df);
+    border-radius: var(--front-radius, 16px);
+    background: #ffffff;
+    box-shadow: var(--public-soft-shadow, 0 1px 3px rgb(15 23 42 / 5%));
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+@media (hover: hover) {
+    .service-directory-card:hover {
+        border-color: #b6cdbc;
+        box-shadow: 6px 10px 24px rgb(47 74 57 / 10%);
+    }
+}
+
+.service-directory-icon {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 16px;
+    border: 1px solid #d8e8dd;
+    border-radius: 12px;
+    background: #eaf5ec;
+    color: #167348;
+    font-size: 16px;
+    font-weight: 750;
+}
+
+.service-directory-category {
+    align-self: flex-start;
+    color: var(--experience-accent, #247052);
+    font-size: 12px;
+    font-weight: 750;
+    line-height: 1.5;
+}
+
+.service-directory-card h3 {
+    margin: 8px 0;
+    color: var(--front-title, #293d32);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.service-directory-card h3 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.service-directory-card h3 a:hover {
+    color: var(--experience-accent, #247052);
+}
+
+.service-directory-card p {
+    margin: 0;
+    color: var(--front-muted, #607267);
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+.service-directory-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 16px;
+}
+
+.service-directory-meta span {
+    padding: 4px 9px;
+    border-radius: 7px;
+    background: #f1f5f2;
+    color: #52685b;
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.service-directory-card .public-action-link {
+    margin-top: 14px;
+}
+
+@media (max-width: 1050px) {
+    .service-directory-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .service-directory-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .service-directory-card {
+        min-height: 0;
+        padding: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .service-directory-card {
+        transition: none;
+    }
+}
+
+/* Responsive service detail */
+@media (max-width: 900px) {
+    .service-detail-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .service-info-card {
+        position: static;
+    }
+}

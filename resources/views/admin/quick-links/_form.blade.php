@@ -451,6 +451,6 @@
 
 @push('scripts')
     <script
-        src="{{ asset('js/admin/modules/quick-links.js') }}"
+        src="{{ asset('js/admin/pages/quick-links.js') }}"
     ></script>
 @endpush

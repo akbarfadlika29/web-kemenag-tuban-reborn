@@ -31,17 +31,14 @@
         content="@yield('meta_description', $defaultDescription)"
     >
 
-    <link
-        rel="stylesheet"
-        href="{{ asset('css/frontend/app.css') }}"
-    >
+    @include('frontend.partials.base-styles')
 
     @stack('styles')
 
     {{-- WEB PPID: frontend visual system --}}
     <link
         rel="stylesheet"
-        href="{{ asset('css/frontend/premium.css') }}?v={{ filemtime(public_path('css/frontend/premium.css')) }}"
+        href="{{ asset('css/frontend/themes/premium.css') }}?v={{ filemtime(public_path('css/frontend/themes/premium.css')) }}"
     >
     @include('frontend.partials.shared-styles')
     <link
@@ -57,9 +54,13 @@
       href="{{ asset('css/frontend/components/filter-panel.css') }}?v={{ filemtime(public_path('css/frontend/components/filter-panel.css')) }}">
 <link rel="stylesheet"
       href="{{ asset('css/frontend/components/table-scroll.css') }}?v={{ filemtime(public_path('css/frontend/components/table-scroll.css')) }}">
+
+    {{-- CSS khusus halaman/komponen yang harus menang setelah tema global. --}}
+    @stack('page-styles')
 </head>
 
 <body class="ppid-public ppid-consistent ppid-soft">
+    @include('frontend.partials.global-loading')
     <a href="#public-main" class="public-skip-link">Langsung ke konten utama</a>
     @include('frontend.partials.header')
 

@@ -30,6 +30,7 @@ class UpdateNewsRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'editorial_version' => ['required', 'integer', 'min:0'],
             'unit_id' => [
                 'required',
                 'integer',

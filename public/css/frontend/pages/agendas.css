@@ -81,3 +81,15 @@
     color: var(--color-text);
     font-size: 12px;
 }
+
+/* Responsive agenda list */
+@media (max-width: 760px) {
+    .agenda-row-public {
+        grid-template-columns: 72px minmax(0, 1fr);
+        gap: 15px;
+    }
+
+    .agenda-detail-info {
+        grid-template-columns: 1fr;
+    }
+}

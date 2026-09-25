@@ -24,6 +24,10 @@ class AdminRoutePermission
         }
 
         $special = [
+            'admin.news.editorial' => ['news.view'],
+            'admin.news.submit' => ['news.submit'],
+            'admin.news.reject' => ['news.review'],
+            'admin.news.publish' => ['news.publish'],
             'admin.access-roles.index' => ['roles.view'],
             'admin.access-roles.store' => ['roles.create'],
             'admin.access-roles.update' => ['roles.update'],

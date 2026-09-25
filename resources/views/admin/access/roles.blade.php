@@ -73,6 +73,9 @@
                             $delegate = is_array($oldScopes)
                                 ? in_array((string) $permission->id, $oldDelegable, true)
                                 : (bool) ($existing?->can_delegate ?? false);
+                            $policyScopes = \App\Support\PermissionPolicy::allowedScopes(
+                                $permission->slug
+                            );
                         @endphp
                         <div class="role-permission">
                             <label for="scope-{{ $permission->id }}">
@@ -83,8 +86,16 @@
                                     class="ui-control"
                                     name="scopes[{{ $permission->id }}]">
                                 <option value="none" @selected($scope === 'none')>Tidak diberikan</option>
-                                <option value="own_unit" @selected($scope === 'own_unit')>Unit sendiri</option>
-                                <option value="all_units" @selected($scope === 'all_units')>Seluruh unit</option>
+                                <option value="own_unit"
+                                        @selected($scope === 'own_unit')
+                                        @disabled(!in_array('own_unit', $policyScopes, true))>
+                                    Unit sendiri
+                                </option>
+                                <option value="all_units"
+                                        @selected($scope === 'all_units')
+                                        @disabled(!in_array('all_units', $policyScopes, true))>
+                                    Seluruh unit
+                                </option>
                             </select>
 
                             <label class="role-check">

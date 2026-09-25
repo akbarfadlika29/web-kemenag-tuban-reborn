@@ -2,9 +2,9 @@
 
 namespace App\Support;
 
-use App\Models\Unit;
 use App\Models\User;
 use App\Services\Access\AccessService;
+use App\Services\Access\UnitAccessService;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 
@@ -90,35 +90,14 @@ class ManagedUsers
 
     public static function units(User $actor, string $permission): Builder
     {
-        $query = Unit::query()->where('is_active', true);
-        $access = app(AccessService::class);
-        $scope = $access->scope($actor, $permission);
-
-        if ($scope === 'all_units') {
-            return $query;
-        }
-
-        if ($scope === 'own_unit' && $actor->unit_id !== null) {
-            return $query->whereKey($actor->unit_id);
-        }
-
-        return $query->whereRaw('1 = 0');
+        return app(UnitAccessService::class)
+            ->query($actor, $permission, true);
     }
 
     public static function visibleUnitCount(User $actor): int
     {
-        $access = app(AccessService::class);
-        $scope = $access->scope($actor, 'units.view');
-        $query = Unit::query();
-
-        if ($scope === 'all_units') {
-            return $query->count();
-        }
-
-        if ($scope === 'own_unit' && $actor->unit_id !== null) {
-            return $query->whereKey($actor->unit_id)->count();
-        }
-
-        return 0;
+        return app(UnitAccessService::class)
+            ->query($actor, 'units.view', false)
+            ->count();
     }
 }

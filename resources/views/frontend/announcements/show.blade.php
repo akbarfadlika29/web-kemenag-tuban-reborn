@@ -80,3 +80,10 @@
 
 @include('frontend.partials.page-interactions', ['interactionModel' => $announcement])
 @endsection
+
+@push('styles')
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/frontend/pages/announcements.css') }}?v={{ filemtime(public_path('css/frontend/pages/announcements.css')) }}"
+    >
+@endpush

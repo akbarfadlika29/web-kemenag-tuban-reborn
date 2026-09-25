@@ -184,6 +184,6 @@
 
 @push('scripts')
     <script
-        src="{{ asset('js/admin/modules/related-links.js') }}"
+        src="{{ asset('js/admin/pages/related-links.js') }}"
     ></script>
 @endpush

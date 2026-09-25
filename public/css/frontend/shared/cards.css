@@ -3,10 +3,6 @@
 
 body.ppid-consistent :is(
     .public-card-body,
-    .news-public-body,
-    .kemenag-news-content,
-    .service-public-card,
-    .ppid-public-card,
     .reg-public-card,
     .service-info-card
 ) {
@@ -15,10 +11,6 @@ body.ppid-consistent :is(
 
 body.ppid-consistent :is(
     .public-card-body h2,
-    .news-public-body h3,
-    .kemenag-news-content h3,
-    .service-public-card h3,
-    .ppid-public-card h3,
     .ppid-list-card h2,
     .reg-public-card h2,
     .service-info-card h2
@@ -31,10 +23,6 @@ body.ppid-consistent :is(
 
 body.ppid-consistent :is(
     .public-card-body p,
-    .news-public-body p,
-    .kemenag-news-content p,
-    .service-public-card p,
-    .ppid-public-card p,
     .ppid-list-card p,
     .section-heading p,
     .related-links-heading p
@@ -46,11 +34,7 @@ body.ppid-consistent :is(
 body.ppid-consistent :is(
     .public-card-meta,
     .public-detail-meta,
-    .news-public-date,
     .news-card-unit,
-    .home-news-card-unit,
-    .kemenag-news-meta,
-    .ppid-public-meta span,
     .public-related-card span,
     .service-info-card dt,
     .ppid-metadata-grid span
@@ -62,8 +46,6 @@ body.ppid-consistent :is(
 body.ppid-consistent :is(
     .public-badge,
     .public-card-category,
-    .news-public-category,
-    .service-public-category,
     .public-tags a,
     .public-tags span
 ) {

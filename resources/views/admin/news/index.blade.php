@@ -1,4 +1,4 @@
-{{-- PPID_NEWS_ACTION_VISIBILITY_V1 --}}
+{{-- PPID_NEWS_ACTION_VISIBILITY_V2 --}}
 @php
     $newsActionAccess = app(\App\Services\Access\AccessService::class);
     $newsActionActor = auth()->user();
@@ -12,45 +12,21 @@
         }
 
         if ($record === null) {
-            return $newsActionAccess->allows(
-                $newsActionActor,
-                $permission
-            );
+            return $newsActionAccess->allows($newsActionActor, $permission);
         }
 
-        if (!$newsActionAccess->allowsUnit(
-            $newsActionActor,
-            $permission,
-            $record->unit_id
-        )) {
-            return false;
+        if (in_array($permission, ['news.update', 'news.delete'], true)) {
+            return app(\App\Services\Access\NewsEditorialPolicy::class)
+                ->canWrite(
+                    $newsActionActor,
+                    $record,
+                    $permission === 'news.delete' ? 'delete' : 'update'
+                );
         }
 
-        if ($record->status !== 'published') {
-            return true;
-        }
-
-        if ($permission === 'news.delete') {
-            return $newsActionAccess->allowsUnit(
-                $newsActionActor,
-                'news.unpublish',
-                $record->unit_id
-            );
-        }
-
-        if ($permission === 'news.update') {
-            return $newsActionAccess->allowsUnit(
-                $newsActionActor,
-                'news.publish',
-                $record->unit_id
-            ) || $newsActionAccess->allowsUnit(
-                $newsActionActor,
-                'news.unpublish',
-                $record->unit_id
-            );
-        }
-
-        return true;
+        return $newsActionAccess->allowsUnit(
+            $newsActionActor, $permission, $record->unit_id
+        );
     };
 @endphp
 @extends('layouts.admin')
@@ -115,8 +91,9 @@
                         Semua Status
                     </option>
 
-                    <option
-                        value="draft"
+                    <option value="submitted" @selected($status === 'submitted')>Diajukan</option>
+                    <option value="rejected" @selected($status === 'rejected')>Ditolak</option>
+                    <option value="draft"
                         @selected($status === 'draft')
                     >
                         Draft
@@ -379,6 +356,13 @@
                                 </td>
 
                                 <td>
+                                    @if ($item->status === 'draft' && in_array(
+                                        $item->editorial_state, ['submitted', 'rejected'], true
+                                    ))
+                                        <x-ui.badge variant="warning">
+                                            {{ $item->editorial_state === 'submitted' ? 'Diajukan' : 'Ditolak' }}
+                                        </x-ui.badge>
+                                    @else
                                     @switch($item->publication_state)
                                         @case('published')
                                             <x-ui.badge variant="success">
@@ -403,6 +387,7 @@
                                                 Draft
                                             </x-ui.badge>
                                     @endswitch
+                                    @endif
                                 </td>
 
                                 <td>
@@ -441,6 +426,13 @@
 
                                 <td>
                                     <div class="table-actions">
+                                        <x-ui.button
+                                            :href="route('admin.news.editorial', $item)"
+                                            size="sm"
+                                            variant="secondary"
+                                        >
+                                            Pengajuan
+                                        </x-ui.button>
                                         @if ($newsActionAllowed('news.update', $item))
 <x-ui.button
                                             :href="route('admin.news.edit', $item)"

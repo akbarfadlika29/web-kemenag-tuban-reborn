@@ -77,7 +77,6 @@ body.ppid-consistent :is(
     .news-main-tabs a,
     .public-tabs a,
     .news-category-tabs a,
-    .home-news-nav-items a,
     .dip-tab
 ) {
     display: inline-flex;

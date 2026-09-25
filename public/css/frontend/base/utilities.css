@@ -38,3 +38,10 @@
     background: rgba(255, 255, 255, 0.03);
     color: rgba(255, 255, 255, 0.5);
 }
+
+.public-muted {
+    display: block;
+    margin-top: 8px;
+    color: var(--color-subtle);
+    font-size: 12px;
+}

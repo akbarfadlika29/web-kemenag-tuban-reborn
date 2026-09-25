@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\Access\AccessService;
 use App\Support\PermissionCatalog;
+use App\Support\PermissionPolicy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
@@ -240,6 +241,18 @@ class UserAccessController extends Controller
                 ->get(['permissions.slug', 'access_role_permissions.data_scope']);
 
             foreach ($grants as $grant) {
+                $this->requireValid(
+                    PermissionPolicy::systemRoleAllows($data['role'], $grant->slug),
+                    'access_role_id',
+                    'Role akses memuat permission yang tidak boleh dimiliki system role '.$data['role'].'.'
+                );
+
+                $this->requireValid(
+                    PermissionPolicy::scopeAllowed($grant->slug, $grant->data_scope),
+                    'access_role_id',
+                    'Role akses memuat scope yang tidak sesuai jenis resource.'
+                );
+
                 $this->assertScope(
                     $this->access->scope($parent, $grant->slug, true),
                     $parent,

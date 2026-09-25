@@ -49,9 +49,10 @@
     line-height: 1.7;
 }
 
-.public-muted {
-    display: block;
-    margin-top: 8px;
-    color: var(--color-subtle);
-    font-size: 12px;
+/* Responsive announcement list */
+@media (max-width: 760px) {
+    .public-list-item {
+        grid-template-columns: 64px minmax(0, 1fr);
+        gap: 15px;
+    }
 }

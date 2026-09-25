@@ -62,3 +62,13 @@ p {
     );
     margin-inline: auto;
 }
+
+/* Responsive container */
+@media (max-width: 760px) {
+    .container {
+        width: min(
+            calc(100% - 28px),
+            var(--container)
+        );
+    }
+}

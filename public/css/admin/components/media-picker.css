@@ -481,23 +481,23 @@
     border-top: 1px solid var(--border);
 }
 
-.ui-form-group {
+.admin-media-picker .ui-form-group {
     display: flex;
     flex-direction: column;
 }
 
-.ui-form-group[hidden] {
+.admin-media-picker .ui-form-group[hidden] {
     display: none !important;
 }
 
-.ui-form-label {
+.admin-media-picker .ui-form-label {
     margin-bottom: 8px;
     color: #475569;
     font-size: 12px;
     font-weight: 700;
 }
 
-.ui-control {
+.admin-media-picker .ui-control {
     width: 100%;
     min-height: 40px;
     padding: 8px 14px;
@@ -510,13 +510,13 @@
     transition: all 0.2s ease;
 }
 
-.ui-control:focus {
+.admin-media-picker .ui-control:focus {
     outline: none;
     border-color: var(--gov-navy-900);
     box-shadow: 0 0 0 3px rgba(7, 24, 46, 0.08);
 }
 
-.ui-control::placeholder {
+.admin-media-picker .ui-control::placeholder {
     color: #94a3b8;
 }
 
@@ -538,7 +538,7 @@
 }
 
 /* Button UI (Upload & Footer) */
-.ui-button {
+.admin-media-picker .ui-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -553,31 +553,31 @@
     transition: all 0.2s ease;
 }
 
-.ui-button-primary {
+.admin-media-picker .ui-button-primary {
     background: var(--gov-navy-900);
     color: #ffffff;
     box-shadow: 0 2px 4px rgba(7, 24, 46, 0.1);
 }
 
-.ui-button-primary:hover {
+.admin-media-picker .ui-button-primary:hover {
     background: #0a1f35;
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(7, 24, 46, 0.15);
 }
 
-.ui-button-secondary {
+.admin-media-picker .ui-button-secondary {
     background: #ffffff;
     border-color: #cbd5e1;
     color: #475569;
 }
 
-.ui-button-secondary:hover {
+.admin-media-picker .ui-button-secondary:hover {
     background: #f8fafc;
     border-color: #94a3b8;
     color: var(--gov-navy-900);
 }
 
-.ui-button:disabled {
+.admin-media-picker .ui-button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
     transform: none !important;
